@@ -1,7 +1,7 @@
 ---
-// Сравнение до 3 моделей. Island CompareTable (client:visible) появится вместе
-// с каталогом; без товаров — честная заглушка со ссылкой на каталог.
-import { getCollection } from 'astro:content';
+// Сравнение до 3 моделей. Каталог опубликован 10.08.2026, но island
+// CompareTable (client:visible) ещё не построен (backlog STATE §6 п.3) —
+// до него показываем честную заглушку со ссылкой на каталог.
 import type { Lang } from '@config';
 import { useTranslations, localizePath } from '@/i18n';
 import BaseLayout from '@/components/BaseLayout.astro';
@@ -14,7 +14,6 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const products = await getCollection('products');
 
 const meta = {
   es: { title: 'Comparar modelos — GPS24', description: 'Compare hasta 3 navegadores GPS y dashcams de nuestro catálogo.' },
@@ -26,15 +25,11 @@ const meta = {
 <BaseLayout {lang} route="comparar" title={meta.title} description={meta.description}>
   <Section>
     <h1>{t('cta.compare')}</h1>
-    {
-      products.length < 2 && (
-        <div class="empty-state">
-          <p>{t('compare.empty')}</p>
-          <Button variant="secondary" href={localizePath('tienda', lang)}>
-            {t('cta.viewCatalog')}
-          </Button>
-        </div>
-      )
-    }
+    <div class="empty-state">
+      <p>{t('compare.empty')}</p>
+      <Button variant="secondary" href={localizePath('tienda', lang)}>
+        {t('cta.viewCatalog')}
+      </Button>
+    </div>
   </Section>
 </BaseLayout>
