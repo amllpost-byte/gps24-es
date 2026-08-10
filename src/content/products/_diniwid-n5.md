@@ -1,7 +1,8 @@
 ---
 # ЧЕРНОВИК (префикс _ — в сборку не попадает).
 # ТТХ и комплектация перенесены с карточки naviseade.ee 10.08.2026 (локальная
-# сессия). Для публикации: цена ES, наличие, фото → убрать префикс.
+# сессия), фото оттуда же, цена = naviseade (решение 10.08). Для публикации:
+# наличие от владельца и сверка (см. заметки) → убрать префикс.
 sku: DNW-N5
 name:
   es: 'Navegador GPS Diniwid N5 5" para camión y coche'
@@ -15,7 +16,7 @@ description:
   es: 'Navegador compacto para conductores profesionales: rutas de camión por peso, altura y ADR con mapas 3D Navi Truck instalados y comprobados antes de la entrega. También sirve para coche.'
   en: 'Compact navigator for professional drivers: truck routing by weight, height and ADR with 3D Navi Truck maps installed and checked before delivery. Also works for cars.'
   ru: 'Компактный навигатор для профессиональных водителей: грузовые маршруты по весу, высоте и ADR, карты 3D Navi Truck установлены и проверены перед выдачей. Подходит и для легковой.'
-price: 1 # ⚠ TODO(владелец): цена ES, EUR. Ориентир: naviseade.ee €89.90 (10.08.2026)
+price: 89.90 # = naviseade.ee 10.08.2026 (решение: цены как в naviseade)
 stock: on-order # ⚠ TODO(владелец): реальное наличие
 category: navigator
 brand: Diniwid
@@ -33,7 +34,7 @@ specs:
     value: '256 MB DDR3'
     source: 'https://www.naviseade.ee/product/50-dniwid-n5-gps/'
   - label: { es: 'Memoria interna', en: 'Internal storage', ru: 'Встроенная память' }
-    value: '8 GB'
+    value: '8 GB (Resident Flash)'
     source: 'https://www.naviseade.ee/product/50-dniwid-n5-gps/'
   - label: { es: 'Ranura de tarjeta', en: 'Card slot', ru: 'Слот карты памяти' }
     value: 'microSD'
@@ -60,8 +61,33 @@ box:
   - { es: 'Lápiz táctil', en: 'Stylus', ru: 'Стилус' }
   - { es: 'Cable USB', en: 'USB cable', ru: 'Кабель USB' }
   - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
-  - { es: '3D Navi Truck instalado con los mapas más recientes de Europa', en: '3D Navi Truck installed with the latest Europe maps', ru: 'Установлена 3D Navi Truck с последними картами Европы' }
-images: [] # TODO: фото от владельца, ≥2000px по длинной стороне
+  - { es: '3D Navi instalado con los mapas más recientes de Europa', en: '3D Navi installed with the latest Europe maps', ru: 'Установлена 3D Navi с последними картами Европы' }
+images: # фото с naviseade.ee (макс. сохранившийся размер 600px; оригиналы крупнее — запросить у владельца)
+  - src: '../../assets/img/products/diniwid-n5-1.jpg'
+    alt:
+      es: 'Navegador GPS Diniwid N5 5", vista frontal con navegación en pantalla'
+      en: 'Diniwid N5 5" GPS navigator, front view with navigation on screen'
+      ru: 'GPS-навигатор Diniwid N5 5", вид спереди с навигацией на экране'
+  - src: '../../assets/img/products/diniwid-n5-2.jpg'
+    alt:
+      es: 'Diniwid N5 con soporte, sobre la caja original'
+      en: 'Diniwid N5 with mount, on the original box'
+      ru: 'Diniwid N5 с держателем на фирменной коробке'
+  - src: '../../assets/img/products/diniwid-n5-3.jpg'
+    alt:
+      es: 'Soporte de parabrisas con ventosa, Diniwid N5 por detrás'
+      en: 'Windscreen suction mount, Diniwid N5 from behind'
+      ru: 'Держатель на стекло с присоской, Diniwid N5 сзади'
+  - src: '../../assets/img/products/diniwid-n5-4.jpg'
+    alt:
+      es: 'Conectores del Diniwid N5: ranura microSD, jack 3,5 mm y mini-USB'
+      en: 'Diniwid N5 ports: microSD slot, 3.5 mm jack and mini-USB'
+      ru: 'Разъёмы Diniwid N5: слот microSD, джек 3,5 мм и mini-USB'
+  - src: '../../assets/img/products/diniwid-n5-5.jpg'
+    alt:
+      es: 'Parte trasera del Diniwid N5 con altavoz'
+      en: 'Back of the Diniwid N5 with speaker'
+      ru: 'Задняя сторона Diniwid N5 с динамиком'
 related: []
 serviceAddons: ['map-update']
 ---
@@ -71,5 +97,10 @@ serviceAddons: ['map-update']
   https://www.naviseade.ee/product/50-dniwid-n5-gps/ («5.0" Diniwid N5», €89.90).
   Описание владельца: «Müügihitt» (хит продаж). Прежние сниппеты дилеров
   (iskamgps.com и др.) карточкой подтверждены: 5", 256 MB, 8 GB.
+- ⚠ Аудит 10.08: на карточке N5 НЕТ слова «Truck» (в отличие от N7/N9) —
+  name/tagline/description позиционируют N5 «para camión» на основании слов
+  владельца об ассортименте («грузовые Diniwid»). Подтвердить у владельца, что
+  на N5 реально ставится грузовой режим 3D Navi Truck; если нет — переписать
+  тексты под легковую навигацию.
 - Страница производителя: https://www.ediniwid.com/navigations/diniwid-n5/
 -->

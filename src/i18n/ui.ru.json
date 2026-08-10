@@ -16,6 +16,8 @@
   "product.outOfStock": "Нет в наличии",
   "product.priceWithService": "с обновлёнными картами",
   "product.priceWithout": "только устройство",
+  "product.vatIncluded": "НДС включён",
+  "product.gallery": "Фотографии товара",
   "product.whatsInBox": "Комплектация",
   "product.specs": "Технические характеристики",
   "product.addMapUpdate": "+ Обновление карт",

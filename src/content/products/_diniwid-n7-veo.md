@@ -4,7 +4,8 @@
 # сессия). Вопрос RAM 256/512 снят: карточка владельца — 256 MB.
 # ⚠ Имя модели на naviseade.ee расходится по языкам: EE «N7 Veo», RU «N7 Truck»
 # — спросить владельца, какое имя канонично для Испании.
-# Для публикации: цена ES, наличие, фото → убрать префикс.
+# Фото с naviseade, цена = naviseade (решение 10.08). Для публикации:
+# наличие от владельца и имя модели (Veo/Truck) → убрать префикс.
 sku: DNW-N7-VEO
 name:
   es: 'Navegador GPS Diniwid N7 Veo 7" para camión'
@@ -18,7 +19,7 @@ description:
   es: 'El formato clásico para la cabina: pantalla de 7 pulgadas, mapas 3D Navi Truck para camión (peso, altura, mercancías peligrosas) instalados y comprobados antes de la entrega. Funciona sin internet.'
   en: 'The classic cab format: 7-inch screen, 3D Navi Truck maps for trucks (weight, height, dangerous goods) installed and checked before delivery. Works offline.'
   ru: 'Классический формат для кабины: экран 7 дюймов, грузовые карты 3D Navi Truck (вес, высота, опасные грузы) установлены и проверены перед выдачей. Работает без интернета.'
-price: 1 # ⚠ TODO(владелец): цена ES, EUR. Ориентир: naviseade.ee €149.90 (10.08.2026)
+price: 149.90 # = naviseade.ee 10.08.2026 (решение: цены как в naviseade)
 stock: on-order # ⚠ TODO(владелец): реальное наличие
 category: navigator
 brand: Diniwid
@@ -36,7 +37,7 @@ specs:
     value: '256 MB DDR3'
     source: 'https://www.naviseade.ee/product/70-dnwd-n7-gps/'
   - label: { es: 'Memoria interna', en: 'Internal storage', ru: 'Встроенная память' }
-    value: '8 GB'
+    value: '8 GB (Resident Flash)'
     source: 'https://www.naviseade.ee/product/70-dnwd-n7-gps/'
   - label: { es: 'Ranura de tarjeta', en: 'Card slot', ru: 'Слот карты памяти' }
     value: 'microSD'
@@ -64,8 +65,33 @@ box:
   - { es: 'Lápiz táctil', en: 'Stylus', ru: 'Стилус' }
   - { es: 'Cable USB', en: 'USB cable', ru: 'Кабель USB' }
   - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
-  - { es: '3D Navi Truck instalado con los mapas más recientes de Europa', en: '3D Navi Truck installed with the latest Europe maps', ru: 'Установлена 3D Navi Truck с последними картами Европы' }
-images: [] # TODO: фото от владельца
+  - { es: '3D Navi instalado con los mapas más recientes de Europa', en: '3D Navi installed with the latest Europe maps', ru: 'Установлена 3D Navi с последними картами Европы' }
+images: # фото с naviseade.ee (макс. сохранившийся размер 600px; оригиналы крупнее — запросить у владельца)
+  - src: '../../assets/img/products/diniwid-n7-1.jpg'
+    alt:
+      es: 'Navegador GPS Diniwid N7 7", vista frontal con navegación en pantalla'
+      en: 'Diniwid N7 7" GPS navigator, front view with navigation on screen'
+      ru: 'GPS-навигатор Diniwid N7 7", вид спереди с навигацией на экране'
+  - src: '../../assets/img/products/diniwid-n7-2.jpg'
+    alt:
+      es: 'Diniwid N7 con soporte, sobre la caja original'
+      en: 'Diniwid N7 with mount, on the original box'
+      ru: 'Diniwid N7 с держателем на фирменной коробке'
+  - src: '../../assets/img/products/diniwid-n7-3.jpg'
+    alt:
+      es: 'Soporte de parabrisas con ventosa, Diniwid N7 por detrás'
+      en: 'Windscreen suction mount, Diniwid N7 from behind'
+      ru: 'Держатель на стекло с присоской, Diniwid N7 сзади'
+  - src: '../../assets/img/products/diniwid-n7-4.jpg'
+    alt:
+      es: 'Conectores del Diniwid N7: ranura microSD, jack 3,5 mm y mini-USB'
+      en: 'Diniwid N7 ports: microSD slot, 3.5 mm jack and mini-USB'
+      ru: 'Разъёмы Diniwid N7: слот microSD, джек 3,5 мм и mini-USB'
+  - src: '../../assets/img/products/diniwid-n7-5.jpg'
+    alt:
+      es: 'Parte trasera del Diniwid N7 con altavoz'
+      en: 'Back of the Diniwid N7 with speaker'
+      ru: 'Задняя сторона Diniwid N7 с динамиком'
 related: []
 serviceAddons: ['map-update']
 ---

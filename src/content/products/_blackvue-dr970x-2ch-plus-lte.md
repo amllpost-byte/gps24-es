@@ -3,7 +3,8 @@
 # Ревизия подтверждена карточкой владельца 10.08.2026: продаётся именно
 # DR970X-2CH Plus LTE (файл/SKU переименованы с «-2CH-LTE»).
 # ТТХ и комплектация перенесены с карточки naviseade.ee.
-# Для публикации: цена ES + наличие от владельца, фото → убрать префикс.
+# Фото с naviseade, цена = naviseade (решение 10.08). Для публикации:
+# наличие от владельца → убрать префикс.
 sku: BV-DR970X-2CH-PLUS-LTE
 name:
   es: 'Dashcam BlackVue DR970X-2CH Plus LTE 4K (frontal + trasera) + SD 64 GB'
@@ -17,7 +18,7 @@ description:
   es: 'El buque insignia para flotas y particulares exigentes: grabación frontal 4K UHD y trasera Full HD, módulo LTE integrado para BlackVue Cloud, GPS, Wi-Fi y modo aparcamiento. Instalación profesional disponible.'
   en: 'The flagship for fleets and demanding drivers: 4K UHD front and Full HD rear recording, built-in LTE for BlackVue Cloud, GPS, Wi-Fi and parking mode. Professional installation available.'
   ru: 'Флагман для автопарков и требовательных водителей: запись 4K UHD спереди и Full HD сзади, встроенный LTE для BlackVue Cloud, GPS, Wi-Fi, режим парковки. Возможна профессиональная установка.'
-price: 1 # ⚠ TODO(владелец): цена ES, EUR. Ориентир: naviseade.ee €479.90 (10.08.2026)
+price: 479.90 # = naviseade.ee 10.08.2026 (решение: цены как в naviseade)
 stock: on-order # ⚠ TODO(владелец): реальное наличие
 category: dashcam
 brand: BlackVue
@@ -50,7 +51,22 @@ box:
   - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
   - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
   - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
-images: []
+images: # фото с naviseade.ee (макс. сохранившийся размер 600px; у BlackVue поискать крупнее на blackvue.com/blackvue.ee)
+  - src: '../../assets/img/products/blackvue-dr970x-2ch-plus-lte-1.jpg'
+    alt:
+      es: 'Dashcam BlackVue DR970X-2CH Plus LTE: cámara frontal 4K y cámara trasera'
+      en: 'BlackVue DR970X-2CH Plus LTE dashcam: 4K front camera and rear camera'
+      ru: 'Видеорегистратор BlackVue DR970X-2CH Plus LTE: передняя 4K и задняя камеры'
+  - src: '../../assets/img/products/blackvue-dr970x-2ch-plus-lte-2.jpg'
+    alt:
+      es: 'Contenido de la caja del BlackVue DR970X-2CH Plus LTE (esquema del fabricante)'
+      en: 'BlackVue DR970X-2CH Plus LTE box contents (manufacturer diagram)'
+      ru: 'Комплектация BlackVue DR970X-2CH Plus LTE (схема производителя)'
+  - src: '../../assets/img/products/blackvue-dr970x-2ch-plus-lte-3.jpg'
+    alt:
+      es: 'Soportes de montaje de las cámaras frontal y trasera'
+      en: 'Mounting brackets of the front and rear cameras'
+      ru: 'Кронштейны крепления передней и задней камер'
 related: []
 serviceAddons: ['dashcam-install']
 ---
@@ -66,4 +82,9 @@ serviceAddons: ['dashcam-install']
   — при желании расширить таблицу (углы обзора, вес, рабочие температуры)
   брать оттуда и ставить source на мануал.
 - У владельца есть родственный сайт blackvue.ee (тот же магазин) — источник фото?
+- ⚠ Фото 2 (заводская схема комплектации, имя файла DR970X-2CH-LTE_DR770X-2CH-LTE)
+  показывает БОЛЬШЕ, чем текстовый список карточки: hardwire-кабель, кабель
+  задней камеры, двусторонний скотч, клипсы 8 шт, SIM-инструмент, картридер,
+  pry tool, SIM (опция). Сверить с владельцем реальную коробку Plus LTE и,
+  если совпадает, расширить box[] (ТЗ §1.4: 4–8 пунктов).
 -->

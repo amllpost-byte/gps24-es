@@ -16,6 +16,8 @@
   "product.outOfStock": "Out of stock",
   "product.priceWithService": "with updated maps",
   "product.priceWithout": "device only",
+  "product.vatIncluded": "VAT included",
+  "product.gallery": "Product photos",
   "product.whatsInBox": "What's in the box",
   "product.specs": "Technical specifications",
   "product.addMapUpdate": "+ Map update",

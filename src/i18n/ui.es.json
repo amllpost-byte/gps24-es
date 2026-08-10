@@ -16,6 +16,8 @@
   "product.outOfStock": "Agotado",
   "product.priceWithService": "con mapas actualizadas",
   "product.priceWithout": "solo dispositivo",
+  "product.vatIncluded": "IVA incluido",
+  "product.gallery": "Fotos del producto",
   "product.whatsInBox": "Qué hay en la caja",
   "product.specs": "Características técnicas",
   "product.addMapUpdate": "+ Actualización de mapas",

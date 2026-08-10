@@ -1,21 +1,23 @@
 ---
 // Кнопка/ссылка-кнопка. variant: primary (янтарь) / secondary (контур) / whatsapp.
 // Текст на заливках — всегда графит --on-amber (контраст, см. tokens.css).
+// external — внешняя ссылка (wa.me и т.п.): новая вкладка + rel=noopener (ТЗ §1.3.5).
 interface Props {
   variant?: 'primary' | 'secondary' | 'whatsapp';
   href?: string;
   small?: boolean;
+  external?: boolean;
   type?: 'button' | 'submit';
   class?: string;
 }
 
-const { variant = 'primary', href, small = false, type = 'button', class: className = '' } = Astro.props;
+const { variant = 'primary', href, small = false, external = false, type = 'button', class: className = '' } = Astro.props;
 const classes = ['btn', `btn--${variant}`, small && 'btn--small', className];
 ---
 
 {
   href ? (
-    <a class:list={classes} href={href}>
+    <a class:list={classes} href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
       <slot />
     </a>
   ) : (

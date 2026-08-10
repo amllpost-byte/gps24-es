@@ -2,8 +2,8 @@
 # ЧЕРНОВИК (префикс _ — в сборку не попадает).
 # Модель подтверждена владельцем 10.08 (ссылка на карточку naviseade.ee).
 # ТТХ и комплектация перенесены с карточки naviseade.ee 10.08.2026 (локальная
-# сессия; из облака сайт недоступен). Для публикации: цена ES, наличие, фото
-# → убрать префикс.
+# сессия; из облака сайт недоступен), фото оттуда же, цена = naviseade
+# (решение 10.08). Для публикации: наличие от владельца → убрать префикс.
 sku: DNW-N9
 name:
   es: 'Navegador GPS Diniwid N9 9" para camión'
@@ -17,7 +17,7 @@ description:
   es: 'El formato grande de la gama Diniwid: pantalla de 9 pulgadas bien legible desde el asiento del camión, rutas por peso, altura y ADR con mapas 3D Navi Truck instalados y comprobados antes de la entrega. Funciona sin internet.'
   en: 'The large format of the Diniwid range: a 9-inch screen easy to read from the truck seat, routing by weight, height and ADR with 3D Navi Truck maps installed and checked before delivery. Works offline.'
   ru: 'Крупный формат линейки Diniwid: экран 9 дюймов, хорошо читаемый с водительского места, маршруты по весу, высоте и ADR, карты 3D Navi Truck установлены и проверены перед выдачей. Работает без интернета.'
-price: 1 # ⚠ TODO(владелец): цена ES, EUR. Ориентир: naviseade.ee €169.90 (10.08.2026)
+price: 169.90 # = naviseade.ee 10.08.2026 (решение: цены как в naviseade)
 stock: on-order # ⚠ TODO(владелец): реальное наличие
 category: navigator
 brand: Diniwid
@@ -35,7 +35,7 @@ specs:
     value: '256 MB DDR3'
     source: 'https://www.naviseade.ee/product/90-diniwid-n9/'
   - label: { es: 'Memoria interna', en: 'Internal storage', ru: 'Встроенная память' }
-    value: '8 GB'
+    value: '8 GB (Resident Flash)'
     source: 'https://www.naviseade.ee/product/90-diniwid-n9/'
   - label: { es: 'Ranura de tarjeta', en: 'Card slot', ru: 'Слот карты памяти' }
     value: 'microSD'
@@ -59,14 +59,29 @@ box:
   - { es: 'Navegador Diniwid N9', en: 'Diniwid N9 navigator', ru: 'Навигатор Diniwid N9' }
   - { es: 'Cargador de coche', en: 'Car charger', ru: 'Автомобильная зарядка' }
   - { es: 'Soporte para el parabrisas', en: 'Windscreen mount', ru: 'Держатель на стекло' }
-  - { es: 'Disco adhesivo para el salpicadero', en: 'Adhesive dashboard disc', ru: 'Шайба для крепления на панель' }
+  - { es: 'Disco de fijación', en: 'Mounting disc', ru: 'Шайба для крепления' }
   - { es: 'Protector de pantalla ya colocado', en: 'Screen protector applied', ru: 'Плёнка на экране' }
   - { es: 'Funda', en: 'Case', ru: 'Чехол' }
   - { es: 'Lápiz táctil', en: 'Stylus', ru: 'Стилус' }
   - { es: 'Cable USB', en: 'USB cable', ru: 'Кабель USB' }
   - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
-  - { es: '3D Navi Truck instalado con los mapas más recientes de Europa', en: '3D Navi Truck installed with the latest Europe maps', ru: 'Установлена 3D Navi Truck с последними картами Европы' }
-images: [] # TODO: фото от владельца
+  - { es: '3D Navi instalado con los mapas más recientes de Europa', en: '3D Navi installed with the latest Europe maps', ru: 'Установлена 3D Navi с последними картами Европы' }
+images: # фото с naviseade.ee (макс. сохранившийся размер 600px; оригиналы крупнее — запросить у владельца)
+  - src: '../../assets/img/products/diniwid-n9-1.jpg'
+    alt:
+      es: 'Navegador GPS Diniwid N9 9", vista frontal con navegación en pantalla'
+      en: 'Diniwid N9 9" GPS navigator, front view with navigation on screen'
+      ru: 'GPS-навигатор Diniwid N9 9", вид спереди с навигацией на экране'
+  - src: '../../assets/img/products/diniwid-n9-2.jpg'
+    alt:
+      es: 'Diniwid N9 con el menú multimedia en pantalla'
+      en: 'Diniwid N9 with the multimedia menu on screen'
+      ru: 'Diniwid N9 с мультимедийным меню на экране'
+  - src: '../../assets/img/products/diniwid-n9-3.jpg'
+    alt:
+      es: 'Parte trasera del Diniwid N9 con placa de fijación'
+      en: 'Back of the Diniwid N9 with mounting plate'
+      ru: 'Задняя сторона Diniwid N9 с площадкой крепления'
 related: []
 serviceAddons: ['map-update']
 ---

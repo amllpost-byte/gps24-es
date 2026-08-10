@@ -13,18 +13,18 @@ turnaround:
   en: 'Within 24 hours'
   ru: 'За 24 часа'
 includes:
-  - es: 'Mapas más recientes de 46 países de Europa (edición 2026), España incluida'
-    en: 'Latest maps of 46 European countries (2026 edition), Spain included'
-    ru: 'Свежие карты 46 стран Европы (выпуск 2026), включая Испанию'
+  - es: 'Mapas más recientes de 46 países (edición 2026), España incluida'
+    en: 'Latest maps of 46 countries (2026 edition), Spain included'
+    ru: 'Свежие карты 46 стран (выпуск 2026), включая Испанию'
   - es: 'POI actualizados: radares y puntos de interés'
     en: 'Updated POI: speed cameras and waypoints'
     ru: 'Обновлённые POI: камеры и путевые точки'
-  - es: 'Configuración del modo camión: peso, altura, anchura, longitud y ADR'
-    en: 'Truck mode setup: weight, height, width, length and ADR'
-    ru: 'Настройка грузового режима: масса, высота, ширина, длина, ADR'
-  - es: 'Menú y voz en su idioma, navegador comprobado y listo para usar'
-    en: 'Menu and voice in your language, device checked and ready to use'
-    ru: 'Меню и голос на вашем языке, навигатор проверен и готов к работе'
+  - es: 'Configuración del modo camión: peso, altura, anchura, longitud y mercancías peligrosas (ADR)'
+    en: 'Truck mode setup: weight, height, width, length and dangerous goods (ADR)'
+    ru: 'Настройка грузового режима: масса, высота, ширина, длина, опасные грузы (ADR)'
+  - es: 'Menú y voz en su idioma, navegador configurado y listo para usar'
+    en: 'Menu and voice in your language, device configured and ready to use'
+    ru: 'Меню и голос на вашем языке, навигатор настроен и сразу готов к работе'
 supportedBrands: ['Garmin', 'TomTom', 'Diniwid'] # ⚠ подтвердить список у владельца
 ---
 
