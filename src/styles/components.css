@@ -20,20 +20,44 @@
     min-height: 64px;
   }
 
+  /* текстовый логотип холдинг-страницы: GPS24 (24 — янтарь) + подпись-регион */
   .logo {
     display: flex;
-    align-items: center;
-    gap: var(--space-2);
+    flex-direction: column;
+    gap: 2px;
     color: var(--ink-strong);
     text-decoration: none;
-    font-weight: 800;
-    font-size: var(--fs-18);
-    letter-spacing: 0.02em;
   }
 
-  .logo svg {
-    width: 28px;
-    height: 28px;
+  .logo__mark {
+    font-size: var(--fs-22);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .logo__mark b {
+    /* янтарь как текст — токен-пара для светлой/тёмной темы */
+    color: var(--amber-ink);
+  }
+
+  .logo__tag {
+    font-family: var(--font-mono);
+    font-size: var(--fs-12);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* футер всегда тёмный: «24» — заливочным янтарём, подпись — приглушённо */
+  .site-footer .logo__mark b {
+    color: var(--amber);
+  }
+
+  .site-footer .logo__tag {
+    color: inherit;
+    opacity: 0.6;
   }
 
   .nav-desktop {
@@ -188,22 +212,22 @@
     background: var(--surface-2);
   }
 
-  /* ---------- language switch ---------- */
+  /* ---------- language switch (прямоугольный, как на холдинге) ---------- */
   .lang-switch {
     display: flex;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-pill);
-    padding: 2px;
+    gap: var(--space-1);
   }
 
   .lang-switch a,
   .lang-switch span {
     display: inline-block;
-    padding: var(--space-1) var(--space-3);
-    border-radius: var(--radius-pill);
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-ctl);
+    font-family: var(--font-mono);
     font-size: var(--fs-12);
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.1em;
     text-decoration: none;
     color: var(--muted);
   }
@@ -211,10 +235,12 @@
   .lang-switch span[aria-current] {
     background: var(--ink);
     color: var(--text-inverse);
+    border-color: var(--ink);
   }
 
   .lang-switch a:hover {
     color: var(--ink);
+    border-color: var(--line-strong);
     background: var(--surface-2);
   }
 
@@ -344,22 +370,48 @@
     margin-bottom: var(--space-6);
   }
 
-  /* ---------- route line (разделитель) ---------- */
+  /* ---------- route line (разделитель): прорисовка один раз + точка-финиш ---------- */
   .route-line {
     display: block;
     width: min(100%, var(--container-max));
     margin-inline: auto;
     padding-inline: var(--gutter);
-    height: 32px;
+    height: 34px;
+    overflow: visible;
   }
 
   .route-line__path {
-    animation: route-dash 40s linear infinite;
+    /* pathLength=1 в SVG — длина нормирована */
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: route-draw 2.2s var(--ease) 0.2s forwards;
   }
 
-  @keyframes route-dash {
+  .route-line__dot {
+    opacity: 0;
+    animation: route-pop 0.01s linear 2.4s forwards;
+  }
+
+  @keyframes route-draw {
     to {
-      stroke-dashoffset: -720;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes route-pop {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .route-line__path {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+    .route-line__dot {
+      animation: none;
+      opacity: 1;
     }
   }
 

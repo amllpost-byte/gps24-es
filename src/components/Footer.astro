@@ -19,8 +19,7 @@ const year = new Date().getFullYear();
   <div class="container site-footer__grid">
     <div class="site-footer__brand">
       <a class="logo" href={localizePath('', lang)}>
-        <Logo />
-        <span>GPS24</span>
+        <Logo {lang} tag={false} />
       </a>
       <p class="site-footer__muted">{t('footer.tagline')}</p>
       <p class="site-footer__muted">{t('contact.cityLine')}</p>

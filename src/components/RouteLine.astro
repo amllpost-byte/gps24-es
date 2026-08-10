@@ -1,16 +1,17 @@
 ---
-// Декоративная «линия маршрута» A→B — фирменный разделитель секций
-// (наследие холдинг-страницы). Анимация отключается prefers-reduced-motion.
+// Декоративная «линия маршрута» A→B — фирменный разделитель секций.
+// Кривая, прорисовка и точка-финиш — с холдинг-страницы (решение владельца
+// 10.08.2026: сплошная линия вместо пунктира). Анимация — один раз при
+// загрузке; reduced-motion показывает статичный финал (см. components.css).
 ---
 
-<svg class="route-line" viewBox="0 0 1200 32" preserveAspectRatio="none" aria-hidden="true" fill="none">
+<svg class="route-line" viewBox="0 0 640 34" preserveAspectRatio="none" aria-hidden="true" fill="none">
   <path
     class="route-line__path"
-    d="M8 24 C 300 24 300 8 600 8 S 900 24 1192 24"
+    pathLength="1"
+    d="M2 26 C 90 26, 120 6, 210 6 S 330 28, 420 22 S 540 8, 638 10"
     stroke="var(--amber)"
     stroke-width="2"
-    stroke-dasharray="8 10"
     stroke-linecap="round"></path>
-  <circle cx="8" cy="24" r="5" fill="var(--amber)"></circle>
-  <circle cx="1192" cy="24" r="5" stroke="var(--amber)" stroke-width="2.5"></circle>
+  <circle class="route-line__dot" cx="638" cy="10" r="4" fill="var(--amber)"></circle>
 </svg>
