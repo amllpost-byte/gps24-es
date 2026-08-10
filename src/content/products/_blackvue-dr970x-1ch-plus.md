@@ -27,7 +27,14 @@ serviceAddons: ['dashcam-install']
 ---
 
 <!-- Заметки (не публикуются):
-- продаётся на naviseade.ee: https://www.naviseade.ee/ee/product/blackvue-dr970x-1ch-sd64gb/
-- производитель: https://blackvue.com (найти страницу именно DR970X-1CH Plus;
-  в поиске всплывает более новая ревизия «Plus II» — не смешивать ТТХ).
+- ⚠ 10.08.2026: карточки на naviseade.ee БОЛЬШЕ НЕТ — бывший URL
+  https://www.naviseade.ee/ee/product/blackvue-dr970x-1ch-sd64gb/ редиректит
+  в категорию, и в текущем ассортименте BlackVue одноканального DR970X нет
+  вообще. Одноканальные 4K там сейчас: Elite 10-1CH +SD64GB (€369.90);
+  попроще — ELITE 8-1CH 2K (€289.90), DR770X-1CH Full HD (€249.90).
+- ⚠ Вопрос владельцу: какая одноканальная модель едет в испанский ассортимент?
+  Если Elite 10-1CH — черновик переделать (имя/SKU/ТТХ) по его карточке
+  и datasheet blackvue.com.
+- производитель: https://blackvue.com (страницу искать ТОЧНО для выбранной
+  ревизии — не смешивать с «Plus II»).
 -->

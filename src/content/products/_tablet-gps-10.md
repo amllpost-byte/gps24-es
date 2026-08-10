@@ -27,8 +27,12 @@ serviceAddons: ['map-update']
 ---
 
 <!-- Заметки (не публикуются):
-- naviseade.ee категория планшетов: https://www.naviseade.ee/ee/category/planshety-gps/
-- 8" вариант: https://www.naviseade.ee/ee/product/multipad-wize-3408-4g/
+- ⚠ 10.08.2026: категория планшетов на naviseade.ee ПУСТА
+  (https://www.naviseade.ee/ee/category/planshety-gps/ — ни одного товара),
+  карточка 8" Prestigio (multipad-wize-3408-4g) тоже удалена — редирект
+  в пустую категорию. С naviseade.ee наполнять нечем.
+- ⚠ Вопрос владельцу остаётся открытым и стал важнее: какой именно планшет
+  едет в Испанию (модель, бренд, ТТХ, источник)?
 - поле brand не заполнено сознательно — правило ТЗ §3: как именуем бренд
   ноунейм/OEM-планшета, решает владелец, не выдумывать.
 -->

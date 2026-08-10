@@ -26,7 +26,11 @@ serviceAddons: ['dashcam-install']
 ---
 
 <!-- Заметки (не публикуются):
-- продаётся на naviseade.ee: http://www.naviseade.ee/ee/product/blackvue-dr590-1ch/
-- ⚠ DR590 — модель прошлых лет; спросить владельца, едет ли она в испанский
-  ассортимент или остаётся только эстонский сток.
+- ⚠ 10.08.2026: страница http://www.naviseade.ee/ee/product/blackvue-dr590-1ch/
+  отдаёт 404 — DR590 из ассортимента naviseade.ee ушёл. Текущая входная модель
+  там — DR590X: DR590X-1CH +SD64GB €97.90 (Full HD 1920×1080 @ 60 fps,
+  PowerMagic, Wi-Fi, угол 139°, приложение Android/iOS) и DR590X-2CH +SD64GB
+  €169.90.
+- ⚠ Вопрос владельцу уточнился: в ES-ассортимент брать DR590X-1CH вместо DR590?
+  Если да — черновик переделать (имя/SKU/ТТХ по карточке DR590X и datasheet).
 -->
