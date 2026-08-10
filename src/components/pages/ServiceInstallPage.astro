@@ -1,0 +1,41 @@
+---
+// Услуга «Установка видеорегистратора».
+// TODO(контент): цена, что входит, срок — из content/services после подтверждения.
+import type { Lang } from '@config';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/components/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const meta = {
+  es: {
+    title: 'Instalación de dashcam — GPS24',
+    description: 'Instalación profesional de dashcams. Consulte precio y cita por WhatsApp +34 637 792 222.',
+  },
+  en: {
+    title: 'Dashcam installation — GPS24',
+    description: 'Professional dashcam installation. Ask for price and booking on WhatsApp +34 637 792 222.',
+  },
+  ru: {
+    title: 'Установка видеорегистратора — GPS24',
+    description: 'Профессиональная установка видеорегистраторов. Цена и запись — в WhatsApp +34 637 792 222.',
+  },
+}[lang];
+---
+
+<BaseLayout {lang} route="instalacion-dashcam" title={meta.title} description={meta.description}>
+  <Section class="hero">
+    <h1>{t('install.title')}</h1>
+    <p class="lead">{t('install.lead')}</p>
+    <div class="hero__cta">
+      <WhatsAppCTA {lang} />
+    </div>
+  </Section>
+</BaseLayout>

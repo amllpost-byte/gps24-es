@@ -1,0 +1,67 @@
+---
+// Главная: hero → trust-бар → сценарии → блок услуги → B2B-вставка (канон: 6–8 секций).
+// TODO(контент): hero одного конкретного товара с ценой (канон §Главная-1),
+// товарная сетка с ценами — когда появятся карточки в content/products.
+import type { Lang } from '@config';
+import { useTranslations, localizePath } from '@/i18n';
+import BaseLayout from '@/components/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import Button from '@/components/Button.astro';
+import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
+import TrustBar from '@/components/TrustBar.astro';
+import ScenarioTiles from '@/components/ScenarioTiles.astro';
+import ServiceBlock from '@/components/ServiceBlock.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const meta = {
+  es: {
+    title: 'GPS para camiones y dashcams en Benidorm — GPS24',
+    description:
+      'Navegadores GPS para camión con 3D Navi Truck, dashcams y actualización de mapas. Precios claros, garantía de 3 años. WhatsApp +34 637 792 222.',
+  },
+  en: {
+    title: 'Truck GPS and dashcams in Benidorm — GPS24',
+    description:
+      'Truck sat navs with 3D Navi Truck, dashcams and map updates. Clear prices, 3-year warranty. WhatsApp +34 637 792 222.',
+  },
+  ru: {
+    title: 'GPS для грузовиков и видеорегистраторы в Бенидорме — GPS24',
+    description:
+      'GPS-навигаторы для грузовиков с 3D Navi Truck, видеорегистраторы и обновление карт. Понятные цены, гарантия 3 года. WhatsApp +34 637 792 222.',
+  },
+}[lang];
+---
+
+<BaseLayout {lang} route="" title={meta.title} description={meta.description}>
+  <Section class="hero">
+    <h1>{t('home.heroTitle')}</h1>
+    <p class="lead">{t('home.heroLead')}</p>
+    <div class="hero__cta">
+      <WhatsAppCTA {lang} />
+      <Button variant="secondary" href={localizePath('tienda', lang)}>{t('cta.viewCatalog')}</Button>
+    </div>
+  </Section>
+  <Section>
+    <TrustBar {lang} />
+  </Section>
+  <Section divider>
+    <h2>{t('home.scenariosTitle')}</h2>
+    <ScenarioTiles {lang} />
+  </Section>
+  <Section divider>
+    <ServiceBlock {lang} />
+  </Section>
+  <Section tone="dark">
+    <h2>{t('home.fleetTitle')}</h2>
+    <p>{t('home.fleetLead')}</p>
+    <div class="hero__cta">
+      <Button variant="primary" href={localizePath('flotas', lang)}>{t('nav.fleets')}</Button>
+    </div>
+  </Section>
+</BaseLayout>

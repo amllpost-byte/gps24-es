@@ -1,0 +1,26 @@
+---
+// Кнопка/ссылка-кнопка. variant: primary (янтарь) / secondary (контур) / whatsapp.
+// Текст на заливках — всегда графит --on-amber (контраст, см. tokens.css).
+interface Props {
+  variant?: 'primary' | 'secondary' | 'whatsapp';
+  href?: string;
+  small?: boolean;
+  type?: 'button' | 'submit';
+  class?: string;
+}
+
+const { variant = 'primary', href, small = false, type = 'button', class: className = '' } = Astro.props;
+const classes = ['btn', `btn--${variant}`, small && 'btn--small', className];
+---
+
+{
+  href ? (
+    <a class:list={classes} href={href}>
+      <slot />
+    </a>
+  ) : (
+    <button class:list={classes} type={type}>
+      <slot />
+    </button>
+  )
+}

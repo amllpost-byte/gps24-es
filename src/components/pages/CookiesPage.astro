@@ -1,0 +1,31 @@
+---
+// Cookies: правдивое состояние Этапа 1 — сайт не ставит cookies и не трекает.
+// Если аналитика появится (только privacy-first, см. site.config) — обновить ДО включения.
+import type { Lang } from '@config';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/components/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const meta = {
+  es: { title: 'Cookies — GPS24', description: 'Política de cookies de gps24.es.' },
+  en: { title: 'Cookies — GPS24', description: 'Cookie policy of gps24.es.' },
+  ru: { title: 'Cookies — GPS24', description: 'Политика cookies gps24.es.' },
+}[lang];
+---
+
+<BaseLayout {lang} route="cookies" title={meta.title} description={meta.description}>
+  <Section>
+    <h1>{t('footer.cookies')}</h1>
+    <div class="prose">
+      <p>{t('legal.noCookies')}</p>
+      <p>{t('legal.noCookiesNote')}</p>
+    </div>
+  </Section>
+</BaseLayout>

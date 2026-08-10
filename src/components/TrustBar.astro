@@ -1,0 +1,21 @@
+---
+// Trust-бар: только проверяемые числа из site.config (никаких «качество/надёжность»).
+import { SITE, type Lang } from '@config';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<ul class="trust-bar" role="list">
+  {
+    SITE.trust[lang].map((item) => (
+      <li>
+        <span class="trust-bar__value mono">{item.value}</span>
+        <span class="trust-bar__label">{item.label}</span>
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,12 @@
+---
+// Цена: Overpass Mono + tabular-nums (класс .price из tokens.css), формат es-ES.
+interface Props {
+  amount: number;
+  note?: string;
+}
+
+const { amount, note } = Astro.props;
+const formatted = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 2 }).format(amount);
+---
+
+<span class="price">{formatted} €</span>{note && <span class="price__note">{note}</span>}

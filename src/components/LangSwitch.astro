@@ -1,0 +1,28 @@
+---
+// Переключатель ES/EN/RU: ведёт на ЭКВИВАЛЕНТНУЮ страницу (routeMap), не на главную.
+import { SITE, type Lang } from '@config';
+import { useTranslations, localizePath, type RouteKey } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+  route: RouteKey;
+  rest?: string;
+}
+
+const { lang, route, rest = '' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<nav class="lang-switch" aria-label={t('a11y.switchLang')}>
+  {
+    SITE.langs.map((l) =>
+      l === lang ? (
+        <span aria-current="true">{l.toUpperCase()}</span>
+      ) : (
+        <a href={localizePath(route, l, rest)} lang={l} hreflang={l}>
+          {l.toUpperCase()}
+        </a>
+      ),
+    )
+  }
+</nav>

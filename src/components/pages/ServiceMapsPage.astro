@@ -1,0 +1,49 @@
+---
+// Услуга-товар «Обновление карт» — главный маржинальный продукт.
+// TODO(контент): цена «desde», что входит, supportedBrands — из content/services,
+// когда владелец подтвердит цены; DeviceForm-island — Этап после наполнения.
+import type { Lang } from '@config';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/components/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import TrustBar from '@/components/TrustBar.astro';
+import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const meta = {
+  es: {
+    title: 'Actualización de mapas GPS en 24 h — GPS24',
+    description:
+      'Actualizamos mapas de Garmin, TomTom y otros navegadores en 24 horas. Diga qué modelo tiene y le confirmamos precio por WhatsApp.',
+  },
+  en: {
+    title: 'GPS map updates in 24 h — GPS24',
+    description:
+      'We update maps on Garmin, TomTom and other sat navs within 24 hours. Tell us your model and we confirm the price on WhatsApp.',
+  },
+  ru: {
+    title: 'Обновление карт GPS за 24 часа — GPS24',
+    description:
+      'Обновляем карты Garmin, TomTom и других навигаторов за 24 часа. Напишите модель — подтвердим цену в WhatsApp.',
+  },
+}[lang];
+---
+
+<BaseLayout {lang} route="actualizacion-de-mapas" title={meta.title} description={meta.description}>
+  <Section class="hero">
+    <h1>{t('maps.title')}</h1>
+    <p class="lead">{t('home.serviceLead')}</p>
+    <div class="hero__cta">
+      <WhatsAppCTA {lang} label={t('service.whichDevice')} />
+    </div>
+  </Section>
+  <Section>
+    <TrustBar {lang} />
+  </Section>
+</BaseLayout>

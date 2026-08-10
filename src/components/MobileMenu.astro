@@ -1,0 +1,35 @@
+---
+// Мобильное меню на <details>/<summary> — работает без JavaScript.
+import type { Lang } from '@config';
+import { useTranslations, localizePath } from '@/i18n';
+import type { RouteKey } from '@/i18n';
+import type { NavItem } from './Header.astro';
+
+interface Props {
+  lang: Lang;
+  route: RouteKey;
+  items: NavItem[];
+}
+
+const { lang, route, items } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<details class="mobile-menu">
+  <summary aria-label={t('a11y.openMenu')}>
+    <span class="mobile-menu__icon" aria-hidden="true"></span>
+  </summary>
+  <nav class="mobile-menu__panel" aria-label={t('a11y.mainNav')}>
+    <ul>
+      {
+        items.map((item) => (
+          <li>
+            <a href={localizePath(item.route, lang)} aria-current={item.route === route ? 'page' : undefined}>
+              {t(item.key)}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</details>

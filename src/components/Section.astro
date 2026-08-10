@@ -1,0 +1,20 @@
+---
+// Обёртка секции: контейнер 1200px; divider добавляет линию маршрута сверху.
+import RouteLine from './RouteLine.astro';
+
+interface Props {
+  tone?: 'default' | 'dark';
+  divider?: boolean;
+  id?: string;
+  class?: string;
+}
+
+const { tone = 'default', divider = false, id, class: className = '' } = Astro.props;
+---
+
+{divider && <RouteLine />}
+<section id={id} class:list={['section', tone === 'dark' && 'section--dark', className]}>
+  <div class="container">
+    <slot />
+  </div>
+</section>

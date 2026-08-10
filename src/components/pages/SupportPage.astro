@@ -1,0 +1,76 @@
+---
+// Поддержка: гарантия 3 года (закон ES) + возврат 14 дней (EU) + доставка + FAQ.
+// FAQ рендерится из коллекции faq, когда появятся файлы (~12 вопросов по ТЗ).
+import { getCollection } from 'astro:content';
+import { SITE, type Lang } from '@config';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/components/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import FaqList from '@/components/FaqList.astro';
+import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const faqEntries = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
+const faqItems = faqEntries.map((f) => ({ question: f.data.question[lang], answer: f.data.answer[lang] }));
+
+const faqLd =
+  faqItems.length > 0
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqItems.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer },
+          })),
+        },
+      ]
+    : [];
+
+const meta = {
+  es: {
+    title: 'Soporte: garantía, envío, devoluciones — GPS24',
+    description: 'Garantía legal de 3 años, devolución en 14 días, envío y preguntas frecuentes.',
+  },
+  en: {
+    title: 'Support: warranty, delivery, returns — GPS24',
+    description: '3-year legal warranty, 14-day returns, delivery and frequently asked questions.',
+  },
+  ru: {
+    title: 'Поддержка: гарантия, доставка, возврат — GPS24',
+    description: 'Гарантия 3 года по закону, возврат 14 дней, доставка и частые вопросы.',
+  },
+}[lang];
+---
+
+<BaseLayout {lang} route="soporte" title={meta.title} description={meta.description} jsonLd={faqLd}>
+  <Section>
+    <h1>{t('support.title')}</h1>
+    <div class="prose">
+      <h2>{t('trust.warranty')}</h2>
+      <p>{t('support.warrantyBody')}</p>
+      <h2>{t('trust.returns')}</h2>
+      <p>{t('support.returnsBody')}</p>
+      <h2>{t('support.shippingTitle')}</h2>
+      <p>{SITE.shipping[lang]}</p>
+    </div>
+  </Section>
+  {
+    faqItems.length > 0 && (
+      <Section divider>
+        <h2>{t('support.faqTitle')}</h2>
+        <FaqList items={faqItems} />
+      </Section>
+    )
+  }
+  <Section divider>
+    <WhatsAppCTA {lang} />
+  </Section>
+</BaseLayout>

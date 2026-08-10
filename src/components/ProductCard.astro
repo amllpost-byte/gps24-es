@@ -1,0 +1,43 @@
+---
+// Карточка товара в сетке каталога: фото, имя, цена, наличие, WhatsApp-CTA.
+// Все данные — из frontmatter коллекции products; литералов в шаблоне нет.
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import type { Lang } from '@config';
+import { useTranslations, localizePath } from '@/i18n';
+import Badge from './Badge.astro';
+import Price from './Price.astro';
+import WhatsAppCTA from './WhatsAppCTA.astro';
+
+interface Props {
+  lang: Lang;
+  product: CollectionEntry<'products'>;
+}
+
+const { lang, product } = Astro.props;
+const { data, id } = product;
+const t = useTranslations(lang);
+const img = data.images[0];
+
+const stockBadge = {
+  'in-stock': { tone: 'ok', key: 'product.inStock' },
+  'on-order': { tone: 'warn', key: 'product.onOrder' },
+  out: { tone: 'err', key: 'product.outOfStock' },
+} as const;
+const stock = stockBadge[data.stock];
+---
+
+<article class="product-card">
+  <a class="product-card__link" href={localizePath('productos', lang, `/${id}`)}>
+    <div class="product-card__media">
+      {img && <Image src={img.src} alt={img.alt[lang]} widths={[320, 640]} sizes="(min-width: 768px) 320px, 90vw" loading="lazy" />}
+    </div>
+    <h3>{data.name[lang]}</h3>
+    <p class="product-card__tagline">{data.tagline[lang]}</p>
+  </a>
+  <Badge tone={stock.tone}>{t(stock.key)}</Badge>
+  <div class="product-card__buy">
+    <Price amount={data.price} />
+    <WhatsAppCTA {lang} product={data.name[lang]} small />
+  </div>
+</article>

@@ -1,0 +1,115 @@
+---
+// Карточка-лендинг товара: крошки → имя → цена с условиями ДО кнопки → CTA →
+// комплектация → ТТХ (только строки с source). Данные — из frontmatter.
+// TODO(контент): галерея 5–7 фото, фичи-блоки, cross-sell — по мере наполнения.
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { SITE, type Lang } from '@config';
+import { useTranslations, localizePath } from '@/i18n';
+import BaseLayout from '@/components/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import Badge from '@/components/Badge.astro';
+import Price from '@/components/Price.astro';
+import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
+
+interface Props {
+  lang: Lang;
+  product: CollectionEntry<'products'>;
+}
+
+const { lang, product } = Astro.props;
+const { data, id } = product;
+const t = useTranslations(lang);
+
+const title = `${data.name[lang]} — ${data.price} € — GPS24`;
+const description = `${data.tagline[lang]}. ${t('product.inStock')}, ${t('trust.warranty')}.`;
+
+const availability = {
+  'in-stock': 'https://schema.org/InStock',
+  'on-order': 'https://schema.org/PreOrder',
+  out: 'https://schema.org/OutOfStock',
+}[data.stock];
+
+const productLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: data.name[lang],
+  description: data.description[lang],
+  sku: data.sku,
+  ...(data.brand && { brand: { '@type': 'Brand', name: data.brand } }),
+  offers: {
+    '@type': 'Offer',
+    price: data.price,
+    priceCurrency: 'EUR',
+    availability,
+    itemCondition: 'https://schema.org/NewCondition',
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+      merchantReturnDays: SITE.guarantees.returnDays,
+    },
+  },
+};
+
+const stockBadge = {
+  'in-stock': { tone: 'ok', key: 'product.inStock' },
+  'on-order': { tone: 'warn', key: 'product.onOrder' },
+  out: { tone: 'err', key: 'product.outOfStock' },
+} as const;
+const stock = stockBadge[data.stock];
+const img = data.images[0];
+---
+
+<BaseLayout {lang} route="productos" rest={`/${id}`} {title} {description} jsonLd={[productLd]}>
+  <Section>
+    <nav class="breadcrumbs" aria-label={t('a11y.mainNav')}>
+      <a href={localizePath('', lang)}>{t('nav.home')}</a> → <a href={localizePath('tienda', lang)}>{t('catalog.title')}</a> →
+      {data.name[lang]}
+    </nav>
+    <h1>{data.name[lang]}</h1>
+    <p class="lead">{data.tagline[lang]}</p>
+    {img && <Image src={img.src} alt={img.alt[lang]} widths={[480, 960]} sizes="(min-width: 768px) 640px, 95vw" loading="eager" fetchpriority="high" />}
+    <p>
+      <Price amount={data.price} note={t('product.priceWithout')} />
+    </p>
+    <p>
+      <Badge tone={stock.tone}>{t(stock.key)}</Badge>
+      <Badge tone="neutral">{t('trust.warranty')}</Badge>
+      <Badge tone="neutral">{t('trust.returns')}</Badge>
+    </p>
+    <p class="site-footer__muted">{SITE.shipping[lang]}</p>
+    <WhatsAppCTA {lang} product={data.name[lang]} />
+    <div class="prose">
+      <p>{data.description[lang]}</p>
+    </div>
+  </Section>
+  {
+    data.box.length > 0 && (
+      <Section divider>
+        <h2>{t('product.whatsInBox')}</h2>
+        <ul>
+          {data.box.map((item) => (
+            <li>{item[lang]}</li>
+          ))}
+        </ul>
+      </Section>
+    )
+  }
+  {
+    data.specs.length > 0 && (
+      <Section divider>
+        <h2>{t('product.specs')}</h2>
+        <table class="spec-table">
+          <tbody>
+            {data.specs.map((spec) => (
+              <tr>
+                <th scope="row">{spec.label[lang]}</th>
+                <td class="spec-value">{spec.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Section>
+    )
+  }
+</BaseLayout>

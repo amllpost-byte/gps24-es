@@ -1,0 +1,66 @@
+---
+// SEO-голова страницы: title/description, canonical, hreflang ×4 (x-default = ES),
+// OG, theme-color обеих тем и JSON-LD Organization+LocalBusiness на каждой странице.
+// OpeningHours не выводим: физического магазина нет (site.config §hours).
+import { SITE, type Lang } from '@config';
+import { localizePath, type RouteKey } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+  route: RouteKey;
+  rest?: string;
+  title: string;
+  description: string;
+  noindex?: boolean;
+  jsonLd?: object[];
+}
+
+const { lang, route, rest = '', title, description, noindex = false, jsonLd = [] } = Astro.props;
+
+const canonical = SITE.url + localizePath(route, lang, rest);
+const ogLocale = { es: 'es_ES', en: 'en_GB', ru: 'ru_RU' } as const;
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'LocalBusiness'],
+  name: SITE.name,
+  url: SITE.url,
+  telephone: `+${SITE.contact.whatsapp}`,
+  email: SITE.contact.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: SITE.location.city,
+    addressRegion: SITE.location.province,
+    addressCountry: SITE.location.country,
+  },
+  areaServed: [...SITE.location.serviceArea],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    telephone: `+${SITE.contact.whatsapp}`,
+    availableLanguage: ['es', 'en', 'ru'],
+  },
+};
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex" />}
+<link rel="canonical" href={canonical} />
+{SITE.langs.map((l) => <link rel="alternate" hreflang={l} href={SITE.url + localizePath(route, l, rest)} />)}
+<link rel="alternate" hreflang="x-default" href={SITE.url + localizePath(route, 'es', rest)} />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAFAF8" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#12151A" />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={ogLocale[lang]} />
+{SITE.langs.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={ogLocale[l]} />)}
+{/* TODO(SEO): og:image из scripts/og-generate.mjs, когда появится og-template.svg */}
+<script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+{jsonLd.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)} />)}
