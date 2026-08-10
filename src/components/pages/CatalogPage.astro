@@ -1,0 +1,56 @@
+---
+// Каталог-прайс одной страницей (модель teenage /store): все товары + цены + CTA.
+// Пока коллекция пуста — честный empty-state с WhatsApp, без фейковых карточек.
+import { getCollection } from 'astro:content';
+import type { Lang } from '@config';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/components/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import ProductCard from '@/components/ProductCard.astro';
+import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const products = await getCollection('products');
+
+const meta = {
+  es: {
+    title: 'Catálogo y precios — GPS24',
+    description:
+      'Todos nuestros navegadores GPS y dashcams con precios en una página. Envío 24–48 h en la Comunidad Valenciana.',
+  },
+  en: {
+    title: 'Catalogue and prices — GPS24',
+    description: 'All our GPS navigators and dashcams with prices on one page. Delivery 24–48 h in the Valencia region.',
+  },
+  ru: {
+    title: 'Каталог и цены — GPS24',
+    description: 'Все наши GPS-навигаторы и видеорегистраторы с ценами на одной странице. Доставка 24–48 ч по региону Валенсия.',
+  },
+}[lang];
+---
+
+<BaseLayout {lang} route="tienda" title={meta.title} description={meta.description}>
+  <Section>
+    <h1>{t('catalog.title')}</h1>
+    <p class="lead">{t('catalog.lead')}</p>
+    {
+      products.length === 0 ? (
+        <div class="empty-state">
+          <p>{t('catalog.empty')}</p>
+          <WhatsAppCTA {lang} />
+        </div>
+      ) : (
+        <div class="product-grid">
+          {products.map((product) => (
+            <ProductCard {lang} {product} />
+          ))}
+        </div>
+      )
+    }
+  </Section>
+</BaseLayout>

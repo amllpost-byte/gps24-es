@@ -1,0 +1,51 @@
+---
+// Контакты: WhatsApp (единственный канал), email, зона обслуживания.
+// Адреса и часов нет — физического магазина нет.
+import { SITE, type Lang } from '@config';
+import { useTranslations } from '@/i18n';
+import { waLink } from '@/lib/whatsapp';
+import BaseLayout from '@/components/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const meta = {
+  es: {
+    title: 'Contacto — GPS24 Benidorm',
+    description: 'WhatsApp +34 637 792 222 · info@gps24.es · Benidorm, Comunidad Valenciana.',
+  },
+  en: {
+    title: 'Contact — GPS24 Benidorm',
+    description: 'WhatsApp +34 637 792 222 · info@gps24.es · Benidorm, Valencia region, Spain.',
+  },
+  ru: {
+    title: 'Контакты — GPS24 Бенидорм',
+    description: 'WhatsApp +34 637 792 222 · info@gps24.es · Бенидорм, регион Валенсия, Испания.',
+  },
+}[lang];
+---
+
+<BaseLayout {lang} route="contacto" title={meta.title} description={meta.description}>
+  <Section>
+    <h1>{t('contact.title')}</h1>
+    <div class="prose">
+      <p>
+        <a href={waLink(lang)}>WhatsApp {SITE.contact.whatsappDisplay}</a><br />
+        <a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>
+      </p>
+      <p class="lead">{SITE.hours.replyPromise[lang]}</p>
+      <h2>{t('contact.areaTitle')}</h2>
+      <p>{t('contact.cityLine')}</p>
+      <p>{SITE.shipping[lang]}</p>
+    </div>
+    <div class="hero__cta">
+      <WhatsAppCTA {lang} />
+    </div>
+  </Section>
+</BaseLayout>

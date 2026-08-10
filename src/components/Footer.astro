@@ -1,0 +1,50 @@
+---
+// Футер: NAP-блок (город, WhatsApp, email), обещание ответа, навигация, политики.
+// Улицы и часов работы нет — физического магазина нет (site.config §hours).
+import { SITE, type Lang } from '@config';
+import { useTranslations, localizePath } from '@/i18n';
+import { waLink } from '@/lib/whatsapp';
+import Logo from './Logo.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <a class="logo" href={localizePath('', lang)}>
+        <Logo />
+        <span>GPS24</span>
+      </a>
+      <p class="site-footer__muted">{t('footer.tagline')}</p>
+      <p class="site-footer__muted">{t('contact.cityLine')}</p>
+    </div>
+    <div>
+      <h3>{t('nav.contact')}</h3>
+      <ul>
+        <li><a href={waLink(lang)}>WhatsApp {SITE.contact.whatsappDisplay}</a></li>
+        <li><a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a></li>
+        <li class="site-footer__muted">{SITE.hours.replyPromise[lang]}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>{t('nav.support')}</h3>
+      <ul>
+        <li><a href={localizePath('soporte', lang)}>{t('nav.support')}</a></li>
+        <li><a href={localizePath('contacto', lang)}>{t('nav.contact')}</a></li>
+        <li><a href={localizePath('privacidad', lang)}>{t('footer.privacy')}</a></li>
+        <li><a href={localizePath('cookies', lang)}>{t('footer.cookies')}</a></li>
+        {/* TODO(юр.): ссылка «Aviso legal», когда у владельца появится NIE/NIF */}
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__legal">
+    © {year} GPS24 · gps24.es · {t('trust.warranty')} · {t('trust.returns')}
+  </div>
+</footer>

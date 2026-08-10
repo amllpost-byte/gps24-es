@@ -1,0 +1,20 @@
+---
+// Блок услуги «Обновление карт» (главный маржинальный продукт) — на главной
+// и в карточках. CTA — приём TomTom: «какой у вас навигатор?».
+import type { Lang } from '@config';
+import { useTranslations } from '@/i18n';
+import WhatsAppCTA from './WhatsAppCTA.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="service-block">
+  <h2>{t('home.serviceTitle')}</h2>
+  <p>{t('home.serviceLead')}</p>
+  <WhatsAppCTA {lang} label={t('service.whichDevice')} />
+</div>

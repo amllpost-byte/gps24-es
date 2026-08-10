@@ -1,0 +1,21 @@
+---
+// FAQ-аккордеон на <details>/<summary> — без JS.
+interface Props {
+  items: { question: string; answer: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="faq">
+  {
+    items.map((item) => (
+      <details class="faq__item">
+        <summary>{item.question}</summary>
+        <div class="faq__body">
+          <p>{item.answer}</p>
+        </div>
+      </details>
+    ))
+  }
+</div>

@@ -1,0 +1,35 @@
+---
+// Черновик страницы приватности: noindex до готовности полного текста RGPD/LSSI-CE.
+// TODO(юр.): полный текст с данными ответственного — когда у владельца будет NIE/NIF.
+import type { Lang } from '@config';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/components/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const meta = {
+  es: { title: 'Privacidad — GPS24', description: 'Política de privacidad de gps24.es.' },
+  en: { title: 'Privacy — GPS24', description: 'Privacy policy of gps24.es.' },
+  ru: { title: 'Конфиденциальность — GPS24', description: 'Политика конфиденциальности gps24.es.' },
+}[lang];
+---
+
+<BaseLayout {lang} route="privacidad" title={meta.title} description={meta.description} noindex>
+  <Section>
+    <h1>{t('footer.privacy')}</h1>
+    <div class="prose">
+      <p>{t('legal.privacyDraft')}</p>
+      <p>{t('draft.notice')}</p>
+    </div>
+    <div class="hero__cta">
+      <WhatsAppCTA {lang} />
+    </div>
+  </Section>
+</BaseLayout>

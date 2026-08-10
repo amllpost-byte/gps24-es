@@ -1,0 +1,142 @@
+/* ============================================================
+   gps24.es — design tokens (единственный источник значений).
+   Компоненты используют ТОЛЬКО var(--...), литералы запрещены.
+   Соответствует разделу 1 ТЗ (docs/01-design-system.md),
+   контраст пар проверен по WCAG AA — см. §1.2 того раздела.
+   ============================================================ */
+
+:root {
+  /* ---------- цвет: светлая тема (default) ---------- */
+  --bg:            #FAFAF8;  /* фон страницы */
+  --surface:       #FFFFFF;  /* карточки, шапка, формы, ячейки таблиц */
+  --surface-2:     #F3F2EE;  /* зебра таблиц, hover-строки, skeleton, чипы */
+  --ink:           #171B21;  /* основной текст */
+  --ink-strong:    #171B21;  /* H1/display, цены */
+  --muted:         #6B7280;  /* вторичный текст, подписи, крошки (≥14px) */
+  --line:          #E4E2DC;  /* границы, разделители */
+  --line-strong:   #C9C6BE;  /* границы инпутов hover, контур secondary-кнопки */
+  --dark-surface:  #232A33;  /* тёмные секции-вставки: B2B-блок, футер */
+  --asphalt:       var(--dark-surface); /* алиас (используется в разделах 2/4 ТЗ) */
+
+  /* акцент — маршрут и действие */
+  --amber:         #FFB400;  /* заливка primary-кнопки, линия маршрута, бейджи */
+  --amber-ink:     #7A5200;  /* янтарь как ТЕКСТ на светлом (ссылки, суммы экономии) */
+  --on-amber:      #171B21;  /* текст/иконки НА янтарной заливке — всегда графит */
+
+  /* семантика — отдельно от акцента */
+  --ok:            #1A7F4B;  /* в наличии, успех */
+  --warn:          #B45309;  /* под заказ, предупреждение */
+  --err:           #B42318;  /* ошибка, нет в наличии */
+  --ok-bg:         #E7F4EC;
+  --warn-bg:       #FBEEDF;
+  --err-bg:        #FBEAE8;
+
+  /* служебные */
+  --whatsapp:      #25D366;  /* ЕДИНСТВЕННОЕ исключение из палитры: кнопка WhatsApp.
+                                текст на ней — --on-amber (графит), не белый */
+  --focus:         #1D6FE0;  /* кольцо focus-visible: синий, не путается с акцентом */
+  --shadow-color:  rgb(23 27 33 / .08);
+  --text-inverse:  #FAFAF8;
+  --link:          var(--amber-ink);
+
+  /* ---------- типографика ---------- */
+  --font-sans: 'Overpass', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Overpass Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+
+  --fs-12: 0.75rem;   --fs-14: 0.875rem;  --fs-16: 1rem;
+  --fs-18: 1.125rem;  --fs-22: 1.375rem;  --fs-28: 1.75rem;
+  --fs-36: 2.25rem;   --fs-48: 3rem;      --fs-64: 4rem;
+
+  --lh-tight: 1.1;    /* display / h1 */
+  --lh-heading: 1.2;  /* h2–h4 */
+  --lh-base: 1.6;     /* текст */
+
+  /* ---------- геометрия ---------- */
+  --radius-ctl:  6px;    /* кнопки, инпуты, чипы, бейджи */
+  --radius-card: 12px;   /* карточки, панели, модалки, тосты */
+  --radius-pill: 999px;  /* переключатель языка, бейдж наличия */
+
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-6: 24px;  --space-8: 32px;  --space-12: 48px; --space-16: 64px;
+  --space-24: 96px;
+
+  --container-max: 1200px;
+  --gutter: 24px;
+  /* брейкпоинты (в media queries пишутся литералом): 480 / 768 / 1024 */
+
+  /* ---------- тени (2 уровня, мягкие) ---------- */
+  --shadow-1: 0 1px 2px var(--shadow-color), 0 2px 8px var(--shadow-color);
+  --shadow-2: 0 4px 12px var(--shadow-color), 0 12px 32px var(--shadow-color);
+
+  /* ---------- слои ---------- */
+  --z-raised: 10; --z-header: 100; --z-dropdown: 200;
+  --z-overlay: 300; --z-drawer: 310; --z-toast: 400;
+
+  /* ---------- motion ---------- */
+  --dur-fast: 120ms; --dur-base: 200ms; --dur-slow: 320ms;
+  --ease: cubic-bezier(.2, 0, .2, 1);
+}
+
+/* ---------- тёмная тема: значения ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:           #12151A;
+    --surface:      #1A1F26;
+    --surface-2:    #232A33;
+    --ink:          #E8E6E1;   /* тёплый off-white, не чистый белый */
+    --ink-strong:   #FFFFFF;
+    --muted:        #98A1AC;
+    --line:         #2C333D;
+    --line-strong:  #3D4650;
+    --dark-surface: #0C0F13;
+    --amber-ink:    #FFC933;
+    --ok:   #3DBC7D;  --warn: #E8933A;  --err: #F0655B;
+    --ok-bg: #15311F; --warn-bg: #3A2A14; --err-bg: #3B1714;
+    --focus: #6AA7FF;
+    --shadow-color: rgb(0 0 0 / .45);
+    --text-inverse: #12151A;
+  }
+}
+
+/* ---------- тёмная тема: ручной переключатель (побеждает систему) ---------- */
+:root[data-theme="dark"] {
+  --bg:           #12151A;
+  --surface:      #1A1F26;
+  --surface-2:    #232A33;
+  --ink:          #E8E6E1;
+  --ink-strong:   #FFFFFF;
+  --muted:        #98A1AC;
+  --line:         #2C333D;
+  --line-strong:  #3D4650;
+  --dark-surface: #0C0F13;
+  --amber-ink:    #FFC933;
+  --ok:   #3DBC7D;  --warn: #E8933A;  --err: #F0655B;
+  --ok-bg: #15311F; --warn-bg: #3A2A14; --err-bg: #3B1714;
+  --focus: #6AA7FF;
+  --shadow-color: rgb(0 0 0 / .45);
+  --text-inverse: #12151A;
+}
+
+/* ---------- глобальные правила, вытекающие из токенов ---------- */
+html { color-scheme: light dark; }
+
+*:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-ctl);
+}
+
+/* цены, ТТХ, любые выровненные числа */
+.mono, .price, .spec-value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

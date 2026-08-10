@@ -1,0 +1,42 @@
+---
+// Каркас каждой страницы: <html lang> + Head + skip-link + Header + main + Footer.
+// Шрифты — self-hosted через Fontsource (variable, сабсеты latin+cyrillic), без CDN.
+import '@fontsource-variable/overpass';
+import '@fontsource-variable/overpass-mono';
+import '@/styles/tokens.css';
+import '@/styles/base.css';
+import '@/styles/components.css';
+import type { Lang } from '@config';
+import { useTranslations, type RouteKey } from '@/i18n';
+import Head from './Head.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  lang: Lang;
+  route: RouteKey;
+  rest?: string;
+  title: string;
+  description: string;
+  noindex?: boolean;
+  jsonLd?: object[];
+}
+
+const { lang, route, rest = '', title, description, noindex, jsonLd } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <Head {lang} {route} {rest} {title} {description} {noindex} {jsonLd} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t('a11y.skipToContent')}</a>
+    <Header {lang} {route} {rest} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer {lang} />
+  </body>
+</html>

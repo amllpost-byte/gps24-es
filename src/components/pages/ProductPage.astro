@@ -1,0 +1,241 @@
+---
+// Карточка-лендинг товара по ТЗ 03 §1.0–1.9: крошки → [галерея | бейдж наличия +
+// H1 + позиционирование + бай-бокс (цена → условия с иконками → CTA → обещание
+// ответа)] → описание → комплектация → ТТХ (только строки с source) → JSON-LD.
+// Все блоки старой карточки naviseade (описание, комплектация, инфо-таблица)
+// сохранены; блок описания — осознанное дополнение к §1.0 (перенос контента
+// владельца с naviseade). Данные — из frontmatter.
+// TODO(контент): фичи-блоки (§1.5); опции услуг в бай-боксе (§1.3.3 — ждёт цен
+// услуг); блок поддержки с PDF-мануалом (§1.7); cross-sell «Te puede servir»
+// (§1.8 — ждёт публикации услуг/аксессуаров).
+import { Picture, getImage } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { SITE, type Lang } from '@config';
+import { useTranslations, localizePath } from '@/i18n';
+import { formatPrice } from '@/lib/format';
+import BaseLayout from '@/components/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import Badge from '@/components/Badge.astro';
+import Price from '@/components/Price.astro';
+import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
+
+interface Props {
+  lang: Lang;
+  product: CollectionEntry<'products'>;
+}
+
+const { lang, product } = Astro.props;
+const { data, id } = product;
+const t = useTranslations(lang);
+
+const stockBadge = {
+  'in-stock': { tone: 'ok', key: 'product.inStock' },
+  'on-order': { tone: 'warn', key: 'product.onOrder' },
+  out: { tone: 'err', key: 'product.outOfStock' },
+} as const;
+const stock = stockBadge[data.stock];
+
+const title = `${data.name[lang]} — ${formatPrice(data.price)} € — GPS24`;
+const description = `${data.tagline[lang]}. ${t(stock.key)}, ${t('trust.warranty')}.`;
+
+const availability = {
+  'in-stock': 'https://schema.org/InStock',
+  'on-order': 'https://schema.org/PreOrder',
+  out: 'https://schema.org/OutOfStock',
+}[data.stock];
+
+// §1.9: абсолютные URL карточки и оптимизированных фото
+const productUrl = new URL(localizePath('productos', lang, `/${id}`), SITE.url).href;
+const ldImages = await Promise.all(
+  data.images.map(async (im) => new URL((await getImage({ src: im.src })).src, SITE.url).href)
+);
+
+const productLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: data.name[lang],
+  description: data.description[lang],
+  sku: data.sku,
+  ...(data.brand && { brand: { '@type': 'Brand', name: data.brand } }),
+  ...(ldImages.length > 0 && { image: ldImages }),
+  offers: {
+    '@type': 'Offer',
+    url: productUrl,
+    price: data.price,
+    priceCurrency: 'EUR',
+    availability,
+    itemCondition: 'https://schema.org/NewCondition',
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+      merchantReturnDays: SITE.guarantees.returnDays,
+    },
+  },
+};
+
+const hasGallery = data.images.length > 0;
+// В wa-сообщении имя + цена (ТЗ §1.3.5: «me interesa: {NOMBRE} ({PRECIO} €)»)
+const waProduct = `${data.name[lang]} (${formatPrice(data.price)} €)`;
+---
+
+<BaseLayout {lang} route="productos" rest={`/${id}`} {title} {description} jsonLd={[productLd]}>
+  <Section>
+    <nav class="breadcrumbs" aria-label={t('a11y.mainNav')}>
+      <a href={localizePath('', lang)}>{t('nav.home')}</a> → <a href={localizePath('tienda', lang)}>{t('catalog.title')}</a> →
+      {data.name[lang]}
+    </nav>
+    <div class:list={['product-layout', hasGallery && 'product-layout--media']}>
+      {
+        hasGallery && (
+          <figure class="gallery">
+            <div class="gallery__strip" role="group" tabindex="0" aria-label={t('product.gallery')}>
+              {data.images.map((im, i) => (
+                <div class="gallery__slide" id={`foto-${i + 1}`}>
+                  <Picture
+                    src={im.src}
+                    alt={im.alt[lang]}
+                    formats={['webp']}
+                    fallbackFormat="jpg"
+                    widths={[480, 960]}
+                    sizes="(min-width: 768px) 640px, 95vw"
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    fetchpriority={i === 0 ? 'high' : undefined}
+                  />
+                </div>
+              ))}
+            </div>
+            {data.images.length > 1 && (
+              <>
+                <div class="gallery__dots" aria-hidden="true">
+                  {data.images.map((_, i) => (
+                    <span class:list={['gallery__dot', i === 0 && 'is-active']} />
+                  ))}
+                </div>
+                <div class="gallery__thumbs">
+                  {data.images.map((im, i) => (
+                    <a class="gallery__thumb" href={`#foto-${i + 1}`} aria-current={i === 0 ? 'true' : undefined} aria-label={im.alt[lang]}>
+                      <Picture src={im.src} alt="" formats={['webp']} fallbackFormat="jpg" widths={[64, 128]} sizes="64px" loading="lazy" />
+                    </a>
+                  ))}
+                </div>
+              </>
+            )}
+          </figure>
+        )
+      }
+      <div class="product-layout__info">
+        <div class="product-head">
+          <Badge tone={stock.tone}>{t(stock.key)}</Badge>
+          <h1>{data.name[lang]}</h1>
+        </div>
+        <p class="lead">{data.tagline[lang]}</p>
+        <div class="buy-box">
+          <div class="buy-box__price">
+            <p><Price amount={data.price} large /></p>
+            <p class="buy-box__vat">{t('product.vatIncluded')}</p>
+          </div>
+          <ul class="buy-box__terms">
+            <li>
+              <svg class="icon-16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13v10H1zM14 9h5l3 3v4h-8z" /><circle cx="6" cy="18" r="1.6" /><circle cx="17" cy="18" r="1.6" /></svg>
+              {SITE.shipping[lang]}
+            </li>
+            <li>
+              <svg class="icon-16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h11a5 5 0 1 1 0 10H8" /><path d="M8 5 4 9l4 4" /></svg>
+              {t('trust.returns')}
+            </li>
+            <li>
+              <svg class="icon-16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" /></svg>
+              {t('trust.warranty')}
+            </li>
+          </ul>
+          <WhatsAppCTA {lang} product={waProduct} />
+          <p class="buy-box__reply">
+            <svg class="icon-16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+            {SITE.hours.replyPromise[lang]}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="prose product-desc">
+      <p>{data.description[lang]}</p>
+    </div>
+  </Section>
+  {
+    data.box.length > 0 && (
+      <Section divider>
+        <h2>{t('product.whatsInBox')}</h2>
+        <ul>
+          {data.box.map((item) => (
+            <li>{item[lang]}</li>
+          ))}
+        </ul>
+      </Section>
+    )
+  }
+  {
+    data.specs.length > 0 && (
+      <Section divider>
+        <h2>{t('product.specs')}</h2>
+        <table class="spec-table">
+          <tbody>
+            {data.specs.map((spec) => (
+              <tr>
+                <th scope="row">{spec.label[lang]}</th>
+                <td class="spec-value">{spec.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Section>
+    )
+  }
+  <div class="buy-sticky" hidden>
+    <span class="price">{`${formatPrice(data.price)} €`}</span>
+    <WhatsAppCTA {lang} product={waProduct} label="WhatsApp" />
+  </div>
+</BaseLayout>
+
+<script>
+  // Прогрессивное улучшение (ТЗ §1.1, §1.3.7); без JS работают якоря тумбнейлов.
+  // 1) активный тумбнейл + точки-индикаторы; 2) мобильная sticky-панель покупки.
+  const strip = document.querySelector('.gallery__strip');
+  const thumbs = Array.from(document.querySelectorAll('.gallery__thumb'));
+  const dots = Array.from(document.querySelectorAll('.gallery__dot'));
+  if (strip && (thumbs.length > 0 || dots.length > 0)) {
+    const slides = Array.from(strip.children);
+    const setActive = (idx: number) => {
+      thumbs.forEach((th, j) => {
+        if (j === idx) th.setAttribute('aria-current', 'true');
+        else th.removeAttribute('aria-current');
+      });
+      dots.forEach((d, j) => d.classList.toggle('is-active', j === idx));
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        // именно ratio ≥ 0.6: isIntersecting истинно и для уходящего слайда
+        for (const e of entries) if (e.intersectionRatio >= 0.6) setActive(slides.indexOf(e.target));
+      },
+      { root: strip, threshold: 0.6 }
+    );
+    slides.forEach((s) => io.observe(s));
+    thumbs.forEach((th, i) =>
+      th.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        // behavior не задаём: плавность — через CSS scroll-behavior ленты,
+        // который tokens.css корректно отключает при prefers-reduced-motion
+        slides[i].scrollIntoView({ block: 'nearest', inline: 'center' });
+      })
+    );
+  }
+
+  const buyBox = document.querySelector('.buy-box');
+  const stickyBar = document.querySelector<HTMLElement>('.buy-sticky');
+  if (buyBox && stickyBar) {
+    new IntersectionObserver((entries) => {
+      const e = entries[entries.length - 1];
+      // показываем, только когда бай-бокс ушёл ЗА ВЕРХ экрана (§1.3.7),
+      // а не пока пользователь ещё не доскроллил до него
+      stickyBar.hidden = e.isIntersecting || e.boundingClientRect.top > 0;
+    }).observe(buyBox);
+  }
+</script>

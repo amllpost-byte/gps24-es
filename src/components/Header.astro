@@ -1,0 +1,57 @@
+---
+// Шапка: лого + меню 6 пунктов (по сценариям, не по брендам) + LangSwitch + WhatsApp.
+// Мобильное меню — <details>, JS нет.
+import type { Lang } from '@config';
+import { useTranslations, localizePath, type RouteKey, type UIKey } from '@/i18n';
+import { waLink } from '@/lib/whatsapp';
+import LangSwitch from './LangSwitch.astro';
+import MobileMenu from './MobileMenu.astro';
+import Button from './Button.astro';
+import Logo from './Logo.astro';
+
+interface Props {
+  lang: Lang;
+  route: RouteKey;
+  rest?: string;
+}
+
+const { lang, route, rest = '' } = Astro.props;
+const t = useTranslations(lang);
+
+export type NavItem = { key: UIKey; route: RouteKey };
+const navItems: NavItem[] = [
+  { key: 'nav.navigators', route: 'gps-para-camiones' },
+  { key: 'nav.dashcams', route: 'tienda' },
+  { key: 'nav.mapUpdates', route: 'actualizacion-de-mapas' },
+  { key: 'nav.fleets', route: 'flotas' },
+  { key: 'nav.support', route: 'soporte' },
+  { key: 'nav.contact', route: 'contacto' },
+];
+---
+
+<header class="site-header">
+  <div class="container site-header__row">
+    <a class="logo" href={localizePath('', lang)}>
+      <Logo />
+      <span>GPS24</span>
+    </a>
+    <nav class="nav-desktop" aria-label={t('a11y.mainNav')}>
+      <ul>
+        {
+          navItems.map((item) => (
+            <li>
+              <a href={localizePath(item.route, lang)} aria-current={item.route === route ? 'page' : undefined}>
+                {t(item.key)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="site-header__actions">
+      <LangSwitch {lang} {route} {rest} />
+      <Button variant="whatsapp" href={waLink(lang)} small>{t('cta.whatsapp')}</Button>
+      <MobileMenu {lang} {route} items={navItems} />
+    </div>
+  </div>
+</header>

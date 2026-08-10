@@ -1,0 +1,10 @@
+---
+// Бейдж-пилюля. Семантические тона (ok/warn/err) — только по смыслу, не декоративно.
+interface Props {
+  tone?: 'ok' | 'warn' | 'err' | 'amber' | 'neutral';
+}
+
+const { tone = 'neutral' } = Astro.props;
+---
+
+<span class={`badge badge--${tone}`}><slot /></span>
