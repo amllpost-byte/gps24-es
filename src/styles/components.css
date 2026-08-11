@@ -37,8 +37,8 @@
   }
 
   .logo__mark b {
-    /* точный оттенок «24» с холдинг-страницы (light #C9700F / dark #F5A623) */
-    color: var(--brand-accent);
+    /* «24» — канонным янтарём, в цвет линии маршрута (владелец, 11.08) */
+    color: var(--amber);
   }
 
   .logo__tag {
@@ -48,11 +48,6 @@
     text-transform: uppercase;
     color: var(--muted);
     white-space: nowrap;
-  }
-
-  /* футер всегда тёмный: «24» — заливочным янтарём, подпись — приглушённо */
-  .site-footer .logo__mark b {
-    color: var(--amber);
   }
 
   .site-footer .logo__tag {
