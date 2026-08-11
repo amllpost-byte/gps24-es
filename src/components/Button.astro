@@ -9,20 +9,19 @@ interface Props {
   external?: boolean;
   type?: 'button' | 'submit';
   class?: string;
-  [key: `data-${string}`]: string;
 }
 
-const { variant = 'primary', href, small = false, external = false, type = 'button', class: className = '', ...rest } = Astro.props;
+const { variant = 'primary', href, small = false, external = false, type = 'button', class: className = '' } = Astro.props;
 const classes = ['btn', `btn--${variant}`, small && 'btn--small', className];
 ---
 
 {
   href ? (
-    <a class:list={classes} href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined} {...rest}>
+    <a class:list={classes} href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
       <slot />
     </a>
   ) : (
-    <button class:list={classes} type={type} {...rest}>
+    <button class:list={classes} type={type}>
       <slot />
     </button>
   )

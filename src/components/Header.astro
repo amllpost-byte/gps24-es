@@ -1,7 +1,7 @@
 ---
 // Шапка: лого + меню 6 пунктов (по сценариям, не по брендам) + LangSwitch + почта
-// (владелец, 11.08: WhatsApp в шапке лишний — все WA-CTA остаются в контенте).
-// Мобильное меню — <details>, JS нет.
+// обычной mailto-ссылкой (владелец, 11.08: WhatsApp в шапке лишний, почта должна
+// открывать письмо как обычно). Мобильное меню — <details>, JS нет.
 import { SITE, type Lang } from '@config';
 import { useTranslations, localizePath, type RouteKey, type UIKey } from '@/i18n';
 import LangSwitch from './LangSwitch.astro';
@@ -49,60 +49,11 @@ const navItems: NavItem[] = [
     </nav>
     <div class="site-header__actions">
       <LangSwitch {lang} {route} {rest} />
-      <Button variant="secondary" href={`mailto:${SITE.contact.email}`} small class="header-mail" data-email={SITE.contact.email} data-copied={t('header.emailCopied')}>
+      <Button variant="secondary" href={`mailto:${SITE.contact.email}`} small>
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
-        <span class="header-mail__text" aria-live="polite">{SITE.contact.email}</span>
+        {SITE.contact.email}
       </Button>
       <MobileMenu {lang} {route} items={navItems} />
     </div>
   </div>
 </header>
-
-<script>
-  // Почта в шапке: клик копирует адрес (mailto без почтового клиента «молчит»).
-  // Каскад: clipboard API → execCommand('copy') → mailto. Без JS — обычный mailto.
-  const mailBtn = document.querySelector<HTMLAnchorElement>('.header-mail');
-  const label = mailBtn?.querySelector('.header-mail__text');
-  if (mailBtn && label) {
-    const original = label.textContent;
-    const copyLegacy = (text: string): boolean => {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.setAttribute('readonly', '');
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      let ok = false;
-      try {
-        ok = document.execCommand('copy');
-      } catch {
-        ok = false;
-      }
-      ta.remove();
-      return ok;
-    };
-    mailBtn.addEventListener('click', (ev) => {
-      ev.preventDefault();
-      const email = mailBtn.dataset.email ?? '';
-      const attempt = navigator.clipboard
-        ? navigator.clipboard.writeText(email).then(
-            () => true,
-            () => copyLegacy(email)
-          )
-        : Promise.resolve(copyLegacy(email));
-      attempt.then((ok) => {
-        if (ok) {
-          label.textContent = mailBtn.dataset.copied ?? original;
-          mailBtn.classList.add('is-copied');
-          setTimeout(() => {
-            label.textContent = original;
-            mailBtn.classList.remove('is-copied');
-          }, 2000);
-        } else {
-          window.location.href = mailBtn.href;
-        }
-      });
-    });
-  }
-</script>
