@@ -47,10 +47,11 @@ const meta = {
       <Button variant="secondary" href={localizePath('tienda', lang)}>{t('cta.viewCatalog')}</Button>
     </div>
   </Section>
-  <Section>
+  {/* линия маршрута сразу под hero — видна с первого экрана (владелец, 11.08) */}
+  <Section divider>
     <TrustBar {lang} />
   </Section>
-  <Section divider>
+  <Section>
     <h2>{t('home.scenariosTitle')}</h2>
     <ScenarioTiles {lang} />
   </Section>
