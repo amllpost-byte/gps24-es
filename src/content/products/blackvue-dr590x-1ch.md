@@ -57,12 +57,15 @@ specs:
     value: '−20…+70 °C'
     source: 'https://www.naviseade.ee/product/blackvue-dr590x-1ch-sd-32gb/'
 box:
-  - { es: 'Dashcam BlackVue DR590X-1CH', en: 'BlackVue DR590X-1CH dashcam', ru: 'Регистратор BlackVue DR590X-1CH' }
+  - { es: 'Dashcam BlackVue DR590X-1CH con soporte de montaje', en: 'BlackVue DR590X-1CH dashcam with mount', ru: 'Регистратор BlackVue DR590X-1CH с креплением' }
   - { es: 'Tarjeta microSD 64 GB', en: '64 GB microSD card', ru: 'Карта microSD 64 ГБ' }
-  - { es: 'Soporte de montaje', en: 'Mount', ru: 'Крепление' }
-  - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
   - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
-  - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
+  - { es: 'Cable de alimentación al mechero', en: 'Cigarette-lighter power cable', ru: 'Кабель питания в прикуриватель' }
+  - { es: 'Cable de instalación fija (hardwire)', en: 'Hardwire power cable', ru: 'Кабель скрытой установки (hardwire)' }
+  - { es: 'Receptor GNSS externo', en: 'External GNSS receiver', ru: 'Внешний GNSS-приёмник' }
+  - { es: 'Clips para cable (3 uds.)', en: 'Cable clips (3 pcs)', ru: 'Клипсы для кабеля (3 шт)' }
+  - { es: 'Adhesivo de doble cara', en: 'Double-sided adhesive pad', ru: 'Двусторонний скотч' }
+  - { es: 'Guía rápida', en: 'Quick start guide', ru: 'Краткая инструкция' }
 images: # фото с naviseade.ee (макс. сохранившийся размер 600px)
   - src: '../../assets/img/products/blackvue-dr590x-1ch-1.jpg'
     alt:
@@ -83,9 +86,7 @@ serviceAddons: ['dashcam-install']
   («BlackVue DR590X-1CH +SD64GB», €97.90; зачёркнутая старая цена €139.90, «экономия €42 / 31%»).
 - ⚠ URL-слаг карточки — «sd-32gb», но название и «В комплекте:» говорят 64 GB.
   По правилу «верить комплектации» в box указана карта 64 ГБ.
-- ⚠ Фото 2 (заводской flat-lay комплекта) показывает БОЛЬШЕ текстового списка
-  карточки: внешний GNSS-приёмник, hardwire-кабель, клипсы, скотч. Сверить с
-  владельцем реальную коробку и при подтверждении расширить box[].
+- box по заводскому фото комплектации (решение владельца 11.08: «фото важнее»).
 - Однострочник карточки упоминает PowerMagic — в ТТХ/комплектацию не включён
   (непонятно, входит ли в коробку). Уточнить у владельца.
 - Фото: DR590X-1CH_enl.jpeg, blackvue-dashcam-dr590x-lte-1ch-32gb_enl.jpg

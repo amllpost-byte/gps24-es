@@ -48,12 +48,24 @@ specs:
     value: 'H.264, MP4'
     source: 'https://www.naviseade.ee/product/blackvue-dr770x-box-sd64gb/'
 box:
-  - { es: 'Dashcam BlackVue DR770X Box PRO', en: 'BlackVue DR770X Box PRO dashcam', ru: 'Регистратор BlackVue DR770X Box PRO' }
+  - { es: 'Unidad principal', en: 'Main unit', ru: 'Основной блок' }
+  - { es: 'Cámara frontal', en: 'Front camera', ru: 'Передняя камера' }
+  - { es: 'Cámara trasera', en: 'Rear camera', ru: 'Задняя камера' }
+  - { es: 'Cámara trasera de infrarrojos', en: 'Rear infrared camera', ru: 'Задняя инфракрасная камера' }
+  - { es: 'Botón SOS', en: 'SOS button', ru: 'Кнопка SOS' }
+  - { es: 'GPS externo', en: 'External GPS', ru: 'Внешний GPS' }
+  - { es: 'Cable de alimentación de mechero de la unidad principal (3p)', en: 'Main unit cigarette lighter power cable (3p)', ru: 'Кабель питания основного блока от прикуривателя (3p)' }
+  - { es: 'Cable de alimentación fija (hardwire) de la unidad principal (3p)', en: 'Main unit hardwiring power cable (3p)', ru: 'Кабель скрытой проводки основного блока (3p)' }
+  - { es: 'Cable de conexión de cámara (3 uds.)', en: 'Camera connection cable (3 pcs)', ru: 'Кабель подключения камеры (3 шт.)' }
   - { es: 'Tarjeta microSD 64 GB', en: '64 GB microSD card', ru: 'Карта microSD 64 ГБ' }
-  - { es: 'Soporte de montaje', en: 'Mount', ru: 'Крепление' }
-  - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
-  - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
-  - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
+  - { es: 'Lector de tarjetas microSD', en: 'microSD card reader', ru: 'Картридер microSD' }
+  - { es: 'Llave de la unidad principal', en: 'Main unit key', ru: 'Ключ основного блока' }
+  - { es: 'Tornillos de repuesto para la tapa antimanipulación (3 uds.) y llave Allen', en: 'Spare screws for tamperproof cover (3 pcs) and Allen wrench', ru: 'Запасные винты защитной крышки (3 шт.) и шестигранник' }
+  - { es: 'Cinta de doble cara para los soportes', en: 'Double-sided tape for the mounting brackets', ru: 'Двусторонний скотч для кронштейнов' }
+  - { es: 'Tira de velcro', en: 'Velcro strip', ru: 'Полоска велкро' }
+  - { es: 'Clips para cables (12 uds.)', en: 'Cable clips (12 pcs)', ru: 'Клипсы для кабелей (12 шт.)' }
+  - { es: 'Herramienta de palanca (pry tool)', en: 'Pry tool', ru: 'Монтажная лопатка (pry tool)' }
+  - { es: 'Guía de inicio rápido', en: 'Quick start guide', ru: 'Краткое руководство' }
 images:
   - src: '../../assets/img/products/blackvue-dr770x-box-pro-1.jpg'
     alt:
@@ -87,12 +99,10 @@ serviceAddons: ['dashcam-install']
   три камеры (передняя, задняя, задняя ИК/салонная).
 - Строки «Облачные функции (опционально)» и «Режим парковки: энергосберегающий,
   мониторинг напряжения» — в specs как ✓, детали в description.
-- ⚠ Фото 4 (заводская схема DR770X-Box_Whats-Included) показывает СИЛЬНО больше,
-  чем текстовый список «В комплекте» карточки: 3 камеры (перед/зад/зад-ИК),
-  кнопка SOS, внешний GPS, кабель прикуривателя, hardwire-кабель, 3 кабеля камер,
-  картридер, велкро, pry tool, ключ блока, запасные винты + шестигранник,
-  двусторонний скотч, клипсы 12 шт. Сверить с владельцем реальную коробку и при
-  подтверждении расширить box[].
+- box по заводскому фото комплектации (решение владельца 11.08: «фото важнее»);
+  источник — фото 4 (DR770X-Box_Whats-Included). Схема серийная (файл назван
+  DR770X-Box, без пометки PRO) — сверить с реальной коробкой. Объём microSD
+  (64 GB) — из текста карточки, на схеме generic.
 - Фото: изображение_2023-05-28_16522/23/24*_enl и DR770X-Box_Whats-Included_enl
   (600px, локальная копия naviseade.ee), переименованы в ascii.
 - Расхождений «SD в названии vs комплектация» нет: 64 GB в обоих местах.

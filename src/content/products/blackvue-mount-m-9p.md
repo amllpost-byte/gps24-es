@@ -1,7 +1,7 @@
 ---
-# ОПУБЛИКОВАНО 11.08.2026. Контент/цена/фото — с карточки naviseade.ee
+# ОПУБЛИКОВАНО 11.08.2026. Контент/цена — с карточки naviseade.ee
 # (зеркалирование ассортимента BlackVue по решению владельца).
-# Наличие: on-order до ответа владельца (TODO ниже). Фото скачаны с живого naviseade.ee 11.08.2026.
+# Наличие: on-order до ответа владельца (TODO ниже). Фото — с blackvue.com, 11.08.2026.
 sku: BV-M-9P
 name:
   es: 'Soporte BlackVue M-9P (DR970X)'
@@ -31,9 +31,9 @@ box:
 images:
   - src: '../../assets/img/products/blackvue-mount-m-9p-1.jpg'
     alt:
-      es: 'Soporte BlackVue M-9P: anillo de montaje negro con almohadilla adhesiva para el parabrisas'
-      en: 'BlackVue M-9P mount: black mounting ring with adhesive windshield pad'
-      ru: 'Кронштейн BlackVue M-9P: чёрное кольцо крепления с клейкой площадкой на лобовое стекло'
+      es: 'Soporte BlackVue M-9P visto de frente: abrazadera de anillo negra con almohadilla adhesiva roja para el parabrisas y marca Pittasoft'
+      en: 'BlackVue M-9P mount seen from the front: black ring clamp with red adhesive windshield pad and Pittasoft marking'
+      ru: 'Кронштейн BlackVue M-9P спереди: чёрное кольцо-хомут с красной клейкой площадкой на лобовое стекло и надписью Pittasoft'
 related: []
 serviceAddons: []
 ---
@@ -45,8 +45,8 @@ serviceAddons: []
   дополнительный/запасной кронштейн — замена или установка во второй автомобиль»
   из блока Инфо ушли в description (значения не языконезависимы).
 - Карточка ссылается на fedingas.lt (дилер BlackVue) за подробностями.
-- ⚠ Фото скачано с живого naviseade.ee 11.08.2026. Имя файла упоминает DR900S
-  («dr900s_laikiklis», лит. «кронштейн DR900S»), на кадре надпись «BLACKVUE CLOUD
-  4K UHD» — вероятно, переиспользованное фото кронштейна DR900-серии. TODO(владелец):
-  сверить внешний вид с реальным M-9P.
+- Фото с blackvue.com, 11.08.2026: официальный рендер M-9P из магазина
+  BlackVue Direct (direct.blackvue.com/products/blackvue-mount-m-9p,
+  cdn M-9P.jpg, 500×750). Прежнее фото с naviseade.ee (кронштейн DR900-серии
+  с надписью «BLACKVUE CLOUD 4K UHD») заменено по решению владельца 11.08.
 -->

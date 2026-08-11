@@ -42,12 +42,19 @@ specs:
     value: '✓'
     source: 'https://www.naviseade.ee/product/blackvue-dr970x-2ch-lte-sd64gb/'
 box:
-  - { es: 'Dashcam BlackVue DR970X-2CH Plus LTE', en: 'BlackVue DR970X-2CH Plus LTE dashcam', ru: 'Регистратор BlackVue DR970X-2CH Plus LTE' }
+  - { es: 'Cámara frontal', en: 'Front camera', ru: 'Передняя камера' }
+  - { es: 'Cámara trasera', en: 'Rear camera', ru: 'Задняя камера' }
+  - { es: 'Cable de conexión de la cámara trasera', en: 'Rear camera connection cable', ru: 'Кабель подключения задней камеры' }
+  - { es: 'Cable de alimentación de mechero', en: 'Cigarette lighter power cable', ru: 'Кабель питания от прикуривателя' }
+  - { es: 'Cable de alimentación fija (hardwire)', en: 'Hardwiring power cable', ru: 'Кабель скрытой проводки (hardwire)' }
   - { es: 'Tarjeta microSD 64 GB', en: '64 GB microSD card', ru: 'Карта microSD 64 ГБ' }
-  - { es: 'Soporte de montaje', en: 'Mount', ru: 'Крепление' }
-  - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
-  - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
-  - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
+  - { es: 'Lector de tarjetas microSD', en: 'microSD card reader', ru: 'Картридер microSD' }
+  - { es: 'Tarjeta SIM (opcional)', en: 'SIM card (optional)', ru: 'SIM-карта (опционально)' }
+  - { es: 'Herramienta de extracción de SIM', en: 'SIM eject tool', ru: 'Инструмент для извлечения SIM' }
+  - { es: 'Cinta de doble cara para los soportes', en: 'Double-sided tape for the mounting brackets', ru: 'Двусторонний скотч для кронштейнов' }
+  - { es: 'Clips para cables (8 uds.)', en: 'Cable clips (8 pcs)', ru: 'Клипсы для кабелей (8 шт.)' }
+  - { es: 'Herramienta de palanca (pry tool)', en: 'Pry tool', ru: 'Монтажная лопатка (pry tool)' }
+  - { es: 'Guía de inicio rápido', en: 'Quick start guide', ru: 'Краткое руководство' }
 images: # фото с naviseade.ee (макс. сохранившийся размер 600px; у BlackVue поискать крупнее на blackvue.com/blackvue.ee)
   - src: '../../assets/img/products/blackvue-dr970x-2ch-plus-lte-1.jpg'
     alt:
@@ -79,9 +86,8 @@ serviceAddons: ['dashcam-install']
   — при желании расширить таблицу (углы обзора, вес, рабочие температуры)
   брать оттуда и ставить source на мануал.
 - У владельца есть родственный сайт blackvue.ee (тот же магазин) — источник фото?
-- ⚠ Фото 2 (заводская схема комплектации, имя файла DR970X-2CH-LTE_DR770X-2CH-LTE)
-  показывает БОЛЬШЕ, чем текстовый список карточки: hardwire-кабель, кабель
-  задней камеры, двусторонний скотч, клипсы 8 шт, SIM-инструмент, картридер,
-  pry tool, SIM (опция). Сверить с владельцем реальную коробку Plus LTE и,
-  если совпадает, расширить box[] (ТЗ §1.4: 4–8 пунктов).
+- box по заводскому фото комплектации (решение владельца 11.08: «фото важнее»);
+  источник — фото 2 (имя файла DR970X-2CH-LTE_DR770X-2CH-LTE). Схема серийная
+  (одна на DR970X-2CH-LTE и DR770X-2CH-LTE) — сверить с реальной коробкой.
+  Объём microSD (64 GB) — из текста карточки, на схеме generic.
 -->

@@ -1,7 +1,7 @@
 ---
-# ОПУБЛИКОВАНО 11.08.2026. Контент/цена/фото — с карточки naviseade.ee
+# ОПУБЛИКОВАНО 11.08.2026. Контент/цена — с карточки naviseade.ee
 # (зеркалирование ассортимента BlackVue по решению владельца).
-# Наличие: on-order до ответа владельца (TODO ниже). Фото скачаны с живого naviseade.ee 11.08.2026.
+# Наличие: on-order до ответа владельца (TODO ниже). Фото — с blackvue.com, 11.08.2026.
 sku: BV-RC1-DMS-C
 name:
   es: 'Cámara DMS BlackVue RC1-DMS-C'
@@ -53,9 +53,9 @@ box:
 images:
   - src: '../../assets/img/products/blackvue-rc1-dms-c-1.jpg'
     alt:
-      es: 'Cámara BlackVue RC1-DMS-C de perfil: cuerpo compacto negro, objetivo lateral y almohadilla adhesiva 3M roja en el soporte'
-      en: 'BlackVue RC1-DMS-C camera in profile: compact black body, side-facing lens and red 3M adhesive pad on the mount'
-      ru: 'Камера BlackVue RC1-DMS-C в профиль: компактный чёрный корпус, объектив сбоку и красная клейкая площадка 3M на креплении'
+      es: 'Cámara BlackVue RC1-DMS-C de frente: cuerpo compacto negro con la marca BlackVue DMS, objetivo central y un LED infrarrojo a cada lado'
+      en: 'BlackVue RC1-DMS-C camera front view: compact black body with BlackVue DMS marking, central lens and an infrared LED on each side'
+      ru: 'Камера BlackVue RC1-DMS-C спереди: компактный чёрный корпус с надписью BlackVue DMS, объектив по центру и по ИК-светодиоду с каждой стороны'
 related: []
 serviceAddons: ['dashcam-install']
 ---
@@ -69,10 +69,9 @@ serviceAddons: ['dashcam-install']
   сведено в одну строку (детали в label, значение «Coaxial»).
 - Строка «Подробная информация: fedingas.lt (дилер BlackVue)» — ссылка на
   стороннего дилера, в specs не включена.
-- Фото скачаны с живого naviseade.ee 11.08.2026
-  (rc1c-1726659493-625x625_0_enl.JPG, 600×600). ⚠ Файл побайтово идентичен
-  фото карточки RC1-C (совпадает md5): на живом сайте карточка DMS использует
-  фото RC1-C, ИК-светодиодов DMS в кадре не видно. Alt описывает кадр честно,
-  без DMS-признаков. При случае — заменить на фирменный рендер DMS
-  (например, blackvue.com) или фото владельца.
+- Фото с blackvue.com, 11.08.2026: официальный рендер RC1-DMS-C из магазина
+  BlackVue Direct (direct.blackvue.com/products/blackvue-camera-rc1-dms-c,
+  cdn RC1-DMS-C.jpg, 800×800; на кадре маркировка «BLACKVUE DMS» и два ИК-LED).
+  Прежнее фото (копия кадра RC1-C с naviseade.ee) заменено по решению
+  владельца 11.08.
 -->

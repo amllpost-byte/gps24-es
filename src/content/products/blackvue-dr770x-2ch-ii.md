@@ -51,12 +51,18 @@ specs:
     value: '✓'
     source: 'https://www.naviseade.ee/product/blackvue-dr770x-2ch-sd64gb/'
 box:
-  - { es: 'Dashcam BlackVue DR770X-2CH II', en: 'BlackVue DR770X-2CH II dashcam', ru: 'Регистратор BlackVue DR770X-2CH II' }
+  - { es: 'Cámara frontal BlackVue DR770X-2CH II con soporte', en: 'BlackVue DR770X-2CH II front camera with mount', ru: 'Передняя камера BlackVue DR770X-2CH II с креплением' }
+  - { es: 'Cámara trasera con soporte', en: 'Rear camera with mount', ru: 'Задняя камера с креплением' }
   - { es: 'Tarjeta microSD 64 GB', en: '64 GB microSD card', ru: 'Карта microSD 64 ГБ' }
-  - { es: 'Soporte de montaje', en: 'Mount', ru: 'Крепление' }
-  - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
-  - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
-  - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
+  - { es: 'Lector de tarjetas microSD', en: 'microSD card reader', ru: 'Картридер microSD' }
+  - { es: 'Cable de alimentación al mechero', en: 'Cigarette lighter power cable', ru: 'Кабель питания в прикуриватель' }
+  - { es: 'Cable de alimentación para instalación fija (hardwire)', en: 'Hardwiring power cable', ru: 'Кабель питания для скрытой установки (hardwire)' }
+  - { es: 'Cable de conexión de la cámara trasera', en: 'Rear camera connection cable', ru: 'Кабель подключения задней камеры' }
+  - { es: 'Cinta de doble cara para el soporte de la cámara frontal', en: 'Double-sided tape for the front camera mounting bracket', ru: 'Двусторонний скотч для крепления передней камеры' }
+  - { es: 'Cinta de doble cara para el soporte de la cámara trasera', en: 'Double-sided tape for the rear camera mounting bracket', ru: 'Двусторонний скотч для крепления задней камеры' }
+  - { es: 'Clips para cable (8 uds)', en: 'Cable clips (8 pcs)', ru: 'Клипсы для кабеля (8 шт)' }
+  - { es: 'Palanca de instalación (pry tool)', en: 'Pry tool', ru: 'Монтажная лопатка (pry tool)' }
+  - { es: 'Guía de inicio rápido', en: 'Quick start guide', ru: 'Краткое руководство (Quick Start Guide)' }
 images:
   - src: '../../assets/img/products/blackvue-dr770x-2ch-ii-1.jpg'
     alt:
@@ -84,12 +90,14 @@ serviceAddons: ['dashcam-install']
 - ⚠ Расхождение: на корпусе камеры (фото 1) напечатано «FHD 60FPS», а блок
   «Инфо:» карточки указывает 30 кадр/с. В specs оставлено 30 fps как в карточке;
   сверить с datasheet производителя (blackvue.com, DR770X Series).
-- ⚠ Текстовый список «В комплекте:» не упоминает заднюю камеру отдельной
-  строкой (только «регистратор»), хотя товар 2CH и на фото 1 и 3 задняя камера
-  есть. Фото 3 (заводской снимок комплектации DR770X/DR970X 1CH/2CH) показывает
-  БОЛЬШЕ текстового списка: hardwire-кабель, кабель задней камеры, картридер,
-  pry tool, клипсы 8 шт, двусторонний скотч, Quick Start Guide. Сверить с
-  владельцем реальную коробку; если совпадает — расширить box[].
+- box по заводскому фото комплектации (решение владельца 11.08: «фото важнее»).
+  Фото 3: передняя камера DR770X (FHD 60FPS) и задняя камера с креплениями,
+  microSD в кейсе, картридер, кабель прикуривателя, hardwire-кабель
+  (бирки BATT(+)/ACC(+)/GND), кабель задней камеры, скотч 3M 2 шт
+  (перед/зад), клипсы 8 шт, pry tool, Quick Start Guide. Объём SD (64 ГБ) —
+  из текста карточки. Quick Start Guide на фото серийный
+  (DR770X-1CH,2CH / DR970X-1CH,2CH) — схема серийная, сверить с реальной
+  коробкой.
 - Все specs — из блока «Инфо:». Строку «Подробная информация: www.blackvue.com»
   не включал.
 - Фото: 3 шт, самые крупные локальные версии (_enl, ~600px): DR770X-2CH_enl.jpeg,

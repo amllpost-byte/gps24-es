@@ -58,11 +58,15 @@ specs:
     source: 'https://www.naviseade.ee/product/blackvue-elite-8-2ch/'
 box:
   - { es: 'Dashcam BlackVue Elite 8-2CH', en: 'BlackVue Elite 8-2CH dashcam', ru: 'Регистратор BlackVue Elite 8-2CH' }
+  - { es: 'Cámara trasera', en: 'Rear camera', ru: 'Задняя камера' }
   - { es: 'Tarjeta microSD 64 GB', en: '64 GB microSD card', ru: 'Карта microSD 64 ГБ' }
-  - { es: 'Soporte de montaje', en: 'Mount', ru: 'Крепление' }
-  - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
-  - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
-  - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
+  - { es: 'Cable de la cámara trasera', en: 'Rear camera cable', ru: 'Кабель задней камеры' }
+  - { es: 'Cable de alimentación USB-C a DC', en: 'USB-C to DC power cable', ru: 'Кабель питания USB-C – DC' }
+  - { es: 'Cargador de coche de dos puertos (Dashcam / USB-C)', en: 'Dual-port car charger (Dashcam / USB-C)', ru: 'Автозарядка с двумя портами (Dashcam / USB-C)' }
+  - { es: 'Láminas adhesivas 3M VHB (2 uds.)', en: '3M VHB adhesive sheets (2 pcs)', ru: 'Скотч 3M VHB (2 шт.)' }
+  - { es: 'Clips para cables (5 uds.)', en: 'Cable clips (5 pcs)', ru: 'Клипсы для кабеля (5 шт.)' }
+  - { es: 'Espátula de montaje', en: 'Pry tool', ru: 'Монтажная лопатка' }
+  - { es: 'Toallita con alcohol', en: 'Alcohol pad', ru: 'Спиртовая салфетка' }
 images:
   - src: '../../assets/img/products/blackvue-elite-8-2ch-1.jpg'
     alt:
@@ -96,10 +100,10 @@ serviceAddons: ['dashcam-install']
   «Инфо:» той же карточки — задняя камера Full HD (1920×1080). Верю «Инфо:»
   (совпадает с позиционированием Elite 8). Тэглайн написан по «Инфо:».
 - В «Инфо:» этой карточки НЕТ строки про GPS — не выдумываю (у других Elite есть).
-- ⚠ Фото 4 (elite-8-2ch-in-the-box-1500, заводская картинка комплектации)
-  показывает БОЛЬШЕ, чем текстовый список «В комплекте:»: заднюю камеру
-  отдельной строкой, коаксиальный кабель задней камеры, автозарядку USB-C,
-  клипсы, скотч 3M, лопатку, салфетку. Сверить с владельцем реальную коробку
-  и при подтверждении расширить box[].
+- box по заводскому фото комплектации (решение владельца 11.08: «фото важнее»).
+  Схема — фото 4 (elite-8-2ch-in-the-box-1500, схема этой модели). Объём
+  microSD — из текста карточки (на схеме generic). Hardwire-кабеля на схеме
+  нет — в box не включён. Позиции старого текстового списка «крепление»,
+  «адаптер microSD», «инструкция» на схеме отсутствуют — из box убраны.
 - Расхождений объёма SD между названием (+SD64GB) и комплектацией (64GB) нет.
 -->

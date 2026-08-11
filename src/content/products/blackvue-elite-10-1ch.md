@@ -53,10 +53,13 @@ specs:
 box:
   - { es: 'Dashcam BlackVue Elite 10-1CH', en: 'BlackVue Elite 10-1CH dashcam', ru: 'Регистратор BlackVue Elite 10-1CH' }
   - { es: 'Tarjeta microSD 64 GB', en: '64 GB microSD card', ru: 'Карта microSD 64 ГБ' }
-  - { es: 'Soporte de montaje', en: 'Mount', ru: 'Крепление' }
-  - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
-  - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
-  - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
+  - { es: 'Cable de alimentación USB-C a DC', en: 'USB-C to DC power cable', ru: 'Кабель питания USB-C – DC' }
+  - { es: 'Cable hardwire con fusibles (BATT+ / ACC+ / GND)', en: 'Hardwire cable with fuses (BATT+ / ACC+ / GND)', ru: 'Hardwire-кабель с предохранителями (BATT+ / ACC+ / GND)' }
+  - { es: 'Cargador de coche de dos puertos (Dashcam / USB-C)', en: 'Dual-port car charger (Dashcam / USB-C)', ru: 'Автозарядка с двумя портами (Dashcam / USB-C)' }
+  - { es: 'Lámina adhesiva 3M VHB', en: '3M VHB adhesive sheet', ru: 'Скотч 3M VHB' }
+  - { es: 'Clips para cables (3 uds.)', en: 'Cable clips (3 pcs)', ru: 'Клипсы для кабеля (3 шт.)' }
+  - { es: 'Espátula de montaje', en: 'Pry tool', ru: 'Монтажная лопатка' }
+  - { es: 'Toallita con alcohol', en: 'Alcohol pad', ru: 'Спиртовая салфетка' }
 images:
   - src: '../../assets/img/products/blackvue-elite-10-1ch-1.jpg'
     alt:
@@ -88,10 +91,11 @@ serviceAddons: ['dashcam-install']
   Копия карточки: scratchpad/blackvue-elite-10-1ch.src.{html,txt}.
 - specs — только блок «Инфо:» карточки. Строку «Подробная информация:
   www.blackvue.com» в specs не включал (не ТТХ).
-- ⚠ Фото 4 (elite-1ch-accs-02, заводская картинка аксессуаров) показывает
-  БОЛЬШЕ, чем текстовый список «В комплекте:»: hardwire-кабель с предохранителями,
-  автозарядка USB-C, монтажная площадка 3M, клипсы, монтажная лопатка,
-  спиртовая салфетка. Сверить с владельцем реальную коробку и при
-  подтверждении расширить box[].
+- box по заводскому фото комплектации (решение владельца 11.08: «фото важнее»).
+  Схема — фото 4 (elite-1ch-accs-02); схема серийная (общая для 1CH Elite),
+  сверить с реальной коробкой. Объём microSD — из текста карточки (на схеме
+  generic). Сам регистратор на схеме аксессуаров не показан — оставлен первой
+  строкой. Позиции старого текстового списка «крепление», «адаптер microSD»,
+  «инструкция» на схеме отсутствуют — из box убраны.
 - Расхождений объёма SD между названием (+SD64GB) и комплектацией (64GB) нет.
 -->

@@ -56,10 +56,14 @@ specs:
 box:
   - { es: 'Dashcam BlackVue Elite 9-2CH', en: 'BlackVue Elite 9-2CH dashcam', ru: 'Регистратор BlackVue Elite 9-2CH' }
   - { es: 'Tarjeta microSD 64 GB', en: '64 GB microSD card', ru: 'Карта microSD 64 ГБ' }
-  - { es: 'Soporte de montaje', en: 'Mount', ru: 'Крепление' }
-  - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
-  - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
-  - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
+  - { es: 'Cable de la cámara trasera', en: 'Rear camera cable', ru: 'Кабель задней камеры' }
+  - { es: 'Cable de alimentación USB-C a DC', en: 'USB-C to DC power cable', ru: 'Кабель питания USB-C – DC' }
+  - { es: 'Cable hardwire con fusibles (BATT+ / ACC+ / GND)', en: 'Hardwire cable with fuses (BATT+ / ACC+ / GND)', ru: 'Hardwire-кабель с предохранителями (BATT+ / ACC+ / GND)' }
+  - { es: 'Cargador de coche de dos puertos (Dashcam / USB-C)', en: 'Dual-port car charger (Dashcam / USB-C)', ru: 'Автозарядка с двумя портами (Dashcam / USB-C)' }
+  - { es: 'Láminas adhesivas 3M VHB (2 uds.)', en: '3M VHB adhesive sheets (2 pcs)', ru: 'Скотч 3M VHB (2 шт.)' }
+  - { es: 'Clips para cables (5 uds.)', en: 'Cable clips (5 pcs)', ru: 'Клипсы для кабеля (5 шт.)' }
+  - { es: 'Espátula de montaje', en: 'Pry tool', ru: 'Монтажная лопатка' }
+  - { es: 'Toallita con alcohol', en: 'Alcohol pad', ru: 'Спиртовая салфетка' }
 images:
   - src: '../../assets/img/products/blackvue-elite-9-2ch-1.jpg'
     alt:
@@ -91,12 +95,13 @@ serviceAddons: ['dashcam-install']
   Копия карточки: scratchpad/blackvue-elite-9-2ch.src.{html,txt}.
 - specs — только блок «Инфо:» карточки. Строку «Подробная информация:
   www.blackvue.com» не включал (не ТТХ).
-- ⚠ Фото 4 (elite-2ch-accs-02, заводская картинка аксессуаров) показывает
-  БОЛЬШЕ, чем текстовый список «В комплекте:»: hardwire-кабель, кабель задней
-  камеры, автозарядка USB-C, скотч 3M, клипсы, лопатка, салфетка. И задняя
-  камера в списке «В комплекте:» отдельной строкой не указана (входит в
-  «регистратор»). Сверить с владельцем реальную коробку и при подтверждении
-  расширить box[].
+- box по заводскому фото комплектации (решение владельца 11.08: «фото важнее»).
+  Схема — фото 4 (elite-2ch-accs-02); схема серийная (общая для 2CH Elite),
+  сверить с реальной коробкой. Объём microSD — из текста карточки (на схеме
+  generic). Сам регистратор и задняя камера на схеме аксессуаров не показаны —
+  покрыты первой строкой (комплект 2CH). Позиции старого текстового списка
+  «крепление», «адаптер microSD», «инструкция» на схеме отсутствуют — из box
+  убраны.
 - В галерее карточки было 5 фото; не взял elite-9-rear-back (второй ракурс
   задней камеры, дублирует фото 3).
 - Расхождений объёма SD между названием (+SD64GB) и комплектацией (64GB) нет.

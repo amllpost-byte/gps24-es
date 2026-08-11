@@ -57,12 +57,15 @@ specs:
     value: 'FCC, CE, RoHS, Telec, RCM, WEEE'
     source: 'https://www.naviseade.ee/product/blackvue-dr750x-1ch/'
 box:
-  - { es: 'Dashcam BlackVue DR770X-1CH', en: 'BlackVue DR770X-1CH dashcam', ru: 'Регистратор BlackVue DR770X-1CH' }
+  - { es: 'Dashcam BlackVue DR770X-1CH con soporte de montaje', en: 'BlackVue DR770X-1CH dashcam with mount', ru: 'Регистратор BlackVue DR770X-1CH с креплением' }
   - { es: 'Tarjeta microSD 64 GB', en: '64 GB microSD card', ru: 'Карта microSD 64 ГБ' }
-  - { es: 'Soporte de montaje', en: 'Mount', ru: 'Крепление' }
-  - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
-  - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
-  - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
+  - { es: 'Lector USB de microSD', en: 'USB microSD card reader', ru: 'USB-картридер microSD' }
+  - { es: 'Cable de alimentación al mechero', en: 'Cigarette-lighter power cable', ru: 'Кабель питания в прикуриватель' }
+  - { es: 'Cable de instalación fija (hardwire)', en: 'Hardwire power cable', ru: 'Кабель скрытой установки (hardwire)' }
+  - { es: 'Palanca de montaje', en: 'Pry tool', ru: 'Монтажная лопатка' }
+  - { es: 'Clips para cable (5 uds.)', en: 'Cable clips (5 pcs)', ru: 'Клипсы для кабеля (5 шт)' }
+  - { es: 'Adhesivo de doble cara 3M', en: '3M double-sided adhesive pad', ru: 'Двусторонний скотч 3M' }
+  - { es: 'Guía rápida', en: 'Quick start guide', ru: 'Краткая инструкция' }
 images: # фото с naviseade.ee (макс. сохранившийся размер 600px)
   - src: '../../assets/img/products/blackvue-dr770x-1ch-1.jpg'
     alt:
@@ -89,11 +92,9 @@ serviceAddons: ['dashcam-install']
 - ⚠ URL-слаг карточки — наследие DR750X (blackvue-dr750x-1ch), название и ТТХ —
   DR770X-1CH. Файл фото 2 тоже назывался blackvue-dr750x-1ch-4-1.jpg — судя по
   дизайну (круглая крышка портов) это DR770X, но стоит сверить с владельцем.
-- ⚠ Фото 3 (заводской flat-lay, инструкция подписана DR770X-1CH,2CH /
-  DR970X-1CH,2CH) показывает БОЛЬШЕ текстового списка карточки: hardwire-кабель,
-  USB-картридер, клипсы 5 шт, скотч 3M, монтажная лопатка. Однострочник карточки
-  подтверждает hardwire-кабель в комплекте. Сверить коробку с владельцем и при
-  подтверждении расширить box[].
+- box по заводскому фото комплектации (решение владельца 11.08: «фото важнее»).
+  Схема серийная (инструкция подписана DR770X-1CH,2CH / DR970X-1CH,2CH) —
+  сверить с реальной коробкой.
 - «Размеры: 118.5 × 36 mm» — так на карточке (две величины; вероятно
   длина × диаметр корпуса), не дополнял из других источников.
 - Фото: DR770X-1CH_enl.jpeg, blackvue-dr750x-1ch-4-1_enl.jpg,

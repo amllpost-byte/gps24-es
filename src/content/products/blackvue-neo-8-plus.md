@@ -1,11 +1,8 @@
 ---
-# ЧЕРНОВИК-ДУБЛЬ (11.08.2026): на naviseade.ee этот же CELLINK Neo 8+ Slimline
-# продаётся второй карточкой за 289.90 € (в «Дополнениях»), а в категории
-# регистраторов — за 294.90 € (опубликована как cellink-neo-8-plus-slimline).
-# ⚠ Вопрос владельцу: какая цена верна; после ответа — объединить карточки.
-# ОПУБЛИКОВАНО 11.08.2026. Контент/цена/фото — с карточки naviseade.ee
-# (зеркалирование ассортимента BlackVue по решению владельца).
-# ⚠ TODO: наличие on-order до ответа владельца; см. заметку о дубле с CLK-NEO8S.
+# ОПУБЛИКОВАНО 11.08.2026. Дубль разрешён владельцем («лишнее убрал»):
+# карточка за 294.90 удалена с naviseade, канон — эта (289.90).
+# Контент/цена/фото — с карточки naviseade.ee.
+# ⚠ TODO(владелец): реальное наличие.
 sku: CLK-NEO8-PLUS
 name:
   es: 'Batería Cellink NEO 8+ (7500 mAh)'
@@ -59,6 +56,11 @@ images:
       es: 'Cellink NEO 8+ por detrás: interruptor, puertos de conexión y botón naranja'
       en: 'Cellink NEO 8+ from the back: switch, connection ports and orange button'
       ru: 'Cellink NEO 8+ сзади: переключатель, разъёмы подключения и оранжевая кнопка'
+  - src: '../../assets/img/products/blackvue-neo-8-plus-3.jpg'
+    alt:
+      es: 'Batería CELLINK Neo+: carcasa metálica con la inscripción «Rechargeable LiFePO4 Battery»'
+      en: 'CELLINK Neo+ battery: metal case with the “Rechargeable LiFePO4 Battery” lettering'
+      ru: 'Аккумулятор CELLINK Neo+: металлический корпус с надписью «Rechargeable LiFePO4 Battery»'
 related: []
 serviceAddons: []
 ---
@@ -66,12 +68,9 @@ serviceAddons: []
 <!-- Заметки (не публикуются):
 - Источник: https://www.naviseade.ee/product/blackvue-neo-8/
   («BlackVue Neo 8+», €289.90, снято 11.08.2026).
-- ⚠ ВЕРОЯТНЫЙ ДУБЛЬ: в каталоге уже есть cellink-neo-8-plus-slimline.md
-  (sku CLK-NEO8S, €294.90, источник naviseade
-  /product/cellink-neo-8-parkavimo-baterija-7500mah/). По ТТХ это тот же
-  NEO 8+S Slimline 7500 мА·ч, но на naviseade это две карточки с разными
-  ценами (289.90 vs 294.90). Спросить владельца: оставить одну?
-  SKU здесь взят CLK-NEO8-PLUS, чтобы не конфликтовать с CLK-NEO8S.
+- Дубль разрешён 11.08.2026: владелец удалил с naviseade карточку за 294.90
+  (/product/cellink-neo-8-parkavimo-baterija-7500mah/ → 404); её фото
+  перенесено сюда третьим кадром (blackvue-neo-8-plus-3.jpg).
 - Строки «Инфо» «Тип: внешний аккумулятор…» и «Питает регистратор…» —
   языкозависимые, перенесены в description.
 - Карточка ссылается на blackvueuk.co.uk (дилер BlackVue / Cellink).

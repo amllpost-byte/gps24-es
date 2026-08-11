@@ -51,12 +51,18 @@ specs:
     value: '✓'
     source: 'https://www.naviseade.ee/product/blackvue-dr970x-2ch-4k-sd64gb/'
 box:
-  - { es: 'Dashcam BlackVue DR970X-2CH Plus II 4K', en: 'BlackVue DR970X-2CH Plus II 4K dashcam', ru: 'Регистратор BlackVue DR970X-2CH Plus II 4K' }
+  - { es: 'Cámara frontal BlackVue DR970X-2CH Plus II', en: 'BlackVue DR970X-2CH Plus II front camera', ru: 'Передняя камера BlackVue DR970X-2CH Plus II' }
+  - { es: 'Cámara trasera', en: 'Rear camera', ru: 'Задняя камера' }
   - { es: 'Tarjeta microSD 64 GB', en: '64 GB microSD card', ru: 'Карта microSD 64 ГБ' }
-  - { es: 'Soporte de montaje', en: 'Mount', ru: 'Крепление' }
-  - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
-  - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
-  - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
+  - { es: 'Lector de tarjetas microSD', en: 'microSD card reader', ru: 'Картридер microSD' }
+  - { es: 'Cable de alimentación al mechero', en: 'Cigarette lighter power cable', ru: 'Кабель питания в прикуриватель' }
+  - { es: 'Cable de alimentación para instalación fija (hardwire)', en: 'Hardwiring power cable', ru: 'Кабель питания для скрытой установки (hardwire)' }
+  - { es: 'Cable de conexión de la cámara trasera', en: 'Rear camera connection cable', ru: 'Кабель подключения задней камеры' }
+  - { es: 'Cinta de doble cara para el soporte de la cámara frontal', en: 'Double-sided tape for the front camera mounting bracket', ru: 'Двусторонний скотч для крепления передней камеры' }
+  - { es: 'Cinta de doble cara para el soporte de la cámara trasera', en: 'Double-sided tape for the rear camera mounting bracket', ru: 'Двусторонний скотч для крепления задней камеры' }
+  - { es: 'Clips para cable (8 uds)', en: 'Cable clips (8 pcs)', ru: 'Клипсы для кабеля (8 шт)' }
+  - { es: 'Palanca de instalación (pry tool)', en: 'Pry tool', ru: 'Монтажная лопатка (pry tool)' }
+  - { es: 'Guía de inicio rápido', en: 'Quick start guide', ru: 'Краткое руководство (Quick Start Guide)' }
 images:
   - src: '../../assets/img/products/blackvue-dr970x-2ch-plus-ii-1.jpg'
     alt:
@@ -87,12 +93,12 @@ serviceAddons: ['dashcam-install']
 - «Механизм защиты аккумулятора от глубокого разряда» из подзаголовка карточки
   отражён в tagline/description; в блоке «Инфо:» отдельной строкой его нет,
   поэтому в specs не добавлен.
-- ⚠ Фото 3 (заводская схема комплектации DR770X-1CH,2CH / DR970X-1CH,2CH)
-  показывает БОЛЬШЕ текстового списка карточки: hardwire-кабель, кабель задней
-  камеры, картридер, pry tool, двусторонний скотч, клипсы (2CH: 8 шт),
-  Quick Start Guide. Сверить с владельцем реальную коробку; если совпадает —
-  расширить box[]. Задняя камера в текстовом списке отдельной строкой тоже
-  не указана (только «регистратор»).
+- box по заводскому фото комплектации (решение владельца 11.08: «фото важнее»).
+  Фото 3 — заводская схема DR770X-1CH,2CH / DR970X-1CH,2CH с подписями;
+  перенесены все позиции для 2CH: rear camera, тейпы перед/зад, кабель задней
+  камеры, клипсы «2CH: 8 EA» (у 1CH было бы 5). Объём SD (64 ГБ) — из текста
+  карточки, на схеме карта generic. Схема серийная, сверить с реальной
+  коробкой.
 - Все specs — из блока «Инфо:». Строку «Подробная информация: www.blackvue.com»
   не включал.
 - Фото: 3 шт, самые крупные локальные версии (_enl, ~600px):

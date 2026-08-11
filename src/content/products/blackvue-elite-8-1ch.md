@@ -60,12 +60,14 @@ specs:
     value: '129.7 × 40 × 55.3 mm, 203 g'
     source: 'https://www.naviseade.ee/product/blackvue-elite-8-1ch/'
 box:
-  - { es: 'Dashcam BlackVue ELITE 8-1CH', en: 'BlackVue ELITE 8-1CH dashcam', ru: 'Регистратор BlackVue ELITE 8-1CH' }
+  - { es: 'Dashcam BlackVue ELITE 8-1CH con soporte', en: 'BlackVue ELITE 8-1CH dashcam with mount', ru: 'Регистратор BlackVue ELITE 8-1CH с креплением' }
   - { es: 'Tarjeta microSD 64 GB', en: '64 GB microSD card', ru: 'Карта microSD 64 ГБ' }
-  - { es: 'Soporte de montaje', en: 'Mount', ru: 'Крепление' }
-  - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
-  - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
-  - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
+  - { es: 'Cable de alimentación USB-C a DC', en: 'USB-C to DC jack power cable', ru: 'Кабель питания USB-C → DC' }
+  - { es: 'Cargador de coche (2 × USB-C)', en: 'Car charger (2 × USB-C)', ru: 'Автомобильная зарядка (2 × USB-C)' }
+  - { es: 'Cinta adhesiva de doble cara 3M', en: '3M double-sided tape', ru: 'Двусторонний скотч 3M' }
+  - { es: 'Clips para cable (3 uds)', en: 'Cable clips (3 pcs)', ru: 'Клипсы для кабеля (3 шт)' }
+  - { es: 'Palanca de instalación (pry tool)', en: 'Pry tool', ru: 'Монтажная лопатка (pry tool)' }
+  - { es: 'Toallita de alcohol', en: 'Alcohol pad', ru: 'Спиртовая салфетка' }
 images:
   - src: '../../assets/img/products/blackvue-elite-8-1ch-1.jpg'
     alt:
@@ -97,11 +99,12 @@ serviceAddons: ['dashcam-install']
   Копии: scratchpad blackvue-elite-8-1ch.src.html / .src.txt.
 - Все specs — из блока «Инфо:» карточки. Строку «Подробная информация:
   www.blackvue.com» в specs не включал (это ссылка, не ТТХ).
-- ⚠ Фото 4 (elite-8-1ch-in-the-box-1500x, заводской снимок комплектации)
-  показывает БОЛЬШЕ, чем текстовый список карточки: салфетка Alcohol Pad,
-  двусторонний скотч 3M, клипсы для кабеля 3 шт, pry tool, автомобильная
-  зарядка 2×USB(C/A), кабель USB-C→DC. Сверить с владельцем реальную коробку;
-  если совпадает — расширить box[].
+- box по заводскому фото комплектации (решение владельца 11.08: «фото важнее»).
+  Фото 4 (elite-8-1ch-in-the-box-1500x): камера с креплением, microSD в кейсе,
+  кабель с биркой «USB C to DC Jack Cable», зарядка BlackVue с двумя портами
+  USB-C (подписи Dashcam / Type C), скотч 3M VHB, клипсы 3 шт, pry tool,
+  Alcohol Pad. Объём SD (64 ГБ) — из текста карточки, на фото он не читается.
+  Отдельного SD-адаптера и печатного мануала на фото нет — из box[] убраны.
 - Фото: 4 шт, самые крупные локальные версии (_enl, ~600px) из
   naviseade.ee/published/.../products_pictures/ (elite-8-1ch-front_enl,
   elite-8-1ch-rearak_enl, ELITE-8-4yk_enl, elite-8-1ch-in-the-box-1500x_enl).

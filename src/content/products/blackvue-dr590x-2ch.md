@@ -57,12 +57,17 @@ specs:
     value: '−20…+70 °C'
     source: 'https://www.naviseade.ee/product/blackvue-dr590x-2ch-sd32gb/'
 box:
-  - { es: 'Dashcam BlackVue DR590X-2CH', en: 'BlackVue DR590X-2CH dashcam', ru: 'Регистратор BlackVue DR590X-2CH' }
+  - { es: 'Cámara frontal BlackVue DR590X-2CH con soporte de montaje', en: 'BlackVue DR590X-2CH front camera with mount', ru: 'Передняя камера BlackVue DR590X-2CH с креплением' }
+  - { es: 'Cámara trasera con soporte de montaje', en: 'Rear camera with mount', ru: 'Задняя камера с креплением' }
+  - { es: 'Cable de la cámara trasera', en: 'Rear camera connection cable', ru: 'Кабель задней камеры' }
   - { es: 'Tarjeta microSD 64 GB', en: '64 GB microSD card', ru: 'Карта microSD 64 ГБ' }
-  - { es: 'Soporte de montaje', en: 'Mount', ru: 'Крепление' }
-  - { es: 'Cable de alimentación', en: 'Power cable', ru: 'Провод питания' }
   - { es: 'Adaptador microSD', en: 'microSD adapter', ru: 'Адаптер microSD' }
-  - { es: 'Manual', en: 'Manual', ru: 'Инструкция' }
+  - { es: 'Cable de alimentación al mechero', en: 'Cigarette-lighter power cable', ru: 'Кабель питания в прикуриватель' }
+  - { es: 'Cable de instalación fija (hardwire)', en: 'Hardwire power cable', ru: 'Кабель скрытой установки (hardwire)' }
+  - { es: 'Receptor GNSS externo', en: 'External GNSS receiver', ru: 'Внешний GNSS-приёмник' }
+  - { es: 'Clips para cable (5 uds.)', en: 'Cable clips (5 pcs)', ru: 'Клипсы для кабеля (5 шт)' }
+  - { es: 'Adhesivos de doble cara 3M (2 uds.)', en: '3M double-sided adhesive pads (2 pcs)', ru: 'Двусторонний скотч 3M (2 шт)' }
+  - { es: 'Guía rápida', en: 'Quick start guide', ru: 'Краткая инструкция' }
 images: # фото с naviseade.ee (макс. сохранившийся размер 600px)
   - src: '../../assets/img/products/blackvue-dr590x-2ch-1.jpg'
     alt:
@@ -84,9 +89,7 @@ serviceAddons: ['dashcam-install']
 - ⚠ Расхождение по SD: однострочник карточки говорит «в комплекте 32GB»
   (и URL-слаг — sd32gb), но название и «В комплекте:» — 64 GB. По правилу
   «верить комплектации» в box указана карта 64 ГБ. Сверить с владельцем.
-- ⚠ Фото 2 (заводской flat-lay) показывает БОЛЬШЕ текстового списка карточки:
-  кабель задней камеры, hardwire-кабель, GNSS-приёмник, клипсы 5 шт, скотч 3M.
-  Сверить с владельцем реальную коробку и при подтверждении расширить box[].
+- box по заводскому фото комплектации (решение владельца 11.08: «фото важнее»).
 - Фото: DR590X-2CH_enl.jpeg, DR590X_2CH_parts-scaled-1_enl.jpeg
   (локальная копия naviseade.ee, ~600px).
 -->
