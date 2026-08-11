@@ -46,12 +46,20 @@ export const SITE = {
   },
 
   shipping: {
-    // ⚠️ ЗАГЛУШКА — сроки не подтверждены (курьерку для Испании ещё не выбирали).
-    // Заменить после выбора перевозчика; на сайте обещать только то, что курьерка
-    // реально гарантирует (правило: доверие числами = проверяемыми числами).
-    es: 'Envío 24–48 h en la Comunidad Valenciana · 2–4 días al resto de España',
-    en: 'Delivery 24–48 h in the Valencia region · 2–4 days rest of Spain',
-    ru: 'Доставка 24–48 ч по региону Валенсия · 2–4 дня по Испании',
+    // Этап запуска (владелец, 11.08.2026): оформление и отправка — из Эстонии (ЕС),
+    // конкретных сроков не обещаем (курьерка не выбрана). Полноценное открытие
+    // в Comunidad Valenciana — октябрь 2026, тогда заменить на локальные сроки.
+    es: 'Envíos desde Estonia (UE) · plazo de entrega — consultar por WhatsApp',
+    en: 'Ships from Estonia (EU) · delivery time — ask on WhatsApp',
+    ru: 'Отправка из Эстонии (ЕС) · срок доставки — уточняйте в WhatsApp',
+  },
+
+  // Плашка на всех страницах до полноценного октябрьского открытия.
+  // Убрать после открытия (вместе с ней — и оговорку в shipping выше).
+  launchNotice: {
+    es: 'Apertura completa en la Comunidad Valenciana — octubre de 2026. Hasta entonces, los pedidos se gestionan y envían desde Estonia (UE).',
+    en: 'Full opening in the Comunidad Valenciana — October 2026. Until then, orders are processed and shipped from Estonia (EU).',
+    ru: 'Полноценное открытие в Comunidad Valenciana — октябрь 2026. Пока заказы оформляются и отправляются из Эстонии (ЕС).',
   },
 
   guarantees: {

@@ -1,0 +1,27 @@
+---
+// Плашка этапа запуска: «полноценное открытие в октябре, пока — из Эстонии».
+// Текст в SITE.launchNotice; после октябрьского открытия компонент убрать
+// из BaseLayout вместе с текстами в конфиге.
+import { SITE, type Lang } from '@config';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<p class="launch-notice">{SITE.launchNotice[lang]}</p>
+
+<style>
+  .launch-notice {
+    margin: 0;
+    padding: var(--space-2) var(--space-4);
+    background: var(--surface-2);
+    border-block-end: 1px solid var(--line);
+    box-shadow: inset 3px 0 0 var(--amber);
+    font-size: var(--fs-14);
+    line-height: 1.4;
+    text-align: center;
+    color: var(--muted);
+  }
+</style>
