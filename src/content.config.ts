@@ -32,13 +32,15 @@ const products = defineCollection({
 
 const services = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: './src/content/services' }),
-  schema: z.object({
-    name: localized,
-    priceFrom: z.number().positive(), // EUR, «desde»
-    turnaround: localized, // срок выполнения
-    includes: z.array(localized).default([]),
-    supportedBrands: z.array(z.string()).default([]),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: localized,
+      priceFrom: z.number().positive(), // EUR, «desde»
+      turnaround: localized, // срок выполнения
+      includes: z.array(localized).default([]),
+      supportedBrands: z.array(z.string()).default([]),
+      images: z.array(z.object({ src: image(), alt: localized })).default([]),
+    }),
 });
 
 // Ответ — в frontmatter (answer.{es,en,ru}), не в body: body одноязычен,

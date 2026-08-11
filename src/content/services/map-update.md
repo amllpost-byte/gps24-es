@@ -29,6 +29,12 @@ includes:
     en: 'We can also install navigation with all-Europe maps on your phone or tablet'
     ru: 'Также ставим навигацию с картами всей Европы на ваш телефон или планшет'
 supportedBrands: ['Garmin', 'TomTom', 'Diniwid', 'Prestigio', 'Becker', 'Mio', 'Sony', 'Navigon'] # список с карточки naviseade + Diniwid
+images: # фото с карточки naviseade «Обновление любых навигаторов», 11.08.2026
+  - src: '../../assets/img/services/map-update-1.jpg'
+    alt:
+      es: 'Tarjeta microSD: los mapas nuevos se graban en la memoria del navegador'
+      en: 'microSD card: the new maps are written to the navigator storage'
+      ru: 'Карта microSD: новые карты записываются в память навигатора'
 ---
 
 <!-- Заметки (не публикуются):

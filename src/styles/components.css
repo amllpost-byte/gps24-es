@@ -488,6 +488,33 @@
     color: var(--amber-ink);
   }
 
+  /* ---------- service page: hero с фото + цена desde + бренды ---------- */
+  .service-hero {
+    display: grid;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .service-hero--media {
+      grid-template-columns: 3fr 2fr;
+    }
+  }
+
+  .service-hero__media {
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    padding: var(--space-6);
+  }
+
+  .service-hero__media img {
+    max-width: 100%;
+    height: auto;
+  }
+
   /* ---------- service page: цена desde + бренды ---------- */
   .service-price {
     display: flex;

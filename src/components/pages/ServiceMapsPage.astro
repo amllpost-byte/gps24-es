@@ -3,6 +3,7 @@
 // Данные (цена desde, что входит, бренды) — из content/services/map-update.md.
 // TODO: DeviceForm-island «какой у вас навигатор?» — этап после запуска.
 import { getEntry } from 'astro:content';
+import { Picture } from 'astro:assets';
 import type { Lang } from '@config';
 import { useTranslations } from '@/i18n';
 import { formatPrice } from '@/lib/format';
@@ -41,18 +42,37 @@ const meta = {
 
 <BaseLayout {lang} route="actualizacion-de-mapas" title={meta.title} description={meta.description}>
   <Section class="hero">
-    <h1>{t('maps.title')}</h1>
-    <p class="lead">{t('home.serviceLead')}</p>
-    {
-      service && (
-        <p class="service-price">
-          <span class="price price--lg">{`${t('service.from')} ${formatPrice(service.data.priceFrom)} €`}</span>
-          <Badge tone="amber">{service.data.turnaround[lang]}</Badge>
-        </p>
-      )
-    }
-    <div class="hero__cta">
-      <WhatsAppCTA {lang} label={t('service.whichDevice')} />
+    <div class:list={['service-hero', service && service.data.images.length > 0 && 'service-hero--media']}>
+      <div>
+        <h1>{t('maps.title')}</h1>
+        <p class="lead">{t('home.serviceLead')}</p>
+        {
+          service && (
+            <p class="service-price">
+              <span class="price price--lg">{`${t('service.from')} ${formatPrice(service.data.priceFrom)} €`}</span>
+              <Badge tone="amber">{service.data.turnaround[lang]}</Badge>
+            </p>
+          )
+        }
+        <div class="hero__cta">
+          <WhatsAppCTA {lang} label={t('service.whichDevice')} />
+        </div>
+      </div>
+      {
+        service && service.data.images[0] && (
+          <div class="service-hero__media">
+            <Picture
+              src={service.data.images[0].src}
+              alt={service.data.images[0].alt[lang]}
+              formats={['webp']}
+              fallbackFormat="jpg"
+              widths={[480, 960]}
+              sizes="(min-width: 768px) 420px, 90vw"
+              loading="eager"
+            />
+          </div>
+        )
+      }
     </div>
   </Section>
   {
