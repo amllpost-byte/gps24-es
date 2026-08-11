@@ -68,12 +68,14 @@
 
   .nav-desktop a {
     display: inline-block;
-    padding: var(--space-2) var(--space-3);
+    padding: var(--space-2) var(--space-2);
     border-radius: var(--radius-ctl);
     color: var(--ink);
     text-decoration: none;
     font-size: var(--fs-14);
     font-weight: 600;
+    /* пункты меню не переносятся на вторую строку (владелец, 11.08) */
+    white-space: nowrap;
   }
 
   .nav-desktop a:hover {
@@ -101,7 +103,20 @@
     }
   }
 
-  @media (min-width: 1024px) {
+  /* при видимом десктоп-меню почта сжимается до конверта (адрес остаётся для AT);
+     полный адрес виден в бургер-режиме 480–1199 */
+  @media (min-width: 1200px) {
+    .site-header__mail-text {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+
+  @media (min-width: 1200px) {
     .nav-desktop {
       display: block;
       margin-left: auto;
