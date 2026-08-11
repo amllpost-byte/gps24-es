@@ -20,11 +20,12 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-// навигаторы, затем регистраторы; внутри категории — по цене по возрастанию
+// витрина главной: навигаторы, затем регистраторы, по цене; первые 8 —
+// полный ассортимент на /tienda (кнопка под сеткой)
 const catOrder = { navigator: 0, dashcam: 1, accessory: 2 } as const;
-const featured = (await getCollection('products')).sort(
-  (a, b) => catOrder[a.data.category] - catOrder[b.data.category] || a.data.price - b.data.price
-);
+const featured = (await getCollection('products'))
+  .sort((a, b) => catOrder[a.data.category] - catOrder[b.data.category] || a.data.price - b.data.price)
+  .slice(0, 8);
 
 const meta = {
   es: {
@@ -71,6 +72,9 @@ const meta = {
           {featured.map((product) => (
             <ProductCard {lang} {product} />
           ))}
+        </div>
+        <div class="hero__cta">
+          <Button variant="secondary" href={localizePath('tienda', lang)}>{t('cta.viewCatalog')}</Button>
         </div>
       </Section>
     )
