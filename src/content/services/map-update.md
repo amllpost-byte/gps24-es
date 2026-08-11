@@ -1,13 +1,13 @@
 ---
-# ЧЕРНОВИК (префикс _ — в сборку не попадает).
-# Главный маржинальный продукт. «Что входит» перенесено со страниц naviseade.ee
-# 10.08.2026 (auxpage_navigation + auxpage_services) — сверить с владельцем.
-# Для публикации: цена «desde» от владельца → убрать префикс.
+# ОПУБЛИКОВАНО 11.08.2026 («обновление добавь»). Главный маржинальный продукт.
+# Цена «desde» = карточка naviseade «Обновление любых навигаторов» €49.90
+# (/product/obnovlenie-ljubyh-navigatorov/, снято 11.08.2026).
+# «Что входит» — страницы naviseade auxpage_navigation/services + карточка.
 name:
   es: 'Actualización de mapas GPS'
   en: 'GPS map updates'
   ru: 'Обновление карт GPS'
-priceFrom: 1 # ⚠ TODO(владелец): цена «desde», EUR
+priceFrom: 49.90 # = naviseade.ee «Обновление любых навигаторов», 11.08.2026
 turnaround:
   es: 'En 24 horas'
   en: 'Within 24 hours'
@@ -25,7 +25,10 @@ includes:
   - es: 'Menú y voz en su idioma, navegador configurado y listo para usar'
     en: 'Menu and voice in your language, device configured and ready to use'
     ru: 'Меню и голос на вашем языке, навигатор настроен и сразу готов к работе'
-supportedBrands: ['Garmin', 'TomTom', 'Diniwid'] # ⚠ подтвердить список у владельца
+  - es: 'También instalamos navegación con mapas de toda Europa en su teléfono o tablet'
+    en: 'We can also install navigation with all-Europe maps on your phone or tablet'
+    ru: 'Также ставим навигацию с картами всей Европы на ваш телефон или планшет'
+supportedBrands: ['Garmin', 'TomTom', 'Diniwid', 'Prestigio', 'Becker', 'Mio', 'Sony', 'Navigon'] # список с карточки naviseade + Diniwid
 ---
 
 <!-- Заметки (не публикуются):

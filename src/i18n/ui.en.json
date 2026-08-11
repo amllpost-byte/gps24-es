@@ -74,5 +74,8 @@
   "a11y.breadcrumbs": "Breadcrumbs",
   "catalog.accessories": "Accessories",
   "catalog.consultLead": "Not sure which model you need? Message us on WhatsApp and we'll advise you today.",
-  "truck.modelsTitle": "Models and prices"
+  "truck.modelsTitle": "Models and prices",
+  "service.from": "from",
+  "service.includesTitle": "What's included",
+  "service.brandsLine": "We work with"
 }

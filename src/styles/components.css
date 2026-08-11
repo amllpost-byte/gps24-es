@@ -488,6 +488,21 @@
     color: var(--amber-ink);
   }
 
+  /* ---------- service page: цена desde + бренды ---------- */
+  .service-price {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-top: var(--space-6);
+  }
+
+  .service-brands {
+    margin-top: var(--space-6);
+    font-size: var(--fs-14);
+    color: var(--muted);
+  }
+
   /* ---------- service block ---------- */
   .service-block {
     background: var(--surface-2);

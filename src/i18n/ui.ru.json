@@ -74,5 +74,8 @@
   "a11y.breadcrumbs": "Хлебные крошки",
   "catalog.accessories": "Аксессуары",
   "catalog.consultLead": "Не уверены, какая модель нужна? Напишите в WhatsApp — подскажем сегодня же.",
-  "truck.modelsTitle": "Модели и цены"
+  "truck.modelsTitle": "Модели и цены",
+  "service.from": "от",
+  "service.includesTitle": "Что входит",
+  "service.brandsLine": "Работаем с"
 }

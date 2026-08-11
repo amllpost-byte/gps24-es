@@ -1,11 +1,14 @@
 ---
 // Услуга-товар «Обновление карт» — главный маржинальный продукт.
-// TODO(контент): цена «desde», что входит, supportedBrands — из content/services,
-// когда владелец подтвердит цены; DeviceForm-island — Этап после наполнения.
+// Данные (цена desde, что входит, бренды) — из content/services/map-update.md.
+// TODO: DeviceForm-island «какой у вас навигатор?» — этап после запуска.
+import { getEntry } from 'astro:content';
 import type { Lang } from '@config';
 import { useTranslations } from '@/i18n';
+import { formatPrice } from '@/lib/format';
 import BaseLayout from '@/components/BaseLayout.astro';
 import Section from '@/components/Section.astro';
+import Badge from '@/components/Badge.astro';
 import TrustBar from '@/components/TrustBar.astro';
 import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
 
@@ -15,22 +18,23 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const service = await getEntry('services', 'map-update');
 
 const meta = {
   es: {
-    title: 'Actualización de mapas GPS en 24 h — GPS24',
+    title: 'Actualización de mapas GPS en 24 h — desde 49,90 € — GPS24',
     description:
-      'Actualizamos mapas de Garmin, TomTom y otros navegadores en 24 horas. Diga qué modelo tiene y le confirmamos precio por WhatsApp.',
+      'Actualizamos mapas de Garmin, TomTom y otros navegadores en 24 horas, desde 49,90 €. Diga qué modelo tiene y le confirmamos precio por WhatsApp.',
   },
   en: {
-    title: 'GPS map updates in 24 h — GPS24',
+    title: 'GPS map updates in 24 h — from €49.90 — GPS24',
     description:
-      'We update maps on Garmin, TomTom and other sat navs within 24 hours. Tell us your model and we confirm the price on WhatsApp.',
+      'We update maps on Garmin, TomTom and other sat navs within 24 hours, from 49.90 €. Tell us your model and we confirm the price on WhatsApp.',
   },
   ru: {
-    title: 'Обновление карт GPS за 24 часа — GPS24',
+    title: 'Обновление карт GPS за 24 часа — от 49,90 € — GPS24',
     description:
-      'Обновляем карты Garmin, TomTom и других навигаторов за 24 часа. Напишите модель — подтвердим цену в WhatsApp.',
+      'Обновляем карты Garmin, TomTom и других навигаторов за 24 часа, от 49,90 €. Напишите модель — подтвердим цену в WhatsApp.',
   },
 }[lang];
 ---
@@ -39,10 +43,35 @@ const meta = {
   <Section class="hero">
     <h1>{t('maps.title')}</h1>
     <p class="lead">{t('home.serviceLead')}</p>
+    {
+      service && (
+        <p class="service-price">
+          <span class="price price--lg">{`${t('service.from')} ${formatPrice(service.data.priceFrom)} €`}</span>
+          <Badge tone="amber">{service.data.turnaround[lang]}</Badge>
+        </p>
+      )
+    }
     <div class="hero__cta">
       <WhatsAppCTA {lang} label={t('service.whichDevice')} />
     </div>
   </Section>
+  {
+    service && service.data.includes.length > 0 && (
+      <Section divider>
+        <h2>{t('service.includesTitle')}</h2>
+        <ul>
+          {service.data.includes.map((item) => (
+            <li>{item[lang]}</li>
+          ))}
+        </ul>
+        {service.data.supportedBrands.length > 0 && (
+          <p class="service-brands">
+            {t('service.brandsLine')}: {service.data.supportedBrands.join(' · ')}
+          </p>
+        )}
+      </Section>
+    )
+  }
   <Section>
     <TrustBar {lang} />
   </Section>
