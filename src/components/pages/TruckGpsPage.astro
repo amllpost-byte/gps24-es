@@ -1,12 +1,14 @@
 ---
 // Сценарный лендинг «Грузовая навигация» + «услуга-крючок» — бесплатная
-// консультация для камьонерос (приём Cowboy).
-// TODO(контент): сверить тексты с ТЗ раздел 3, добавить товары категории navigator.
+// консультация для камьонерос (приём Cowboy) + блок «Модель + цена» (ТЗ 02 §3).
+// TODO(контент): полный лендинг по §3 (бандл, ТТХ-акценты, FAQ).
+import { getCollection } from 'astro:content';
 import type { Lang } from '@config';
 import { useTranslations, localizePath } from '@/i18n';
 import BaseLayout from '@/components/BaseLayout.astro';
 import Section from '@/components/Section.astro';
 import Button from '@/components/Button.astro';
+import ProductCard from '@/components/ProductCard.astro';
 import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
 
 interface Props {
@@ -15,6 +17,9 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const navigators = (await getCollection('products'))
+  .filter((p) => p.data.category === 'navigator')
+  .sort((a, b) => a.data.price - b.data.price);
 
 const meta = {
   es: {
@@ -44,4 +49,16 @@ const meta = {
       <Button variant="secondary" href={localizePath('tienda', lang)}>{t('cta.viewCatalog')}</Button>
     </div>
   </Section>
+  {
+    navigators.length > 0 && (
+      <Section divider>
+        <h2>{t('truck.modelsTitle')}</h2>
+        <div class="product-grid">
+          {navigators.map((product) => (
+            <ProductCard {lang} {product} />
+          ))}
+        </div>
+      </Section>
+    )
+  }
 </BaseLayout>

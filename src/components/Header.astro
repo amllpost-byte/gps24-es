@@ -18,10 +18,11 @@ interface Props {
 const { lang, route, rest = '' } = Astro.props;
 const t = useTranslations(lang);
 
-export type NavItem = { key: UIKey; route: RouteKey };
+export type NavItem = { key: UIKey; route: RouteKey; hash?: string };
 const navItems: NavItem[] = [
   { key: 'nav.navigators', route: 'gps-para-camiones' },
-  { key: 'nav.dashcams', route: 'tienda' },
+  // лендинга /dashcams пока нет — честная якорная секция каталога (ревью 11.08)
+  { key: 'nav.dashcams', route: 'tienda', hash: '#dashcams' },
   { key: 'nav.mapUpdates', route: 'actualizacion-de-mapas' },
   { key: 'nav.fleets', route: 'flotas' },
   { key: 'nav.support', route: 'soporte' },
@@ -39,7 +40,7 @@ const navItems: NavItem[] = [
         {
           navItems.map((item) => (
             <li>
-              <a href={localizePath(item.route, lang)} aria-current={item.route === route ? 'page' : undefined}>
+              <a href={localizePath(item.route, lang) + (item.hash ?? '')} aria-current={item.route === route ? 'page' : undefined}>
                 {t(item.key)}
               </a>
             </li>

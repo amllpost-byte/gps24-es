@@ -50,6 +50,23 @@ const ldImages = await Promise.all(
   data.images.map(async (im) => new URL((await getImage({ src: im.src })).src, SITE.url).href)
 );
 
+// og:image — первое фото товара: превью в WhatsApp (основной канал продаж)
+const firstImg = data.images[0] ? await getImage({ src: data.images[0].src }) : null;
+const ogImage = firstImg
+  ? {
+      url: new URL(firstImg.src, SITE.url).href,
+      width: firstImg.attributes.width,
+      height: firstImg.attributes.height,
+    }
+  : undefined;
+
+// ссылки на услуги из serviceAddons (§1.3.3-лайт: без цен, пока услуги не опубликованы)
+const addonMap = {
+  'map-update': { route: 'actualizacion-de-mapas', labelKey: 'product.addMapUpdate' },
+  'dashcam-install': { route: 'instalacion-dashcam', labelKey: 'product.addInstall' },
+} as const;
+const addons = data.serviceAddons.filter((s): s is keyof typeof addonMap => s in addonMap);
+
 const productLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -78,9 +95,9 @@ const hasGallery = data.images.length > 0;
 const waProduct = `${data.name[lang]} (${formatPrice(data.price)} €)`;
 ---
 
-<BaseLayout {lang} route="productos" rest={`/${id}`} {title} {description} jsonLd={[productLd]}>
+<BaseLayout {lang} route="productos" rest={`/${id}`} {title} {description} jsonLd={[productLd]} {ogImage}>
   <Section>
-    <nav class="breadcrumbs" aria-label={t('a11y.mainNav')}>
+    <nav class="breadcrumbs" aria-label={t('a11y.breadcrumbs')}>
       <a href={localizePath('', lang)}>{t('nav.home')}</a> → <a href={localizePath('tienda', lang)}>{t('catalog.title')}</a> →
       {data.name[lang]}
     </nav>
@@ -134,6 +151,15 @@ const waProduct = `${data.name[lang]} (${formatPrice(data.price)} €)`;
             <p><Price amount={data.price} large /></p>
             <p class="buy-box__vat">{t('product.vatIncluded')}</p>
           </div>
+          {
+            addons.length > 0 && (
+              <p class="buy-box__addons">
+                {addons.map((a) => (
+                  <a href={localizePath(addonMap[a].route, lang)}>{t(addonMap[a].labelKey)}</a>
+                ))}
+              </p>
+            )
+          }
           <ul class="buy-box__terms">
             <li>
               <svg class="icon-16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13v10H1zM14 9h5l3 3v4h-8z" /><circle cx="6" cy="18" r="1.6" /><circle cx="17" cy="18" r="1.6" /></svg>

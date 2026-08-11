@@ -4,17 +4,17 @@
 # ⚠ Открытый вопрос владельцу: грузовой режим на N5 (см. заметки).
 sku: DNW-N5
 name:
-  es: 'Navegador GPS Diniwid N5 5" para camión y coche'
-  en: 'Diniwid N5 5" GPS navigator for truck and car'
-  ru: 'GPS-навигатор Diniwid N5 5" для грузовика и легковой'
+  es: 'Navegador GPS Diniwid N5 5"'
+  en: 'Diniwid N5 5" GPS navigator'
+  ru: 'GPS-навигатор Diniwid N5 5"'
 tagline:
-  es: 'Compacto 5" con mapas de camión 3D Navi Truck, funciona sin internet'
-  en: 'Compact 5" with 3D Navi Truck maps, works offline'
-  ru: 'Компактный 5" с грузовыми картами 3D Navi Truck, работает без интернета'
+  es: 'Compacto de 5" con 3D Navi y mapas de toda Europa, funciona sin internet'
+  en: 'Compact 5" with 3D Navi and maps of all Europe, works offline'
+  ru: 'Компактный 5" с 3D Navi и картами всей Европы, работает без интернета'
 description:
-  es: 'Navegador compacto para conductores profesionales: rutas de camión por peso, altura y ADR con mapas 3D Navi Truck instalados y comprobados antes de la entrega. También sirve para coche.'
-  en: 'Compact navigator for professional drivers: truck routing by weight, height and ADR with 3D Navi Truck maps installed and checked before delivery. Also works for cars.'
-  ru: 'Компактный навигатор для профессиональных водителей: грузовые маршруты по весу, высоте и ADR, карты 3D Navi Truck установлены и проверены перед выдачей. Подходит и для легковой.'
+  es: 'El superventas de la gama Diniwid: navegador compacto con 3D Navi y mapas de toda Europa, instalados y comprobados antes de la entrega. Funciona sin internet.'
+  en: 'The best-seller of the Diniwid range: a compact navigator with 3D Navi and maps of all Europe, installed and checked before delivery. Works offline.'
+  ru: 'Хит продаж линейки Diniwid: компактный навигатор с 3D Navi и картами всей Европы — установлены и проверены перед выдачей. Работает без интернета.'
 price: 89.90 # = naviseade.ee 10.08.2026 (решение: цены как в naviseade)
 stock: on-order # ⚠ TODO(владелец): реальное наличие
 category: navigator
@@ -96,10 +96,10 @@ serviceAddons: ['map-update']
   https://www.naviseade.ee/product/50-dniwid-n5-gps/ («5.0" Diniwid N5», €89.90).
   Описание владельца: «Müügihitt» (хит продаж). Прежние сниппеты дилеров
   (iskamgps.com и др.) карточкой подтверждены: 5", 256 MB, 8 GB.
-- ⚠ Аудит 10.08: на карточке N5 НЕТ слова «Truck» (в отличие от N7/N9) —
-  name/tagline/description позиционируют N5 «para camión» на основании слов
-  владельца об ассортименте («грузовые Diniwid»). Подтвердить у владельца, что
-  на N5 реально ставится грузовой режим 3D Navi Truck; если нет — переписать
-  тексты под легковую навигацию.
+- ⚠ Аудит 10–11.08: на карточке N5 НЕТ слова «Truck» (в отличие от N7/N9),
+  поэтому 11.08 name/tagline/description приведены к источнику: без «camión»/
+  Truck/ADR, «хит продаж» (Müügihitt) — с карточки. Если владелец подтвердит,
+  что на N5 ставится грузовой режим 3D Navi Truck, — вернуть грузовое
+  позиционирование и зафиксировать источник.
 - Страница производителя: https://www.ediniwid.com/navigations/diniwid-n5/
 -->

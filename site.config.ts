@@ -9,6 +9,16 @@ export const SITE = {
   defaultLang: 'es' as const,
   langs: ['es', 'en', 'ru'] as const,
 
+  company: {
+    // Юрлицо этапа запуска — эстонская фирма владельца, как на naviseade.ee
+    // (продажи и отправка из Эстонии до октябрьского открытия). После открытия
+    // в CV добавить/заменить испанские реквизиты.
+    legalName: 'ELIAN TRADE OÜ',
+    regCode: '12040944', // Registrikood (Эстония)
+    vat: 'EE101588780', // KMKR / VAT
+    country: 'EE',
+  },
+
   contact: {
     whatsapp: '34637792222',             // только цифры — для wa.me
     whatsappDisplay: '+34 637 792 222',  // как показываем

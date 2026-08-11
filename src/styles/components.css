@@ -499,6 +499,32 @@
     margin-block: var(--space-3) var(--space-6);
   }
 
+  /* ---------- catalog: chips + groups + closing consult (ТЗ 02 §2) ---------- */
+  .catalog-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .catalog-chips a {
+    text-decoration: none;
+  }
+
+  .catalog-group {
+    /* якорь не должен прятать заголовок под sticky-шапку */
+    scroll-margin-top: calc(var(--space-16) + var(--space-4));
+    margin-bottom: var(--space-12);
+  }
+
+  .catalog-group h2 {
+    margin-bottom: var(--space-6);
+  }
+
+  .catalog-consult p {
+    margin-block: 0 var(--space-6);
+  }
+
   /* ---------- product grid / card ---------- */
   .product-grid {
     display: grid;
@@ -737,6 +763,19 @@
     font-size: var(--fs-12);
     font-weight: 600;
     color: var(--muted);
+  }
+
+  /* ссылки на услуги из serviceAddons (§1.3.3-лайт, без цен) */
+  .buy-box__addons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    font-size: var(--fs-14);
+    font-weight: 600;
+  }
+
+  .buy-box__addons a {
+    color: var(--link);
   }
 
   /* строка условий §1.3.2: иконки 16px, пункты через « · » */

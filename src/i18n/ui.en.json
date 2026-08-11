@@ -70,5 +70,9 @@
   "a11y.closeMenu": "Close menu",
   "a11y.switchLang": "Change language",
   "a11y.skipToContent": "Skip to content",
-  "a11y.mainNav": "Main navigation"
+  "a11y.mainNav": "Main navigation",
+  "a11y.breadcrumbs": "Breadcrumbs",
+  "catalog.accessories": "Accessories",
+  "catalog.consultLead": "Not sure which model you need? Message us on WhatsApp and we'll advise you today.",
+  "truck.modelsTitle": "Models and prices"
 }

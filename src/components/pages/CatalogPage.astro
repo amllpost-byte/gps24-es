@@ -1,6 +1,9 @@
 ---
-// Каталог-прайс одной страницей (модель teenage /store): все товары + цены + CTA.
-// Пока коллекция пуста — честный empty-state с WhatsApp, без фейковых карточек.
+// Каталог-прайс одной страницей (ТЗ 02 §2): группы по категориям с якорями
+// (#navegadores / #dashcams), внутри группы сортировка по цене по возрастанию
+// (правило владельца с naviseade), якорные чипы при ≥2 группах и замыкающая
+// полоса-консультация. Пустые группы не рендерятся; при пустой коллекции —
+// честный empty-state с WhatsApp, без фейковых карточек.
 import { getCollection } from 'astro:content';
 import type { Lang } from '@config';
 import { useTranslations } from '@/i18n';
@@ -16,6 +19,17 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const products = await getCollection('products');
+
+const byPrice = (a: (typeof products)[number], b: (typeof products)[number]) => a.data.price - b.data.price;
+const groups = (
+  [
+    { id: 'navegadores', titleKey: 'nav.navigators', category: 'navigator' },
+    { id: 'dashcams', titleKey: 'nav.dashcams', category: 'dashcam' },
+    { id: 'accesorios', titleKey: 'catalog.accessories', category: 'accessory' },
+  ] as const
+)
+  .map((g) => ({ ...g, items: products.filter((p) => p.data.category === g.category).sort(byPrice) }))
+  .filter((g) => g.items.length > 0);
 
 const meta = {
   es: {
@@ -39,17 +53,37 @@ const meta = {
     <h1>{t('catalog.title')}</h1>
     <p class="lead">{t('catalog.lead')}</p>
     {
-      products.length === 0 ? (
+      groups.length === 0 ? (
         <div class="empty-state">
           <p>{t('catalog.empty')}</p>
           <WhatsAppCTA {lang} />
         </div>
       ) : (
-        <div class="product-grid">
-          {products.map((product) => (
-            <ProductCard {lang} {product} />
+        <>
+          {groups.length >= 2 && (
+            <nav class="catalog-chips" aria-label={t('catalog.title')}>
+              {groups.map((g) => (
+                <a class="badge badge--neutral" href={`#${g.id}`}>
+                  {t(g.titleKey)}
+                </a>
+              ))}
+            </nav>
+          )}
+          {groups.map((g) => (
+            <section class="catalog-group" id={g.id}>
+              <h2>{t(g.titleKey)}</h2>
+              <div class="product-grid">
+                {g.items.map((product) => (
+                  <ProductCard {lang} {product} />
+                ))}
+              </div>
+            </section>
           ))}
-        </div>
+          <div class="service-block catalog-consult">
+            <p>{t('catalog.consultLead')}</p>
+            <WhatsAppCTA {lang} />
+          </div>
+        </>
       )
     }
   </Section>

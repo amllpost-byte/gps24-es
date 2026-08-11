@@ -24,7 +24,7 @@ const t = useTranslations(lang);
       {
         items.map((item) => (
           <li>
-            <a href={localizePath(item.route, lang)} aria-current={item.route === route ? 'page' : undefined}>
+            <a href={localizePath(item.route, lang) + (item.hash ?? '')} aria-current={item.route === route ? 'page' : undefined}>
               {t(item.key)}
             </a>
           </li>

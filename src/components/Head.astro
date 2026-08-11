@@ -13,9 +13,10 @@ interface Props {
   description: string;
   noindex?: boolean;
   jsonLd?: object[];
+  ogImage?: { url: string; width?: number | string; height?: number | string };
 }
 
-const { lang, route, rest = '', title, description, noindex = false, jsonLd = [] } = Astro.props;
+const { lang, route, rest = '', title, description, noindex = false, jsonLd = [], ogImage } = Astro.props;
 
 const canonical = SITE.url + localizePath(route, lang, rest);
 const ogLocale = { es: 'es_ES', en: 'en_GB', ru: 'ru_RU' } as const;
@@ -24,6 +25,8 @@ const orgLd = {
   '@context': 'https://schema.org',
   '@type': ['Organization', 'LocalBusiness'],
   name: SITE.name,
+  legalName: SITE.company.legalName,
+  vatID: SITE.company.vat,
   url: SITE.url,
   telephone: `+${SITE.contact.whatsapp}`,
   email: SITE.contact.email,
@@ -61,6 +64,9 @@ const orgLd = {
 <meta property="og:url" content={canonical} />
 <meta property="og:locale" content={ogLocale[lang]} />
 {SITE.langs.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={ogLocale[l]} />)}
-{/* TODO(SEO): og:image из scripts/og-generate.mjs, когда появится og-template.svg */}
+{ogImage && <meta property="og:image" content={ogImage.url} />}
+{ogImage?.width && <meta property="og:image:width" content={String(ogImage.width)} />}
+{ogImage?.height && <meta property="og:image:height" content={String(ogImage.height)} />}
+{/* TODO(SEO): брендированный og:image для НЕтоварных страниц — scripts/og-generate.mjs */}
 <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
 {jsonLd.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)} />)}

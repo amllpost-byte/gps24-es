@@ -70,5 +70,9 @@
   "a11y.closeMenu": "Закрыть меню",
   "a11y.switchLang": "Сменить язык",
   "a11y.skipToContent": "Перейти к содержимому",
-  "a11y.mainNav": "Основная навигация"
+  "a11y.mainNav": "Основная навигация",
+  "a11y.breadcrumbs": "Хлебные крошки",
+  "catalog.accessories": "Аксессуары",
+  "catalog.consultLead": "Не уверены, какая модель нужна? Напишите в WhatsApp — подскажем сегодня же.",
+  "truck.modelsTitle": "Модели и цены"
 }

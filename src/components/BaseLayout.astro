@@ -21,16 +21,17 @@ interface Props {
   description: string;
   noindex?: boolean;
   jsonLd?: object[];
+  ogImage?: { url: string; width?: number | string; height?: number | string };
 }
 
-const { lang, route, rest = '', title, description, noindex, jsonLd } = Astro.props;
+const { lang, route, rest = '', title, description, noindex, jsonLd, ogImage } = Astro.props;
 const t = useTranslations(lang);
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
-    <Head {lang} {route} {rest} {title} {description} {noindex} {jsonLd} />
+    <Head {lang} {route} {rest} {title} {description} {noindex} {jsonLd} {ogImage} />
   </head>
   <body>
     <a class="skip-link" href="#main">{t('a11y.skipToContent')}</a>

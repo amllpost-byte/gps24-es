@@ -70,5 +70,9 @@
   "a11y.closeMenu": "Cerrar menú",
   "a11y.switchLang": "Cambiar idioma",
   "a11y.skipToContent": "Saltar al contenido",
-  "a11y.mainNav": "Navegación principal"
+  "a11y.mainNav": "Navegación principal",
+  "a11y.breadcrumbs": "Migas de pan",
+  "catalog.accessories": "Accesorios",
+  "catalog.consultLead": "¿No está seguro de qué modelo necesita? Escríbanos por WhatsApp y le asesoramos hoy mismo.",
+  "truck.modelsTitle": "Modelos y precios"
 }

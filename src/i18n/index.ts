@@ -34,12 +34,14 @@ export const routeMap = {
 
 export type RouteKey = keyof typeof routeMap;
 
-/** Путь страницы для языка: localizePath('tienda', 'ru') → '/ru/katalog'.
- *  rest — хвост после слага (напр. '/navi-truck-7' для карточки). */
+/** Путь страницы для языка: localizePath('tienda', 'ru') → '/ru/katalog/'.
+ *  rest — хвост после слага (напр. '/diniwid-n9' для карточки).
+ *  Всегда с завершающим слэшем: так URL совпадает с тем, что реально отдаёт
+ *  GitHub Pages (…/index.html) и с sitemap — canonical/hreflang без 301. */
 export function localizePath(route: RouteKey, lang: Lang, rest = ''): string {
   const slug = lang === 'es' ? route : routeMap[route][lang];
   const parts = [lang === 'es' ? '' : lang, slug].filter(Boolean);
-  return '/' + parts.join('/') + rest;
+  return ('/' + parts.join('/') + rest + '/').replace(/\/+$/, '/');
 }
 
 export function getLangFromUrl(url: URL): Lang {
