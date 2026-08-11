@@ -37,8 +37,8 @@
   }
 
   .logo__mark b {
-    /* янтарь как текст — токен-пара для светлой/тёмной темы */
-    color: var(--amber-ink);
+    /* точный оттенок «24» с холдинг-страницы (light #C9700F / dark #F5A623) */
+    color: var(--brand-accent);
   }
 
   .logo__tag {
