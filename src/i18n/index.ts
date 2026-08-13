@@ -22,7 +22,6 @@ export const routeMap = {
   tienda: { en: 'catalog', ru: 'katalog' },
   productos: { en: 'products', ru: 'products' },
   'actualizacion-de-mapas': { en: 'map-updates', ru: 'obnovlenie-kart' },
-  'instalacion-dashcam': { en: 'dashcam-installation', ru: 'ustanovka-registratora' },
   'gps-para-camiones': { en: 'truck-gps', ru: 'gps-dlya-gruzovikov' },
   comparar: { en: 'compare', ru: 'sravnenie' },
   flotas: { en: 'fleets', ru: 'avtoparki' },

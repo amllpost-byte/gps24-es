@@ -60,10 +60,9 @@ const ogImage = firstImg
     }
   : undefined;
 
-// ссылки на услуги из serviceAddons (§1.3.3-лайт: без цен, пока услуги не опубликованы)
+// ссылки на услуги из serviceAddons (§1.3.3-лайт: без цен-чекбоксов)
 const addonMap = {
   'map-update': { route: 'actualizacion-de-mapas', labelKey: 'product.addMapUpdate' },
-  'dashcam-install': { route: 'instalacion-dashcam', labelKey: 'product.addInstall' },
 } as const;
 const addons = data.serviceAddons.filter((s): s is keyof typeof addonMap => s in addonMap);
 

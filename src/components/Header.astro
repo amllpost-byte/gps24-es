@@ -19,12 +19,11 @@ const { lang, route, rest = '' } = Astro.props;
 const t = useTranslations(lang);
 
 export type NavItem = { key: UIKey; route: RouteKey; hash?: string };
+// Регистраторы и аксессуары убраны 11.08 (владелец): сайт только про грузовую
+// навигацию, для регистраторов будет отдельный сайт.
 const navItems: NavItem[] = [
   { key: 'nav.navigators', route: 'gps-para-camiones' },
-  // лендинга /dashcams пока нет — честная якорная секция каталога (ревью 11.08)
-  { key: 'nav.dashcams', route: 'tienda', hash: '#dashcams' },
   { key: 'nav.mapUpdates', route: 'actualizacion-de-mapas' },
-  { key: 'catalog.accessories', route: 'tienda', hash: '#accesorios' },
   { key: 'nav.fleets', route: 'flotas' },
   // «Поддержка» убрана из шапки (владелец, 11.08); страница жива, ссылка в футере
   { key: 'nav.contact', route: 'contacto' },
