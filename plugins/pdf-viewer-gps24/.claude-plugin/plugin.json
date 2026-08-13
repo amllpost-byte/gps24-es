@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "pdf-viewer-gps24",
+  "displayName": "PDF Viewer — GPS24",
+  "version": "0.1.0",
+  "description": "GPS24 layer on top of the PDF Viewer plugin: supplier/customer invoice review against ELIAN TRADE OÜ requisites, warranty and withdrawal packets, manufacturer-manual extraction into product frontmatter, and the corporate approval stamp.",
+  "author": {
+    "name": "GPS24",
+    "email": "info@gps24.es",
+    "url": "https://gps24.es"
+  },
+  "homepage": "https://gps24.es",
+  "repository": "https://github.com/amllpost-byte/gps24-es",
+  "keywords": ["pdf", "gps24", "factura", "garantia", "manual", "sello"]
+}

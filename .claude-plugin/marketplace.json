@@ -1,0 +1,20 @@
+{
+  "name": "gps24-tools",
+  "description": "Herramientas internas de GPS24 (ELIAN TRADE OÜ) para Claude Code.",
+  "owner": {
+    "name": "GPS24",
+    "email": "info@gps24.es",
+    "url": "https://gps24.es"
+  },
+  "plugins": [
+    {
+      "name": "pdf-viewer-gps24",
+      "source": "./plugins/pdf-viewer-gps24",
+      "description": "PDF viewer customizado para GPS24: facturas, garantias, manuales de fabricante y sello corporativo.",
+      "author": {
+        "name": "GPS24",
+        "url": "https://gps24.es"
+      }
+    }
+  ]
+}
