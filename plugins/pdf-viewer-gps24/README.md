@@ -24,9 +24,12 @@ requirement is real but documented rather than enforced.
 The repository root is the marketplace, so from the repo:
 
 ```
-/plugin marketplace add .
+/plugin marketplace add ./
 /plugin install pdf-viewer-gps24@gps24-tools
 ```
+
+The trailing slash matters. A bare `.` is rejected with `Invalid marketplace
+source format` — the path form has to start with `./`.
 
 Or from anywhere, once this branch is on `main`:
 
@@ -69,6 +72,26 @@ which country's consumer law governs goes to the owner. Both `factura` and
 `garantia` are written to raise questions rather than answer them, because a
 wrong answer in a document sent to a customer or a tax authority is expensive
 and hard to retract.
+
+## What has actually been tested
+
+Installed from this repo and run end to end on 14.08.2026.
+
+- All four skills load and resolve as `pdf-viewer-gps24:<name>` in a fresh
+  session.
+- `factura` was run against a synthetic supplier invoice carrying six planted
+  defects (fixture: `plugins/pdf-viewer-gps24/test/`). It caught all six —
+  wrong buyer legal name, VAT off by one digit, missing seller VAT, a €2.20
+  arithmetic error in the total, a unit price 20 € above the catalogue, and a
+  `_`-prefixed draft SKU billed as if it were live. It read the real values out
+  of `site.config.ts` and the real prices out of `src/content/products/`, kept
+  the fiscal points as questions for the accountant, and changed nothing.
+
+Not yet exercised: `manual-a-ficha`, `garantia`, and `sello` end to end, and any
+of the **interactive** viewer work — annotating in colour, placing the stamp,
+filling form fields. That half needs the upstream `pdf-viewer` plugin present in
+the same session; the analysis half above needs only ordinary file tools, which
+is why it runs anywhere.
 
 ## Language
 
