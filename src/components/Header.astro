@@ -19,13 +19,11 @@ const { lang, route, rest = '' } = Astro.props;
 const t = useTranslations(lang);
 
 export type NavItem = { key: UIKey; route: RouteKey; hash?: string };
-// Регистраторы и аксессуары убраны 11.08 (владелец): сайт только про грузовую
-// навигацию, для регистраторов будет отдельный сайт.
+// Этап лендинга: каталог появится с первыми SKU, пока меню ведёт на якоря
+// главной + контакты.
 const navItems: NavItem[] = [
-  { key: 'nav.navigators', route: 'gps-para-camiones' },
-  { key: 'nav.mapUpdates', route: 'actualizacion-de-mapas' },
-  { key: 'nav.fleets', route: 'flotas' },
-  // «Поддержка» убрана из шапки (владелец, 11.08); страница жива, ссылка в футере
+  { key: 'nav.packs', route: '', hash: '#packs' },
+  { key: 'nav.how', route: '', hash: '#como-funciona' },
   { key: 'nav.contact', route: 'contacto' },
 ];
 ---
@@ -40,7 +38,7 @@ const navItems: NavItem[] = [
         {
           navItems.map((item) => (
             <li>
-              <a href={localizePath(item.route, lang) + (item.hash ?? '')} aria-current={item.route === route ? 'page' : undefined}>
+              <a href={localizePath(item.route, lang) + (item.hash ?? '')} aria-current={!item.hash && item.route === route ? 'page' : undefined}>
                 {t(item.key)}
               </a>
             </li>

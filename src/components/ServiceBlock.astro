@@ -1,6 +1,7 @@
 ---
-// Блок услуги «Обновление карт» (главный маржинальный продукт) — на главной
-// и в карточках. CTA — приём TomTom: «какой у вас навигатор?».
+// Блок «сервис в WhatsApp на вашем языке» — главный дифференциатор ниши
+// (исследование 11.08: языки + WhatsApp против федеральных операторов).
+// CTA — приём «пришлите фото/план жилья»: конкретное действие вместо «звоните».
 import type { Lang } from '@config';
 import { useTranslations } from '@/i18n';
 import WhatsAppCTA from './WhatsAppCTA.astro';
@@ -16,5 +17,5 @@ const t = useTranslations(lang);
 <div class="service-block">
   <h2>{t('home.serviceTitle')}</h2>
   <p>{t('home.serviceLead')}</p>
-  <WhatsAppCTA {lang} label={t('service.whichDevice')} />
+  <WhatsAppCTA {lang} label={t('service.sendPhotos')} />
 </div>

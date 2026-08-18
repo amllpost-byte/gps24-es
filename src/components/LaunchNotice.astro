@@ -15,6 +15,7 @@ const { lang } = Astro.props;
 <style>
   .launch-notice {
     margin: 0;
+    max-width: none; /* глобальное p{max-width:65ch} не для полосы на всю ширину */
     padding: var(--space-2) var(--space-4);
     background: var(--surface-2);
     border-block-end: 1px solid var(--line);

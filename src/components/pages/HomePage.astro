@@ -1,10 +1,15 @@
 ---
-// Главная: hero → trust-бар → сценарии → товарная сетка → услуга → B2B-вставка
-// (канон: 6–8 секций). TODO(контент): hero одного конкретного товара с ценой
-// (канон §Главная-1).
-import { getCollection } from 'astro:content';
-import type { Lang } from '@config';
-import { useTranslations, localizePath } from '@/i18n';
+// Главная-лендинг охранного сайта (канон: 6–8 секций): hero → trust-бар →
+// сценарии → как работает (+честная оговорка про самомониторинг) → пакеты
+// (без выдуманных цен — presupuesto по WhatsApp) → сервис на языках → тёмный
+// блок «sin cuotas» с GDPR-нотой.
+// Юридическая рамка текстов (исследование 11.08): «мгновенное обнаружение +
+// доказательства для полиции»; НЕ обещаем «полиция выселит без суда», НЕ
+// называемся «empresa de seguridad».
+// TODO(контент): каталог и карточки Ajax — когда владелец подтвердит закупку
+// и розничные цены; FAQ; страницы сценариев.
+import { SITE, type Lang } from '@config';
+import { useTranslations } from '@/i18n';
 import BaseLayout from '@/components/BaseLayout.astro';
 import Section from '@/components/Section.astro';
 import Button from '@/components/Button.astro';
@@ -12,7 +17,6 @@ import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
 import TrustBar from '@/components/TrustBar.astro';
 import ScenarioTiles from '@/components/ScenarioTiles.astro';
 import ServiceBlock from '@/components/ServiceBlock.astro';
-import ProductCard from '@/components/ProductCard.astro';
 
 interface Props {
   lang: Lang;
@@ -20,30 +24,33 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-// витрина главной: навигаторы, затем регистраторы, по цене; первые 8 —
-// полный ассортимент на /tienda (кнопка под сеткой)
-const catOrder = { navigator: 0, dashcam: 1, accessory: 2 } as const;
-const featured = (await getCollection('products'))
-  .sort((a, b) => catOrder[a.data.category] - catOrder[b.data.category] || a.data.price - b.data.price)
-  .slice(0, 8);
 
 const meta = {
   es: {
-    title: 'GPS para camiones en España — GPS24',
-    description:
-      'Navegadores GPS para camión con 3D Navi Truck y actualización de mapas. Precios claros, garantía de 3 años. WhatsApp +34 637 792 222.',
+    title: `Alarmas sin cuotas para tu vivienda en España — ${SITE.name}`,
+    description: `Sistemas de alarma y videovigilancia Ajax sin cuotas mensuales: aviso al instante, vídeo como prueba, sensores de fuga de agua. Costa Blanca. WhatsApp ${SITE.contact.whatsappDisplay}.`,
   },
   en: {
-    title: 'Truck GPS in Spain — GPS24',
-    description:
-      'Truck sat navs with 3D Navi Truck and map updates. Clear prices, 3-year warranty. WhatsApp +34 637 792 222.',
+    title: `No-fee home alarms in Spain — ${SITE.name}`,
+    description: `Ajax alarm and video-surveillance systems with no monthly fees: instant alerts, video evidence, water-leak protection. Costa Blanca. WhatsApp ${SITE.contact.whatsappDisplay}.`,
   },
   ru: {
-    title: 'GPS для грузовиков в Испании — GPS24',
-    description:
-      'GPS-навигаторы для грузовиков с 3D Navi Truck и обновление карт. Понятные цены, гарантия 3 года. WhatsApp +34 637 792 222.',
+    title: `Охранные системы в Испании без абонплаты — ${SITE.name}`,
+    description: `Сигнализации и видеонаблюдение Ajax без абонплаты: мгновенные уведомления, видеодоказательства, датчики протечки. Коста-Бланка. WhatsApp ${SITE.contact.whatsappDisplay}.`,
   },
 }[lang];
+
+const packs = [
+  { name: t('pack1.name'), forWho: t('pack1.for'), items: t('pack1.items').split('|'), featured: false },
+  { name: t('pack2.name'), forWho: t('pack2.for'), items: t('pack2.items').split('|'), featured: true },
+  { name: t('pack3.name'), forWho: t('pack3.for'), items: t('pack3.items').split('|'), featured: false },
+];
+
+const steps = [
+  { title: t('how.step1Title'), body: t('how.step1Body') },
+  { title: t('how.step2Title'), body: t('how.step2Body') },
+  { title: t('how.step3Title'), body: t('how.step3Body') },
+];
 ---
 
 <BaseLayout {lang} route="" title={meta.title} description={meta.description}>
@@ -52,41 +59,192 @@ const meta = {
     <p class="lead">{t('home.heroLead')}</p>
     <div class="hero__cta">
       <WhatsAppCTA {lang} />
-      <Button variant="secondary" href={localizePath('tienda', lang)}>{t('cta.viewCatalog')}</Button>
+      <Button variant="secondary" href="#packs">{t('cta.viewPacks')}</Button>
     </div>
   </Section>
-  {/* линия маршрута сразу под hero — видна с первого экрана (владелец, 11.08) */}
-  <Section divider>
+  <Section>
     <TrustBar {lang} />
   </Section>
   <Section>
     <h2>{t('home.scenariosTitle')}</h2>
     <ScenarioTiles {lang} />
   </Section>
-  {
-    featured.length > 0 && (
-      <Section>
-        {/* товарная сетка С4 (ТЗ 02 §1): цены видны с главной, не «за редиректом» */}
-        <h2>{t('catalog.title')}</h2>
-        <div class="product-grid">
-          {featured.map((product) => (
-            <ProductCard {lang} {product} />
-          ))}
-        </div>
-        <div class="hero__cta">
-          <Button variant="secondary" href={localizePath('tienda', lang)}>{t('cta.viewCatalog')}</Button>
-        </div>
-      </Section>
-    )
-  }
-  <Section divider>
+  <Section id="como-funciona">
+    <h2>{t('home.howTitle')}</h2>
+    <ol class="steps">
+      {
+        steps.map((step) => (
+          <li>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+    {/* честность про самомониторинг — юр. рамка ниши, не мелкий шрифт */}
+    <p class="self-note">{t('how.selfNote')}</p>
+  </Section>
+  <Section id="packs">
+    <h2>{t('home.packsTitle')}</h2>
+    <p class="section-lead">{t('home.packsLead')}</p>
+    <ul class="packs" role="list">
+      {
+        packs.map((pack) => (
+          <li class:list={['pack', pack.featured && 'pack--featured']}>
+            <h3>{pack.name}</h3>
+            <p class="pack__for">{pack.forWho}</p>
+            <ul role="list">
+              {pack.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            <WhatsAppCTA {lang} product={pack.name} label={t('pack.cta')} />
+          </li>
+        ))
+      }
+    </ul>
+    <p class="packs-note">{t('pack.priceNote')}</p>
+  </Section>
+  <Section>
     <ServiceBlock {lang} />
   </Section>
   <Section tone="dark">
-    <h2>{t('home.fleetTitle')}</h2>
-    <p>{t('home.fleetLead')}</p>
+    <h2>{t('home.whyTitle')}</h2>
+    <p>{t('home.whyBody')}</p>
+    <p class="dark-note">{t('home.gdprNote')}</p>
     <div class="hero__cta">
-      <Button variant="primary" href={localizePath('flotas', lang)}>{t('nav.fleets')}</Button>
+      <WhatsAppCTA {lang} label={t('cta.quote')} />
     </div>
   </Section>
 </BaseLayout>
+
+<style>
+  /* шаги «как работает»: нумерация counter'ом, карточки на токенах */
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+  @media (min-width: 768px) {
+    .steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .steps li {
+    counter-increment: step;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    padding: var(--space-6);
+  }
+  .steps li::before {
+    content: counter(step);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 2rem;
+    block-size: 2rem;
+    margin-block-end: var(--space-3);
+    background: var(--amber);
+    color: var(--on-amber);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+  .steps h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--fs-18);
+    line-height: var(--lh-heading);
+  }
+  .steps p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .self-note {
+    margin: var(--space-6) 0 0;
+    padding: var(--space-4);
+    background: var(--surface-2);
+    border-inline-start: 3px solid var(--amber);
+    border-radius: var(--radius-ctl);
+    font-size: var(--fs-14);
+    line-height: var(--lh-base);
+  }
+
+  .section-lead {
+    margin: 0 0 var(--space-6);
+    max-inline-size: 65ch;
+    color: var(--muted);
+  }
+
+  /* пакеты: 3 карточки, флагман выделен янтарной рамкой */
+  .packs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (min-width: 768px) {
+    .packs {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .pack {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-1);
+  }
+  .pack--featured {
+    border: 2px solid var(--amber);
+  }
+  .pack h3 {
+    margin: 0;
+    font-size: var(--fs-22);
+    line-height: var(--lh-heading);
+  }
+  .pack__for {
+    margin: var(--space-1) 0 var(--space-4);
+    color: var(--muted);
+    font-size: var(--fs-14);
+  }
+  .pack ul {
+    flex: 1 0 auto;
+    display: grid;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-6);
+    padding: 0;
+    list-style: none;
+  }
+  .pack ul li {
+    position: relative;
+    padding-inline-start: var(--space-6);
+  }
+  .pack ul li::before {
+    content: '✓';
+    position: absolute;
+    inset-inline-start: 0;
+    color: var(--amber-ink);
+    font-weight: 700;
+  }
+  .packs-note {
+    margin: var(--space-6) auto 0; /* p ограничен 65ch — центрируем сам блок */
+    color: var(--muted);
+    font-size: var(--fs-14);
+    text-align: center;
+  }
+
+  .dark-note {
+    font-size: var(--fs-14);
+    opacity: 0.75;
+  }
+</style>

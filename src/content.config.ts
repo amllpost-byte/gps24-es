@@ -17,7 +17,9 @@ const products = defineCollection({
       description: localized,
       price: z.number().positive(), // EUR
       stock: z.enum(['in-stock', 'on-order', 'out']),
-      category: z.enum(['navigator', 'dashcam', 'accessory']),
+      // охранная таксономия: kit — StarterKit'ы, hub — центральные блоки,
+      // detector — движение/открытие/протечка/дым, control — клавиатуры/брелоки
+      category: z.enum(['kit', 'hub', 'camera', 'detector', 'siren', 'control', 'accessory']),
       brand: z.string().optional(),
       specs: z
         .array(z.object({ label: localized, value: z.string(), source: z.string().min(1) }))

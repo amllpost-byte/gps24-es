@@ -1,7 +1,7 @@
 ---
 // Черновик страницы приватности: noindex до готовности полного текста RGPD/LSSI-CE.
 // TODO(юр.): полный текст с данными ответственного — когда у владельца будет NIE/NIF.
-import type { Lang } from '@config';
+import { SITE, type Lang } from '@config';
 import { useTranslations } from '@/i18n';
 import BaseLayout from '@/components/BaseLayout.astro';
 import Section from '@/components/Section.astro';
@@ -15,9 +15,9 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const meta = {
-  es: { title: 'Privacidad — GPS24', description: 'Política de privacidad de gps24.es.' },
-  en: { title: 'Privacy — GPS24', description: 'Privacy policy of gps24.es.' },
-  ru: { title: 'Конфиденциальность — GPS24', description: 'Политика конфиденциальности gps24.es.' },
+  es: { title: `Privacidad — ${SITE.name}`, description: `Política de privacidad de ${SITE.domain}.` },
+  en: { title: `Privacy — ${SITE.name}`, description: `Privacy policy of ${SITE.domain}.` },
+  ru: { title: `Конфиденциальность — ${SITE.name}`, description: `Политика конфиденциальности ${SITE.domain}.` },
 }[lang];
 ---
 

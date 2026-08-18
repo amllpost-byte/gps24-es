@@ -1,8 +1,7 @@
 ---
-// Текстовый логотип холдинг-страницы (решение владельца 10.08.2026):
-// «GPS24» с янтарной «24» + подпись-регион в mono-разрядку.
-// Прежний глиф остался только в public/favicon.svg.
-import type { Lang } from '@config';
+// Текстовый логотип по канону холдинга GPS24: {mark} + янтарный {accent},
+// подпись-регион в mono-разрядку. Текст — из site.config (рабочее название).
+import { SITE, type Lang } from '@config';
 import { useTranslations } from '@/i18n';
 
 interface Props {
@@ -14,5 +13,5 @@ const { lang, tag = true } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<span class="logo__mark">GPS<b>24</b></span>
+<span class="logo__mark">{SITE.brand.mark}<b>{SITE.brand.accent}</b></span>
 {tag && <span class="logo__tag">{t('brand.tagline')}</span>}

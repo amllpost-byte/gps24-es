@@ -35,7 +35,7 @@ const stockBadge = {
 } as const;
 const stock = stockBadge[data.stock];
 
-const title = `${data.name[lang]} — ${formatPrice(data.price)} € — GPS24`;
+const title = `${data.name[lang]} — ${formatPrice(data.price)} € — ${SITE.name}`;
 const description = `${data.tagline[lang]}. ${t(stock.key)}, ${t('trust.warranty')}.`;
 
 const availability = {
@@ -60,11 +60,10 @@ const ogImage = firstImg
     }
   : undefined;
 
-// ссылки на услуги из serviceAddons (§1.3.3-лайт: без цен-чекбоксов)
-const addonMap = {
-  'map-update': { route: 'actualizacion-de-mapas', labelKey: 'product.addMapUpdate' },
-} as const;
-const addons = data.serviceAddons.filter((s): s is keyof typeof addonMap => s in addonMap);
+// serviceAddons: пока опубликованных услуг нет — карта пустая; вернуть ссылки,
+// когда появится страница услуги установки (§1.3.3-лайт: без цен-чекбоксов)
+const addonMap = {} as Record<string, { route: import('@/i18n').RouteKey; labelKey: import('@/i18n').UIKey }>;
+const addons = data.serviceAddons.filter((s) => s in addonMap);
 
 const productLd = {
   '@context': 'https://schema.org',
@@ -97,7 +96,7 @@ const waProduct = `${data.name[lang]} (${formatPrice(data.price)} €)`;
 <BaseLayout {lang} route="productos" rest={`/${id}`} {title} {description} jsonLd={[productLd]} {ogImage}>
   <Section>
     <nav class="breadcrumbs" aria-label={t('a11y.breadcrumbs')}>
-      <a href={localizePath('', lang)}>{t('nav.home')}</a> → <a href={localizePath('tienda', lang)}>{t('catalog.title')}</a> →
+      <a href={localizePath('', lang)}>{t('nav.home')}</a> →
       {data.name[lang]}
     </nav>
     <div class:list={['product-layout', hasGallery && 'product-layout--media']}>

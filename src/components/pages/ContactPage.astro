@@ -15,18 +15,19 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
+const contactLine = `WhatsApp ${SITE.contact.whatsappDisplay} · ${SITE.contact.email}`;
 const meta = {
   es: {
-    title: 'Contacto — GPS24 Benidorm',
-    description: 'WhatsApp +34 637 792 222 · info@gps24.es · Benidorm, Comunidad Valenciana.',
+    title: `Contacto — ${SITE.name}`,
+    description: `${contactLine} · Benidorm, Comunidad Valenciana.`,
   },
   en: {
-    title: 'Contact — GPS24 Benidorm',
-    description: 'WhatsApp +34 637 792 222 · info@gps24.es · Benidorm, Valencia region, Spain.',
+    title: `Contact — ${SITE.name}`,
+    description: `${contactLine} · Benidorm, Valencia region, Spain.`,
   },
   ru: {
-    title: 'Контакты — GPS24 Бенидорм',
-    description: 'WhatsApp +34 637 792 222 · info@gps24.es · Бенидорм, регион Валенсия, Испания.',
+    title: `Контакты — ${SITE.name}`,
+    description: `${contactLine} · Бенидорм, регион Валенсия, Испания.`,
   },
 }[lang];
 ---

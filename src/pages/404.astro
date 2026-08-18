@@ -1,6 +1,7 @@
 ---
 // 404 — одна на сайт (GitHub Pages отдаёт /404.html для всех путей).
 // Базовый язык ES + ссылки на главные всех трёх локалей.
+import { SITE } from '@config';
 import { useTranslations, localizePath } from '@/i18n';
 import BaseLayout from '@/components/BaseLayout.astro';
 import Section from '@/components/Section.astro';
@@ -9,7 +10,7 @@ import Button from '@/components/Button.astro';
 const t = useTranslations('es');
 ---
 
-<BaseLayout lang="es" route="" title="404 — GPS24" description={t('notFound.body')} noindex>
+<BaseLayout lang="es" route="" title={`404 — ${SITE.name}`} description={t('notFound.body')} noindex>
   <Section class="hero">
     <h1>{t('notFound.title')}</h1>
     <p class="lead">{t('notFound.body')}</p>

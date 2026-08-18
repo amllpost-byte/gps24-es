@@ -1,7 +1,8 @@
 ---
-// Плитки «для кого» — группировка по сценарию покупателя, не по бренду (канон).
+// Плитки «для кого» — группировка по сценарию владельца жилья, не по бренду
+// (канон). Страниц-сценариев пока нет — плитки ведут на пакеты главной.
 import type { Lang } from '@config';
-import { useTranslations, localizePath, type RouteKey, type UIKey } from '@/i18n';
+import { useTranslations, localizePath, type UIKey } from '@/i18n';
 
 interface Props {
   lang: Lang;
@@ -11,27 +12,31 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const icons = {
-  truck:
-    '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h16v14H2zM18 13h6l4 5v4h-10z"/><circle cx="8" cy="24" r="2.5"/><circle cx="23" cy="24" r="2.5"/></svg>',
-  maps:
-    '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8l8-3 8 3 8-3v19l-8 3-8-3-8 3z"/><path d="M12 5v19M20 8v19"/></svg>',
-  fleet:
-    '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h12v10H3zM9 8h12v4M15 4h12v4"/><circle cx="7" cy="24" r="2"/><circle cx="12" cy="24" r="2"/><path d="M15 17h12v5H15z"/><circle cx="19" cy="24" r="2"/><circle cx="24" cy="24" r="2"/></svg>',
+  // вторая резиденция: дом + солнце
+  second:
+    '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16 14 8l10 8M7 14v12h14V14"/><circle cx="26" cy="7" r="3"/><path d="M26 1.5V3M26 11v1.5M31.5 7H30M22 7h-1.5"/></svg>',
+  // пустующий дом: дом + капля (протечки — крючок ниши)
+  empty:
+    '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14 16 5l12 9M7 12v14h18V12"/><path d="M16 15.5s-3.2 3.6-3.2 5.9a3.2 3.2 0 0 0 6.4 0c0-2.3-3.2-5.9-3.2-5.9Z"/></svg>',
+  // постоянное жильё: щит с галочкой
+  main:
+    '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3 6 7v8c0 7 4.5 11.5 10 14 5.5-2.5 10-7 10-14V7Z"/><path d="m11.5 16 3.5 3.5 6-6.5"/></svg>',
 } as const;
 
-// плитка «нужен видеорегистратор» убрана 11.08 — регистраторы на отдельном сайте
-const tiles: { key: UIKey; route: RouteKey; icon: keyof typeof icons }[] = [
-  { key: 'scenario.truck', route: 'gps-para-camiones', icon: 'truck' },
-  { key: 'scenario.maps', route: 'actualizacion-de-mapas', icon: 'maps' },
-  { key: 'scenario.fleet', route: 'flotas', icon: 'fleet' },
+const tiles: { key: UIKey; icon: keyof typeof icons }[] = [
+  { key: 'scenario.second', icon: 'second' },
+  { key: 'scenario.empty', icon: 'empty' },
+  { key: 'scenario.main', icon: 'main' },
 ];
+
+const packsHref = localizePath('', lang) + '#packs';
 ---
 
 <ul class="scenario-tiles" role="list">
   {
     tiles.map((tile) => (
       <li>
-        <a href={localizePath(tile.route, lang)}>
+        <a href={packsHref}>
           <Fragment set:html={icons[tile.icon]} />
           <span>{t(tile.key)}</span>
         </a>

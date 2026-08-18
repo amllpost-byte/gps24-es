@@ -1,7 +1,8 @@
-# Деплой gps24.es на GitHub Pages (ТЗ docs/06-environment.md §Деплой).
+# Workflow для БУДУЩЕГО репозитория охранного сайта (ветка-заготовка живёт
+# в gps24-es, где main = боевой gps24.es — эту ветку в main НЕ мёржить).
 # Деплой-джоб срабатывает ТОЛЬКО с main; PR-джоб делает build + i18n-parity.
-# ⚠ Перед первым релизом: в Settings → Pages переключить Source на «GitHub Actions».
-name: Deploy gps24.es
+# ⚠ Перед первым релизом в новом репо: Settings → Pages → Source «GitHub Actions».
+name: Build & Deploy (Pages)
 on:
   push:
     branches: [main]

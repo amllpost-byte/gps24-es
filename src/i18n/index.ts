@@ -19,13 +19,7 @@ export function useTranslations(lang: Lang) {
 // чтобы переключение языка вело на эквивалентную страницу, а не на главную.
 export const routeMap = {
   '': { en: '', ru: '' },
-  tienda: { en: 'catalog', ru: 'katalog' },
   productos: { en: 'products', ru: 'products' },
-  'actualizacion-de-mapas': { en: 'map-updates', ru: 'obnovlenie-kart' },
-  'gps-para-camiones': { en: 'truck-gps', ru: 'gps-dlya-gruzovikov' },
-  comparar: { en: 'compare', ru: 'sravnenie' },
-  flotas: { en: 'fleets', ru: 'avtoparki' },
-  soporte: { en: 'support', ru: 'podderzhka' },
   contacto: { en: 'contact', ru: 'kontakty' },
   privacidad: { en: 'privacy', ru: 'privacy' },
   cookies: { en: 'cookies', ru: 'cookies' },
@@ -33,7 +27,7 @@ export const routeMap = {
 
 export type RouteKey = keyof typeof routeMap;
 
-/** Путь страницы для языка: localizePath('tienda', 'ru') → '/ru/katalog/'.
+/** Путь страницы для языка: localizePath('contacto', 'ru') → '/ru/kontakty/'.
  *  rest — хвост после слага (напр. '/diniwid-n9' для карточки).
  *  Всегда с завершающим слэшем: так URL совпадает с тем, что реально отдаёт
  *  GitHub Pages (…/index.html) и с sitemap — canonical/hreflang без 301. */

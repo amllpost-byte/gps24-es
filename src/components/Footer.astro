@@ -36,9 +36,8 @@ const year = new Date().getFullYear();
       </ul>
     </div>
     <div>
-      <h3>{t('nav.support')}</h3>
+      <h3>{t('footer.infoTitle')}</h3>
       <ul>
-        <li><a href={localizePath('soporte', lang)}>{t('nav.support')}</a></li>
         <li><a href={localizePath('contacto', lang)}>{t('nav.contact')}</a></li>
         <li><a href={localizePath('privacidad', lang)}>{t('footer.privacy')}</a></li>
         <li><a href={localizePath('cookies', lang)}>{t('footer.cookies')}</a></li>
@@ -47,6 +46,6 @@ const year = new Date().getFullYear();
     </div>
   </div>
   <div class="container site-footer__legal">
-    © {year} GPS24 · gps24.es · {t('trust.warranty')} · {t('trust.returns')}
+    © {year} {SITE.name} · {SITE.domain} · {t('trust.warranty')} · {t('trust.returns')}
   </div>
 </footer>
