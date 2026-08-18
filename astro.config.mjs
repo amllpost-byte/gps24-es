@@ -1,5 +1,4 @@
-// Сайт охранных систем (рабочее название segur24) — конфиг Astro.
-// ⚠ site — домен-заглушка до покупки реального (см. site.config.ts).
+// casalarma.es — конфиг Astro (домен куплен 18.08.2026, см. site.config.ts).
 // ES — корень без префикса, EN/RU — /en/ и /ru/.
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
@@ -8,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 const SITEMAP_EXCLUDE = /\/(404|privacidad|privacy|cookies)(\/|$)/;
 
 export default defineConfig({
-  site: 'https://segur24.es',
+  site: 'https://casalarma.es',
   output: 'static',
   i18n: {
     defaultLocale: 'es',

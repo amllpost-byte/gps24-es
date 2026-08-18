@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://segur24.es/sitemap-index.xml
+Sitemap: https://casalarma.es/sitemap-index.xml

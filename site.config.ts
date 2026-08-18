@@ -1,22 +1,23 @@
-// Сайт охранных систем (анти-окупа) — единственный источник бизнес-данных.
-// Цены, часы, телефон, сроки, тексты trust-бара — ТОЛЬКО здесь.
+// casalarma.es — сайт охранных систем (анти-окупа). Единственный источник
+// бизнес-данных: цены, часы, телефон, сроки, тексты trust-бара — ТОЛЬКО здесь.
 // Шаблоны читают отсюда; литералы в компонентах запрещены.
 //
-// ⚠ РАБОЧЕЕ НАЗВАНИЕ. Домен ещё не куплен (решение владельца 18.08.2026:
-// «начни с рабочим названием»). Когда появится домен/бренд — поменять здесь
-// name/domain/url/brand и email, плюс public/robots.txt и site в astro.config.mjs.
+// Домен casalarma.es куплен владельцем 18.08.2026 в DonDominio (истекает
+// 18/08/2027). Бренд: CASALARMA — портманто casa+alarma с общей «a»,
+// произносится одинаково на ES/EN/RU (решение владельца, чат 18.08).
 
 export const SITE = {
-  name: 'SEGUR24', // рабочее название в духе gps24.es; НЕ финальное
-  domain: 'segur24.es', // заглушка до покупки домена
-  url: 'https://segur24.es',
+  name: 'CASALARMA',
+  domain: 'casalarma.es',
+  url: 'https://casalarma.es',
   defaultLang: 'es' as const,
   langs: ['es', 'en', 'ru'] as const,
 
   // Текстовый логотип: {mark}{accent}, accent — янтарный (канон холдинга GPS24).
+  // Подсвечен продукт: CAS + ALARMA (общая «a» работает на оба прочтения).
   brand: {
-    mark: 'SEGUR',
-    accent: '24',
+    mark: 'CAS',
+    accent: 'ALARMA',
   },
 
   company: {
@@ -31,9 +32,9 @@ export const SITE = {
   contact: {
     whatsapp: '34637792222',             // только цифры — для wa.me
     whatsappDisplay: '+34 637 792 222',  // как показываем
-    // TODO(домен): после покупки домена завести catch-all (ImprovMX) и заменить.
-    // Пока — рабочий ящик владельца с gps24.es (catch-all уже настроен и работает).
-    email: 'info@gps24.es',
+    // ⚠ Ящик заработает после настройки ImprovMX catch-all для casalarma.es
+    // (MX + SPF в DonDominio — чек-лист в README). До этого письма сюда НЕ доходят.
+    email: 'info@casalarma.es',
     // предзаполненные сообщения; {product} подставляет компонент WhatsAppCTA
     // (товар или пакет — шаблон универсальный)
     waMessages: {
